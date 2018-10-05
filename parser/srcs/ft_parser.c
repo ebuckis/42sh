@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/06/01 15:16:59 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/09/27 17:03:53 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/05 11:59:59 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -35,6 +35,8 @@ static int	ft_str_parser(t_parse *p)
 			p->err = ft_parse_dquote(p);
 		else if (p->s[p->i] == '\'')
 			p->err = ft_parse_quote(p);
+		else if (ft_is_or_and(p))
+			p->err = ft_or_and(p);
 		else if ((tmp = ft_is_separator(p)))
 			p->err = ft_separator(p, tmp);
 		else if (ft_is_white(p->s[p->i]))
