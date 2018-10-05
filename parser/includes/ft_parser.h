@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/08/27 08:57:09 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/09/26 15:52:44 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/05 11:08:09 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -25,7 +25,9 @@
 # define REDIR			'4'
 # define HEREDOC		'5'
 # define PIPE			'6'
-# define SEMICOLON		'7'
+# define AND			'6'
+# define OR				'7'
+# define SEMICOLON		'8'
 
 typedef struct	s_parse
 {
