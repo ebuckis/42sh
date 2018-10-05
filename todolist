@@ -1,0 +1,35 @@
+# **************************************************************************** #
+#                                                           LE - /             #
+#                                                               /              #
+#    todolist                                         .::    .:/ .      .::    #
+#                                                  +:+:+   +:    +:  +:+:+     #
+#    By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+      #
+#                                                  #+#   #+    #+    #+#       #
+#    Created: 2018/08/22 09:27:21 by bpajot       #+#   ##    ##    #+#        #
+#    Updated: 2018/09/25 17:12:38 by kcabus      ###    #+. /#+    ###.fr      #
+#                                                          /                   #
+#                                                         /                    #
+# **************************************************************************** #
+
+kcabus :
+
+bpajot :
+- wc | ls OK - yes | head OK salement
+- ls | xargs cat OK
+- cat 21sh OK
+- message erreur si segfault ou autre signal  OK
+- leaks OK ?
+- norminette en cours OK
+- debug affichage via arg "debug" si bespom
+
+other :
+- arg derriere redir a gerer ?
+- effacer .heredoc
+
+- leaks au niveau de la fonction check_builtin.c -> run_builtin :
+	non free des arguments une fois utilises
+- lors d'un ctrl + c affichage supplementaire
+_______________________________________________________________________________
+nota-bene :
+- le prompt du bash est masqué par le 2> /dev/null
+_______________________________________________________________________________

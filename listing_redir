@@ -1,0 +1,41 @@
+# **************************************************************************** #
+#                                                           LE - /             #
+#                                                               /              #
+#    listing_redir                                    .::    .:/ .      .::    #
+#                                                  +:+:+   +:    +:  +:+:+     #
+#    By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+      #
+#                                                 #+#   #+    #+    #+#       #
+#    Created: 2018/07/10 11:20:28 by bpajot       #+#   ##    ##    #+#        #
+#    Updated: 2018/09/27 11:21:17 by kcabus      ###    #+. /#+    ###.fr      #
+#                                                          /                   #
+#                                                         /                    #
+# **************************************************************************** #
+
+cas possible :
+- OK command > file		redirige stdout sur file (open et si existe deja, ecrit au debut) X
+- OK command >> file	redirige stdout sur file (open et ecrit a la fin) X
+- OK command n> file	redirige fd n sur file
+- OK command >& file	redirige stdin et stdout sur file X
+- OK command > file 2>&1	idem
+- OK command i>&j			redirige fd i vers fd j 
+- OK command >&n			redirige stdin et stdout sur fd n X
+- OK command n>&-			close fd n
+
+- OK command < file		redirige file sur stdin X
+- OK command n< file		redirige file sur fd n
+
+- OK commande << heredoc
+
+1 cree tous les fichiers des redirections
+2 cree les dup des redirections (seulement les derniers ou ecrase les 1ers ?) et pipe
+3 test si chaque commande existe dans path ou buitlin, si oui, lance, sinon, affiche erreur
+
+Parse error :
+- a partir de 3 | ou & melangé
+>>&
+>>>
+
+(si redirection en fin de chaine) -> bash: syntax error near unexpected token `newline'
+
+ls 2>> file
+echo -nnnnnn "blabal"
