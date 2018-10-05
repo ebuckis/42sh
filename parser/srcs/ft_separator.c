@@ -6,14 +6,14 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/06/15 10:23:23 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/09/27 17:05:38 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/05 14:51:38 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "ft_parser.h"
 
-static void	ft_win_line(t_parse *p)
+void		ft_realloc_space(t_parse *p)
 {
 	p->len += 2;
 	p->str = ft_realloc(p->str, p->len);
@@ -37,7 +37,7 @@ int			ft_separator(t_parse *p, int tmp)
 	j = 0;
 	if (tmp == -1)
 		return (tmp);
-	ft_win_line(p);
+	ft_realloc_space(p);
 	while (j < tmp)
 	{
 		ft_end_while(p, p->tmp_id);
