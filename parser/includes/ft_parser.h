@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/08/27 08:57:09 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/05 11:08:09 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/05 12:00:25 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -25,9 +25,9 @@
 # define REDIR			'4'
 # define HEREDOC		'5'
 # define PIPE			'6'
-# define AND			'6'
-# define OR				'7'
-# define SEMICOLON		'8'
+# define AND			'7'
+# define OR				'8'
+# define SEMICOLON		'9'
 
 typedef struct	s_parse
 {
@@ -79,6 +79,8 @@ int				ft_separator(t_parse *p, int tmp);
 int				ft_is_redirection(char c);
 t_parse			**ft_save_struct(t_parse *parsing);
 char			*ft_strjoin_free(char *line1, char *line2, int i, int j);
+int				ft_or_and(t_parse *p);
+int				ft_is_or_and(t_parse *p);
 /*
 ** permet de garder une save de t_parse meme si on sort de la fonction
 */
