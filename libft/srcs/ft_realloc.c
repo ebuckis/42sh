@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/06/13 10:51:59 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/06/13 10:54:44 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/05 14:39:50 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -21,7 +21,7 @@ char		*ft_realloc(char *str, int n)
 	if (!cpy)
 		return (NULL);
 	cpy = ft_strcpy(cpy, str);
-	free(str);
+	ft_strdel(&str);
 	str = cpy;
 	return (str);
 }
