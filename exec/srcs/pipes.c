@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/06/19 11:15:08 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/09/27 15:37:48 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/09 15:59:16 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -42,34 +42,37 @@ static int			*create_tab_pipe(t_parse *p, int i, int nb_pipe,
 ** la fin sans argument
 */
 
-void				ft_manage_pipe(t_parse *p, int begin, char ***p_env)
+static void			ft_manage_pipe2(t_parse *p, int begin, char ***p_env, int i)
 {
-	int		i;
 	int		nb_pipe;
 	int		*tab_pipe;
 
-	i = begin;
 	nb_pipe = 0;
 	tab_pipe = NULL;
-	if (p->arg[i] && !ft_strchr(p->arg_id[i], SEMICOLON) &&
+	while (p->arg[i] && !ft_strchr(p->arg_id[i], SEMICOLON) &&
 		!ft_strchr(p->arg_id[i], AND) && !ft_strchr(p->arg_id[i], OR))
 	{
-		while (p->arg[i] && !ft_strchr(p->arg_id[i], SEMICOLON) &&
-			!ft_strchr(p->arg_id[i], AND) && !ft_strchr(p->arg_id[i], OR))
+		if (ft_strchr(p->arg_id[i], PIPE))
 		{
-			if (ft_strchr(p->arg_id[i], PIPE))
-			{
-				if (i == begin || ft_strchr(p->arg_id[i - 1], PIPE) ||
-					!p->arg[i + 1] || ft_strchr(p->arg_id[i + 1], SEMICOLON) ||
-					ft_strchr(p->arg_id[i], AND) || ft_strchr(p->arg_id[i], OR))
-					return (ft_putendl_fd("parse error", 2));
-				else
-					nb_pipe++;
-			}
-			i++;
+			if (i == begin || ft_strchr(p->arg_id[i - 1], PIPE) ||
+				!p->arg[i + 1] || ft_strchr(p->arg_id[i + 1], SEMICOLON) ||
+				ft_strchr(p->arg_id[i], AND) || ft_strchr(p->arg_id[i], OR))
+				return (ft_putendl_fd("parse error", 2));
+			nb_pipe++;
 		}
-		tab_pipe = create_tab_pipe(p, begin, nb_pipe, tab_pipe);
-		ft_fork_shell(p, tab_pipe, p_env, nb_pipe);
-		ft_memdel((void**)&tab_pipe);
+		i++;
 	}
+	tab_pipe = create_tab_pipe(p, begin, nb_pipe, tab_pipe);
+	ft_fork_shell(p, tab_pipe, p_env, nb_pipe);
+	ft_memdel((void**)&tab_pipe);
+}
+
+void				ft_manage_pipe(t_parse *p, int begin, char ***p_env)
+{
+	int		i;
+
+	i = begin;
+	if (p->arg[i] && !ft_strchr(p->arg_id[i], SEMICOLON) &&
+		!ft_strchr(p->arg_id[i], AND) && !ft_strchr(p->arg_id[i], OR))
+		ft_manage_pipe2(p, begin, p_env, i);
 }

@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/09 13:56:31 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/09 13:56:35 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/09 15:50:02 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -33,10 +33,6 @@ static int			*create_tab_and_or(t_parse *p, int i, int nb_and_or,
 			i++;
 	}
 	tab_and_or[j] = -1;
-//	j = -1;
-//	ft_printf("nb_and_or = %d\n", nb_and_or);
-//	while (tab_and_or[++j] >= 0)
-//		ft_printf("tab_and_or[%d] = %d\n", j, tab_and_or[j]);
 	return (tab_and_or);
 }
 
@@ -53,7 +49,7 @@ static void			ft_manage_and_or_2(t_parse *p, int *tab_and_or,
 	i = -1;
 	while (tab_and_or[++i] >= 0)
 	{
-		if (i == 0 || 
+		if (i == 0 ||
 			(ft_strchr(p->arg_id[tab_and_or[i] - 1], AND) && p->ret == 0) ||
 			(ft_strchr(p->arg_id[tab_and_or[i] - 1], OR) && p->ret > 0))
 			ft_manage_pipe(p, tab_and_or[i], p_env);
@@ -85,8 +81,7 @@ void				ft_manage_and_or(t_parse *p, int begin, char ***p_env)
 					ft_strchr(p->arg_id[i - 1], AND) || !p->arg[i + 1] ||
 					ft_strchr(p->arg_id[i + 1], SEMICOLON))
 					return (ft_putendl_fd("parse error", 2));
-				else
-					nb_and_or++;
+				nb_and_or++;
 			}
 			i++;
 		}

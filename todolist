@@ -6,29 +6,31 @@
 #    By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/08/22 09:27:21 by bpajot       #+#   ##    ##    #+#        #
-#    Updated: 2018/09/25 17:12:38 by kcabus      ###    #+. /#+    ###.fr      #
+#    Updated: 2018/10/09 16:33:04 by bpajot      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
 
 kcabus :
+- gestion tabulation avec Ctrl+v Tab ?
+- gestion /n etc
 
 bpajot :
-- wc | ls OK - yes | head OK salement
-- ls | xargs cat OK
-- cat 21sh OK
-- message erreur si segfault ou autre signal  OK
-- leaks OK ?
-- norminette en cours OK
-- debug affichage via arg "debug" si bespom
+- gestion des exceptions plus propre pour sigpipe 
+- gestion du fork pour exit setenv unsetenv cd
+- gestion du ctrl-D pour les commandes avec entree standard ouvert
+- echo $a$b $a"$b"
+- cat << kk > l < dddd > test ne pas creer test car erreur avant
+- echo " dquote> \ dquote>"
+- > test redir sans commandes
+- exit avec && || a opti
 
 other :
+- leaks  ?
+- norminette OK
 - arg derriere redir a gerer ?
 - effacer .heredoc
 
-- leaks au niveau de la fonction check_builtin.c -> run_builtin :
-	non free des arguments une fois utilises
-- lors d'un ctrl + c affichage supplementaire
 _______________________________________________________________________________
 nota-bene :
 - le prompt du bash est masqué par le 2> /dev/null
