@@ -52,7 +52,9 @@ static void		ft_exit(int *a, char *arg)
 	i = 0;
 	while (arg && ((i == 0 && arg[i] == '-') || ft_isdigit(arg[i])))
 		i++;
-	if (arg && !arg[i])
+	if (arg && (ft_strequ(arg, "&&") || ft_strequ(arg, "||")))
+		*a = 0;
+	else if (arg && !arg[i])
 		*a = (unsigned char)ft_atoi(arg);
 	else if (!arg)
 		*a = 0;
@@ -82,7 +84,8 @@ static void		ft_manage_semicolon_exit(t_parse *p, int *a, char ***p_env)
 	while (p->arg_id[i])
 	{
 		if (ft_strequ(p->arg[i], "exit") && (!p->arg[i + 1] ||
-			p->arg_id[i + 1][0] < PIPE))
+			p->arg_id[i + 1][0] < PIPE || p->arg_id[i + 1][0] == OR ||
+			p->arg_id[i + 1][0] == AND))
 			break ;
 		begin = i;
 		while (p->arg_id[i] && !ft_strchr(p->arg_id[i], SEMICOLON))
@@ -90,7 +93,7 @@ static void		ft_manage_semicolon_exit(t_parse *p, int *a, char ***p_env)
 		i += (p->arg_id[i]) ? 1 : 0;
 		n++;
 		ft_tilde_dollar(p, begin, p_env);
-		ft_manage_pipe(p, begin, p_env);
+		ft_manage_and_or(p, begin, p_env);
 	}
 	if (p->arg_id[i] && ft_strequ(p->arg[i], "exit"))
 		ft_exit(a, p->arg[i + 1]);
@@ -138,8 +141,8 @@ int				main(int argc, char *argv[], char *env[])
 	begin = 0;
 	while (a == -1)
 	{
-		string = (!begin++) ? ft_strdup("toilet -f bigascii12  21 sh | lolcat")
-			: ft_edition("21sh $> ");
+		string = (!begin++) ? ft_strdup("toilet -f bigascii12  42 sh | lolcat")
+			: ft_edition("42sh $> ");
 		if (argc == 2 && ft_strstr(argv[1], "debug"))
 			main2(string, &my_env, &a, 1);
 		else

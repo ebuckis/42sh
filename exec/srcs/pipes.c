@@ -51,14 +51,17 @@ void				ft_manage_pipe(t_parse *p, int begin, char ***p_env)
 	i = begin;
 	nb_pipe = 0;
 	tab_pipe = NULL;
-	if (p->arg[i] && !ft_strchr(p->arg_id[i], SEMICOLON))
+	if (p->arg[i] && !ft_strchr(p->arg_id[i], SEMICOLON) &&
+		!ft_strchr(p->arg_id[i], AND) && !ft_strchr(p->arg_id[i], OR))
 	{
-		while (p->arg[i] && !ft_strchr(p->arg_id[i], SEMICOLON))
+		while (p->arg[i] && !ft_strchr(p->arg_id[i], SEMICOLON) &&
+			!ft_strchr(p->arg_id[i], AND) && !ft_strchr(p->arg_id[i], OR))
 		{
 			if (ft_strchr(p->arg_id[i], PIPE))
 			{
 				if (i == begin || ft_strchr(p->arg_id[i - 1], PIPE) ||
-					!p->arg[i + 1] || ft_strchr(p->arg_id[i + 1], SEMICOLON))
+					!p->arg[i + 1] || ft_strchr(p->arg_id[i + 1], SEMICOLON) ||
+					ft_strchr(p->arg_id[i], AND) || ft_strchr(p->arg_id[i], OR))
 					return (ft_putendl_fd("parse error", 2));
 				else
 					nb_pipe++;

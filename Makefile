@@ -13,7 +13,7 @@
 
 .PHONY: all clean fclean re compile
 
-NAME = 21sh
+NAME = 42sh
 
 WFLAGS = -Wall -Wextra -Werror -g
 

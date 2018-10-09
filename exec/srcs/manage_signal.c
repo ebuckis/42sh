@@ -53,7 +53,7 @@ static void		ft_signal_stop(int s)
 		ft_putendl("");
 		ft_strdel(&(g_nav.s));
 		ft_strdel(&(g_nav.s_save));
-		ft_init_nav(&g_nav, "21sh $> ");
+		ft_init_nav(&g_nav, "42sh $> ");
 	}
 }
 

@@ -29,7 +29,8 @@ INC = -I $(INC_PATH) -I $(LIB_PATH)
 
 OBJ_NAME = $(N_SRCS:.c=.o)
 
-N_SRCS =	cd.c					\
+N_SRCS =	and_or.c				\
+			cd.c					\
 			check_bin.c				\
 			check_builtin.c			\
 			echo.c					\

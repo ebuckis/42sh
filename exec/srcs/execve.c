@@ -21,9 +21,9 @@
 static void		ft_execve_warning(char *path, char **tab_com)
 {
 	if (access(path, X_OK))
-		ft_putstr_fd("21sh: permission denied: ", 2);
+		ft_putstr_fd("42sh: permission denied: ", 2);
 	else
-		ft_putstr_fd("21sh: not a regular file: ", 2);
+		ft_putstr_fd("42sh: not a regular file: ", 2);
 	ft_putstr_fd(tab_com[0], 2);
 	ft_putstr_fd("\n", 2);
 	ft_free_tab(&tab_com);

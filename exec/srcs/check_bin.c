@@ -50,7 +50,7 @@ char		*check_bin3(char *bin, int warning)
 	else
 	{
 		if (warning)
-			ft_putendl_fd_arg("21sh: no such file or directory: ", bin);
+			ft_putendl_fd_arg("42sh: no such file or directory: ", bin);
 	}
 	return (NULL);
 }
@@ -82,7 +82,7 @@ char		*check_bin2(char *tab0, char **env)
 		}
 		ft_memdel((void**)&bin);
 	}
-	ft_putendl_fd_arg("21sh: command not found: ", tab0);
+	ft_putendl_fd_arg("42sh: command not found: ", tab0);
 	ft_free_tab(&tab_path);
 	return (NULL);
 }

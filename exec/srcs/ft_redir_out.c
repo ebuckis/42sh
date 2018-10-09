@@ -151,6 +151,6 @@ int				ft_redir_out(t_parse *p, int *i, char **env)
 		return (-1);
 	}
 	if (fd < 0)
-		ft_putendl_fd_arg("21sh: Permission denied: ", p->arg[*i]);
+		ft_putendl_fd_arg("42sh: Permission denied: ", p->arg[*i]);
 	return (fd);
 }
