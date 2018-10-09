@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/08/29 11:37:28 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/09/27 16:12:44 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/09 16:55:04 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -89,7 +89,7 @@ static void		ft_ret_display_signal(pid_t pid, int status, int stop)
 ** gestion des signaux de retour des processus pour les mettre dans p->ret
 */
 
-int				ft_ret_display(t_parse *p, pid_t pid, int status)
+int				ft_ret_display(t_parse *p, pid_t pid, int status, char *name)
 {
 	static pid_t	prev_pid = 0;
 
@@ -104,7 +104,9 @@ int				ft_ret_display(t_parse *p, pid_t pid, int status)
 	{
 		p->ret = WSTOPSIG(status) + 128;
 		ft_ret_display_signal(pid, status, 1);
-		p->child_pid = pid;
+		if (!(ft_strequ(name, "cat") || ft_strequ(name, "wc") || ft_strequ(
+			name, "top") || ft_strequ(name, "sed") || ft_strequ(name, "read")))
+			p->child_pid = pid;
 		if (prev_pid && prev_pid != p->child_pid)
 		{
 			kill(prev_pid, 2);
