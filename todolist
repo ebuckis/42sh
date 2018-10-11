@@ -6,7 +6,7 @@
 #    By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/08/22 09:27:21 by bpajot       #+#   ##    ##    #+#        #
-#    Updated: 2018/10/09 17:01:35 by bpajot      ###    #+. /#+    ###.fr      #
+#    Updated: 2018/10/11 13:21:53 by bpajot      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -16,18 +16,21 @@ kcabus :
 - gestion /n etc
 
 bpajot :
-- gestion des exceptions plus propre pour sigpipe 
+- gestion des exceptions plus propre pour sigpipe
 - gestion du fork pour exit setenv unsetenv cd
 - gestion du ctrl-D pour les commandes avec entree standard ouvert
 - echo $a$b $a"$b"
+- $ a refaire invalid read size pour une variable unset plus cd bizarre
 - cat << kk > l < dddd > test ne pas creer test car erreur avant
 - echo " dquote> \ dquote>"
 - > test redir sans commandes
 - exit avec && || a opti
+- cd gestion lien symbolique
+- revoir fg plus safe emacs ou autre 
 
 other :
-- leaks  ?
-- norminette OK
+- leaks  voir prk 32leaks avec valgrind + still reachable ?
+- norminette 
 - arg derriere redir a gerer ?
 - effacer .heredoc
 - cd -P -L
@@ -36,7 +39,7 @@ other :
 
 bonus :
 - kcabus history et !
-- bpajot read ou unset export
+- bpajot les variables locales $ set unset export
 
 _______________________________________________________________________________
 nota-bene :
