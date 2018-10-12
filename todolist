@@ -6,7 +6,7 @@
 #    By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/08/22 09:27:21 by bpajot       #+#   ##    ##    #+#        #
-#    Updated: 2018/10/11 13:21:53 by bpajot      ###    #+. /#+    ###.fr      #
+#    Updated: 2018/10/12 12:02:40 by bpajot      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -26,7 +26,9 @@ bpajot :
 - > test redir sans commandes
 - exit avec && || a opti
 - cd gestion lien symbolique
-- revoir fg plus safe emacs ou autre 
+- revoir fg plus safe emacs ou autre
+- afficher message si PATH=/ et commande not found
+- env a revoir pour env -i ls et env env -i ls
 
 other :
 - leaks  voir prk 32leaks avec valgrind + still reachable ?
