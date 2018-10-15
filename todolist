@@ -6,7 +6,7 @@
 #    By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/08/22 09:27:21 by bpajot       #+#   ##    ##    #+#        #
-#    Updated: 2018/10/12 12:02:40 by bpajot      ###    #+. /#+    ###.fr      #
+#    Updated: 2018/10/15 13:41:12 by bpajot      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -38,6 +38,8 @@ other :
 - cd -P -L
 - echo -n -e -E
 - env ???
+- gestion propre ctrl-z pour cat ou emacs??
+
 
 bonus :
 - kcabus history et !
