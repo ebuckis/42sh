@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/08/27 08:57:09 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/05 16:57:58 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/17 13:41:57 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -40,6 +40,7 @@ typedef struct	s_parse
 	int			err;
 	int			i;
 	int			j;
+	int			k;
 	int			ret;
 	pid_t		child_pid;
 	int			nb_hdoc;

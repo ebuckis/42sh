@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/06/01 18:20:01 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/09/28 08:58:58 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/17 14:02:37 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -54,6 +54,8 @@ void	run_builtin(t_parse *p, char **tab_com, char ***p_env)
 void	run_builtin_fork(t_parse *p, char **tab_com, char ***p_env,
 		int tab_pipe_i)
 {
+	int		ret;
+
 	if (tab_com)
 	{
 		if (ft_strequ(tab_com[0], "echo"))
@@ -71,5 +73,8 @@ void	run_builtin_fork(t_parse *p, char **tab_com, char ***p_env,
 		else if (ft_strequ(tab_com[0], "exit"))
 			;
 	}
-	exit(p->ret);
+	ret = p->ret;
+	ft_close_hist(CLOSE_HIST, NULL);
+	ft_close_parse();
+	exit(ret);
 }
