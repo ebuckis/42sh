@@ -35,6 +35,8 @@ int		ft_key_code(t_navig *n, char *buf)
 		if (!(ft_new_char(n, buf) && ft_move_to_xy(n->x, n->y)))
 			return (0);
 	}
+	else if (KEY_CODE_TAB)
+		autocomp(n);
 	if (!(ft_move_to_xy(n->x, n->y)))
 		return (0);
 	return (1);

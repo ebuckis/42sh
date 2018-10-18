@@ -23,6 +23,7 @@ OBJ_PATH	=	./obj/
 LIB_PATH	=	./libft/
 EDIT_PATH	=	./edition/
 PARSE_PATH	=	./parser/
+AUTOCOMP_PATH = ./autocomp/
 EXEC_PATH	=	./exec/
 
 
@@ -32,6 +33,7 @@ OBJ = $(addprefix $(OBJ_PATH),$(OBJ_NAME))
 INC =		-I $(LIB_PATH)		\
 			-I $(EDIT_PATH)		\
 			-I $(PARSE_PATH)	\
+			-I $(AUTOCOMP_PATH)	\
 			-I $(EXEC_PATH)
 
 OBJ_NAME = $(N_SRCS:.c=.o)
@@ -42,6 +44,7 @@ LIB_A =		-L $(LIB_PATH) -lft			\
 			-L $(PARSE_PATH) -lparser	\
 			-L $(EDIT_PATH) -ledition	\
 			-L $(EXEC_PATH) -lexec		\
+			-L $(AUTOCOMP_PATH) -lexec	\
 			-ltermcap
 
 all : $(NAME)
@@ -58,12 +61,14 @@ compile :
 			@make -C $(PARSE_PATH)
 			@make -C $(EDIT_PATH)
 			@make -C $(EXEC_PATH)
+			@make -C $(AUTOCOMP_PATH)
 
 clean :
 			@make -C $(LIB_PATH) clean
 			@make -C $(PARSE_PATH) clean
 			@make -C $(EDIT_PATH) clean
 			@make -C $(EXEC_PATH) clean
+			@make -C $(AUTOCOMP_PATH) clean
 			@rm -rf $(OBJ_PATH)
 
 fclean : 	clean
@@ -71,6 +76,7 @@ fclean : 	clean
 			@make -C $(PARSE_PATH) fclean
 			@make -C $(EDIT_PATH) fclean
 			@make -C $(EXEC_PATH) fclean
+			@make -C $(AUTOCOMP_PATH) fclean
 			@rm -rf $(NAME)
 
 re : fclean clean all
