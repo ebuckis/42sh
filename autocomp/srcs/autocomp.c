@@ -24,11 +24,11 @@ static int	win_big_enough(t_navig *info)
 	int		rows;
 	int		line;
 
-	line = (ft_strlen(info->prompt) + ft_strlen(info->s)) / info->col_nb;
-	line += (ft_strlen(info->prompt) + ft_strlen(info->s)) % info->col_nb ?
+	line = (ft_strlen(info->prompt) + ft_strlen(info->s)) / info->x_size;
+	line += (ft_strlen(info->prompt) + ft_strlen(info->s)) % info->x_size ?
 		1 : 0;
 	rows = get_row_number(info);
-	if (info->row_nb - line - rows > 0)
+	if (info->y_size - line - rows > 0)
 		return (1);
 	else
 		return (0);
@@ -104,6 +104,7 @@ void		autocomp(t_navig *info)
 	t_slct	*slct;
 	char	*line;
 
+	ft_printf("looool\n");
 	line = NULL;
 	info->out = 0;
 	if (info->s)

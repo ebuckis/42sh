@@ -32,10 +32,10 @@ void		ac_down_key(t_navig *info, t_slct *slct)
 		if (tmp->current)
 		{
 			erase_prev(info);
-			val = tmp->index % (info->col_nb / (info->max_len + 2));
+			val = tmp->index % (info->x_size / (info->max_len + 2));
 			tmp->current = 0;
 			tmp = tmp->next == slct ? tmp->next->next : tmp->next;
-			while (tmp->index % (info->col_nb / (info->max_len + 2)) != val)
+			while (tmp->index % (info->x_size / (info->max_len + 2)) != val)
 				tmp = tmp->next == slct ? tmp->next->next : tmp->next;
 			tmp->current = 1;
 			add_slct(tmp, info);
@@ -64,10 +64,10 @@ void		ac_up_key(t_navig *info, t_slct *slct)
 		if (tmp->current)
 		{
 			erase_prev(info);
-			val = tmp->index % (info->col_nb / (info->max_len + 2));
+			val = tmp->index % (info->x_size / (info->max_len + 2));
 			tmp->current = 0;
 			tmp = tmp->prev == slct ? tmp->prev->prev : tmp->prev;
-			while (tmp->index % (info->col_nb / (info->max_len + 2)) != val)
+			while (tmp->index % (info->x_size / (info->max_len + 2)) != val)
 				tmp = tmp->prev == slct ? tmp->prev->prev : tmp->prev;
 			tmp->current = 1;
 			add_slct(tmp, info);

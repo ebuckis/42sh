@@ -18,7 +18,7 @@ int			get_row_number(t_navig *info)
 	int	ret;
 	int	cols;
 
-	cols = info->col_nb / (info->max_len + 2);
+	cols = info->x_size / (info->max_len + 2);
 	ret = info->nb_elem / cols;
 	ret += info->nb_elem % cols ? 1 : 0;
 	return (ret);
@@ -50,7 +50,7 @@ void		display(t_navig *info, t_slct *slct)
 	t_slct	*tmp;
 
 	rows = get_row_number(info);
-	cols = info->col_nb / (info->max_len + 2);
+	cols = info->x_size / (info->max_len + 2);
 	tmp = ac_first_elem(slct);
 	while (tmp != slct)
 	{

@@ -17,7 +17,7 @@ static void	ac_right2(t_navig *info, t_slct *slct, t_slct *tmp)
 {
 	int		cols;
 
-	cols = info->col_nb / (info->max_len + 2);
+	cols = info->x_size / (info->max_len + 2);
 	erase_prev(info);
 	tmp->current = 0;
 	if (tmp->index % cols != 0 && tmp->next != slct)
@@ -62,7 +62,7 @@ static void	ac_left2(t_navig *info, t_slct *slct, t_slct *tmp)
 	int		rows;
 
 	rows = get_row_number(info);
-	cols = info->col_nb / (info->max_len + 2);
+	cols = info->x_size / (info->max_len + 2);
 	erase_prev(info);
 	tmp->current = 0;
 	if (tmp->index % cols != 1 && tmp->prev != slct)
