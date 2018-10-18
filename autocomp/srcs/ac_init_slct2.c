@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   ac_init_slct2.c                                  .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: volivry <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
+/*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/09/28 14:21:33 by volivry      #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/15 12:47:02 by volivry     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/18 16:41:55 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -70,7 +70,7 @@ int		is_cmd(char *cmd, char **pathes)
 void	*init_error(t_slct *root, t_navig *info, char **table, char **pathes)
 {
 	free_slct(root, info);
-	free_tab(table);
-	free_tab(pathes);
+	ft_free_tab(&table);
+	ft_free_tab(&pathes);
 	return (NULL);
 }

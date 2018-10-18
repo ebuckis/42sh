@@ -3,15 +3,15 @@
 /*                                                              /             */
 /*   tab_to_lst.c                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: volivry <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
+/*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/05/03 17:30:05 by volivry      #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/04 13:22:48 by volivry     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/18 16:43:40 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "autocomp.h"
 
 t_list	*tab_to_lst(char **table)
 {
@@ -33,3 +33,4 @@ t_list	*tab_to_lst(char **table)
 	}
 	return (ret);
 }
+// a delete

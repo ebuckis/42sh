@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/07/20 15:32:40 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/18 14:48:28 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/18 16:42:56 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -87,11 +87,9 @@ int						slct_current(t_slct *slct, t_navig *info);
 char					*get_last_word(char *line, t_navig *info);
 int						contains_letters(char *name, char *letters);
 int						is_cmd(char *cmd, char **pathes);
-void					free_tab(char **table);
 char					last_char(char *str);
 t_list					*tab_to_lst(char **table);
-void					free_lst(t_list *lst);
-void					free_tab(char **table);
+void					*free_lst(t_list *lst);
 int						ft_putchar_err(int c);
 void					autocomp(t_navig *info);
 

@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   ac_init_slct.c                                   .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: volivry <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
+/*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/08/27 17:49:41 by volivry      #+#   ##    ##    #+#       */
-/*   Updated: 2018/09/28 14:41:17 by volivry     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/18 16:41:30 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -66,9 +66,9 @@ static char	**fill_pathes(void)
 static void	free_init_slct(char **table, char **pathes)
 {
 	if (table)
-		free_tab(table);
+		ft_free_tab(&table);
 	if (pathes)
-		free_tab(pathes);
+		ft_free_tab(&pathes);
 }
 
 t_slct		*init_slct(char *line, t_navig *info)

@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   ac_parse_line.c                                  .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: volivry <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
+/*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/08/27 17:30:43 by volivry      #+#   ##    ##    #+#       */
-/*   Updated: 2018/09/28 14:17:40 by volivry     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/18 16:42:33 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -77,7 +77,7 @@ char		*no_table_case(char *line, char **table)
 {
 	if (line)
 		ft_strdel(&line);
-	free_tab(table);
+	ft_free_tab(&table);
 	return (NULL);
 }
 
@@ -104,8 +104,8 @@ char		*get_last_word(char *line, t_navig *info)
 		tmp = tmp->next;
 	ft_strdel(&line);
 	line = ft_strdup(tmp->content);
-	free_lst(lst);
-	free_tab(table);
+	lst = free_lst(lst);
+	ft_free_tab(&table);
 	line = get_letters(line, info);
 	return (line);
 }

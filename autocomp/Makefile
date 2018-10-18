@@ -6,7 +6,7 @@
 #    By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/04/06 14:53:11 by kcabus       #+#   ##    ##    #+#        #
-#    Updated: 2018/10/18 14:53:57 by kcabus      ###    #+. /#+    ###.fr      #
+#    Updated: 2018/10/18 16:08:14 by kcabus      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -30,6 +30,7 @@ INC = -I $(INC_PATH) -I $(LIB_PATH)
 OBJ_NAME = $(N_SRCS:.c=.o)
 
 N_SRCS =	ac_init_slct.c			\
+			ft_free_lst.c			\
 			ac_init_slct2.c			\
 			ac_lst_utils.c			\
 			ac_lst_utils2.c			\
