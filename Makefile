@@ -6,7 +6,7 @@
 #    By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/04/06 14:53:11 by kcabus       #+#   ##    ##    #+#        #
-#    Updated: 2018/09/14 13:39:16 by kcabus      ###    #+. /#+    ###.fr      #
+#    Updated: 2018/10/18 14:56:15 by kcabus      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -40,11 +40,11 @@ OBJ_NAME = $(N_SRCS:.c=.o)
 
 N_SRCS =	main.c
 
-LIB_A =		-L $(LIB_PATH) -lft			\
-			-L $(PARSE_PATH) -lparser	\
-			-L $(EDIT_PATH) -ledition	\
-			-L $(EXEC_PATH) -lexec		\
-			-L $(AUTOCOMP_PATH) -lexec	\
+LIB_A =		-L $(LIB_PATH) -lft				\
+			-L $(PARSE_PATH) -lparser		\
+			-L $(EDIT_PATH) -ledition		\
+			-L $(EXEC_PATH) -lexec			\
+			-L $(AUTOCOMP_PATH) -lautocomp	\
 			-ltermcap
 
 all : $(NAME)

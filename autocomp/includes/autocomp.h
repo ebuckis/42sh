@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   exec.h                                           .::    .:/ .      .::   */
+/*   autocomp.h                                       .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/07/20 15:32:40 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/09 16:48:13 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/18 14:48:28 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -93,5 +93,6 @@ t_list					*tab_to_lst(char **table);
 void					free_lst(t_list *lst);
 void					free_tab(char **table);
 int						ft_putchar_err(int c);
+void					autocomp(t_navig *info);
 
 #endif

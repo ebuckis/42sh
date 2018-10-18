@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/06/18 14:40:55 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/09/04 11:56:13 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/18 14:43:15 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -96,6 +96,8 @@ typedef struct		s_hist
 
 t_navig				g_nav;
 
+# include "../../autocomp/includes/autocomp.h"
+
 char				*ft_edition(char *prompt);
 int					ft_putcharint(int c);
 int					ft_move_to_xy(int x, int y);
@@ -126,7 +128,6 @@ void				ft_signal_size(int s);
 void				ft_delta_line(t_navig *n, int nb);
 void				ft_goto_i_from_end(t_navig *n);
 int					ft_no_new_name(t_navig *n, char *p);
-void				autocomp(t_navig *info);
 
 
 #endif

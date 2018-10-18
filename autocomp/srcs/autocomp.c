@@ -3,15 +3,16 @@
 /*                                                              /             */
 /*   autocomp.c                                       .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: volivry <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
+/*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/08/02 13:07:19 by volivry      #+#   ##    ##    #+#       */
-/*   Updated: 2018/09/25 11:45:29 by volivry     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/18 14:50:37 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "autocomp.h"
+#include "../../edition/includes/ft_edition.h"
 
 /*
 ** Checks if the terminal window is big enough
