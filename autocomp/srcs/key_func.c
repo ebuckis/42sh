@@ -1,0 +1,124 @@
+/* ************************************************************************** */
+/*                                                          LE - /            */
+/*                                                              /             */
+/*   key_func.c                                       .::    .:/ .      .::   */
+/*                                                 +:+:+   +:    +:  +:+:+    */
+/*   By: volivry <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
+/*                                                 #+#   #+    #+    #+#      */
+/*   Created: 2018/06/01 17:49:20 by volivry      #+#   ##    ##    #+#       */
+/*   Updated: 2018/09/28 14:26:00 by volivry     ###    #+. /#+    ###.fr     */
+/*                                                         /                  */
+/*                                                        /                   */
+/* ************************************************************************** */
+
+#include "../includes/autocomp.h"
+
+/*
+** Sends to up, down, right and left arrow functions.
+*/
+
+static void	arrow_cmds(t_navig *info, t_slct *slct, char *buf)
+{
+	if (!info->out)
+	{
+		if (KEY_CODE_RIGHT)
+			ac_right_key(info, slct);
+		else if (KEY_CODE_LEFT)
+			ac_left_key(info, slct);
+		else if (KEY_CODE_UP)
+			ac_up_key(info, slct);
+		else if (KEY_CODE_DOWN)
+			ac_down_key(info, slct);
+		else if (KEY_CODE_TAB)
+			ac_tab_key(info, slct);
+	}
+}
+
+/*
+** Gets the key that is typed.
+*/
+
+int			key_input(t_navig *info, t_slct *slct, int *loop)
+{
+	char	buf[50];
+
+	ft_bzero(buf, 50);
+	if (info->out)
+	{
+		restore_curs(info, slct);
+		return ((*loop = 0));
+	}
+	read(0, buf, 49);
+	if (buf[3] || buf[0] > 127)
+		return (0);
+	if ((KEY_CODE_RIGHT) || (KEY_CODE_LEFT) || (KEY_CODE_UP)
+	|| (KEY_CODE_DOWN) || (KEY_CODE_TAB))
+		arrow_cmds(info, slct, buf);
+	else if ((buf[0] == 10 && buf[1] == 0) || (KEY_CODE_DEL)
+	|| ft_isprint(*buf))
+	{
+		restore_curs(info, slct);
+		if (ft_isprint(*buf))
+			ft_new_char(info, buf);
+		return ((*loop = 0));
+	}
+	else
+		reset_screen(info);
+	return (1);
+}
+
+/*
+** Erases the display of the list so that only the command line remains.
+*/
+
+void		erase_prev(t_navig *info)
+{
+	reset_screen(info);
+	tputs(tgetstr("up", NULL), 1, ft_putchar_err);
+	tputs(tgetstr("cd", NULL), 1, ft_putchar_err);
+	ft_putstr(info->prompt);
+	if (info->s)
+		ft_putstr(info->s);
+}
+
+static void	restore2(t_navig *info, t_slct *tmp)
+{
+	int	i;
+
+	i = 0;
+	if (info->letters)
+		while (info->letters[i])
+			i++;
+	if (!info->out)
+		while (tmp->name[i])
+		{
+			ft_new_char(info, &tmp->name[i]);
+			i++;
+		}
+}
+
+/*
+** Puts back th cursor in the command line after displaying
+** the list.
+*/
+
+void		restore_curs(t_navig *info, t_slct *slct)
+{
+	t_slct	*tmp;
+
+	tmp = ac_first_elem(slct);
+	reset_screen(info);
+	if (slct->next->next != slct && !info->out)
+		tputs(tgetstr("up", NULL), 1, ft_putchar_err);
+	tputs(tgetstr("cd", NULL), 1, ft_putchar_err);
+	ft_putstr(info->prompt);
+	if (!info->out && info->s)
+		ft_putstr(info->s);
+	while (!tmp->current)
+		tmp = tmp->next;
+	if (tmp->name)
+		restore2(info, tmp);
+	if (!info->out && tmp->is_dir)
+		ft_new_char(info, "/");
+	ft_recup_pos(&info->x, &info->y);
+}

@@ -32,7 +32,8 @@ static char	*ft_ctrl_d(t_navig *n)
 
 static int	ft_whilesuite(t_navig *n, char *buf)
 {
-	if (KEY_CODE_DIR || KEY_CODE_DEL || KEY_CODE_ALT || IS_PRINTABLE)
+	if (KEY_CODE_DIR || KEY_CODE_DEL || KEY_CODE_ALT ||
+	IS_PRINTABLE || KEY_CODE_TAB)
 	{
 		if (!(ft_key_code(n, buf)))
 			return (0);

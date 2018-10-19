@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/06/18 14:40:55 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/09/04 11:56:13 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/18 14:43:15 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -20,6 +20,7 @@
 # define KEY_CODE_DOWN		(buf[2] == 66 && !buf[3])
 # define KEY_CODE_RIGHT		(buf[2] == 67 && !buf[3])
 # define KEY_CODE_LEFT		(buf[2] == 68 && !buf[3])
+# define KEY_CODE_TAB		(buf[0] == 9 && !buf[1])
 # define KEY_CODE_ALT		(buf[0] == 27 && buf[1] == 27 && buf[2] == 91)
 # define KEY_CODE_END		(buf[2] == 70 && !buf[3])
 # define KEY_CODE_HOME		(buf[2] == 72)
@@ -78,6 +79,10 @@ typedef struct		s_navig
 	int				err;
 	int				tmp_int;
 	int				statut;
+	char			*letters;
+	int				max_len;
+	int				nb_elem;
+	int				out;
 }					t_navig;
 
 typedef struct		s_hist
@@ -88,6 +93,8 @@ typedef struct		s_hist
 }					t_hist;
 
 t_navig				g_nav;
+
+# include "../../autocomp/includes/autocomp.h"
 
 char				*ft_edition(char *prompt);
 int					ft_putcharint(int c);
@@ -119,5 +126,6 @@ void				ft_signal_size(int s);
 void				ft_delta_line(t_navig *n, int nb);
 void				ft_goto_i_from_end(t_navig *n);
 int					ft_no_new_name(t_navig *n, char *p);
+
 
 #endif
