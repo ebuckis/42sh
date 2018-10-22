@@ -21,20 +21,19 @@ int			get_row_number(t_navig *info)
 	cols = info->x_size / (info->max_len + 2);
 	ret = info->nb_elem / cols;
 	ret += info->nb_elem % cols ? 1 : 0;
+	dprintf(2, "cols : %d, rows: %d\n", cols, ret);
 	return (ret);
 }
 
 void		reset_screen(t_navig *info)
 {
 	int	rows;
-	int	x;
-	int	y;
 
-	y = 0;
-	x = 0;
-	ft_recup_pos(&x, &y);
+	//ft_recup_pos(&info->ac_x, &info->ac_y);
 	rows = get_row_number(info);
-	ft_move_to_xy(0, y);
+
+	dprintf(2, "RESET SCREEN // x: %d, y: %d\n", info->ac_x, info->ac_y);
+	ft_move_to_xy(info->ac_x, info->ac_y);
 	while (rows > 1)
 	{
 		tputs(tgetstr("up", NULL), 1, ft_putchar_err);
@@ -64,12 +63,13 @@ void		display(t_navig *info, t_slct *slct)
 		if (tmp->index % cols == 0 && tmp->next != slct && !info->out)
 		{
 			tputs(tgetstr("sf", NULL), 1, ft_putchar_err);
-			ft_move_to_xy(0, info->y);
+			ft_move_to_xy(0, info->ac_y + 1);
+			info->ac_y++;
 		}
 		tmp = tmp->next;
 	}
 
-	dprintf(2, "END of display // x: %d, y: %d\n", info->x, info->y);
+	dprintf(2, "END of display // x: %d, y: %d\n", info->ac_x, info->ac_y);
 }
 
 /*

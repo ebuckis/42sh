@@ -89,6 +89,8 @@ typedef struct		s_navig
 	int				max_len;
 	int				nb_elem;
 	int				out;
+	int				ac_x;
+	int				ac_y;
 }					t_navig;
 
 typedef struct		s_hist
