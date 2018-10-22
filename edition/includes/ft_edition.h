@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/06/18 14:40:55 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/18 14:43:15 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/22 13:36:16 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -20,6 +20,7 @@
 # define KEY_CODE_DOWN		(buf[2] == 66 && !buf[3])
 # define KEY_CODE_RIGHT		(buf[2] == 67 && !buf[3])
 # define KEY_CODE_LEFT		(buf[2] == 68 && !buf[3])
+# define KEY_CODE_ENTER		(buf[0] == 10 && !buf[1])
 # define KEY_CODE_TAB		(buf[0] == 9 && !buf[1])
 # define KEY_CODE_ALT		(buf[0] == 27 && buf[1] == 27 && buf[2] == 91)
 # define KEY_CODE_END		(buf[2] == 70 && !buf[3])
