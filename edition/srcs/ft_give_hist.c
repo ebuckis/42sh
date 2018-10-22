@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/07/12 16:27:53 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/09/03 15:55:02 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/22 17:30:49 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -17,11 +17,11 @@ char	*ft_give_hist(int i, t_hist *list)
 {
 	static t_hist	*h = NULL;
 
-	if (i == 0)
+	if (i == SAVE_HIST)
 		h = list;
-	else if (i == 1 && h->next)
+	else if (i == NEXT_HIST && h->next)
 		h = h->next;
-	else if (i == -1 && h->prev)
+	else if (i == PREV_HIST && h->prev)
 		h = h->prev;
 	else
 		return (NULL);

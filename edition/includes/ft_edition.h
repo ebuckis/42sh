@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/06/18 14:40:55 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/22 14:16:16 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/22 17:31:49 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -47,7 +47,12 @@
 # define CHAR_SUPPR 2
 # define MOVE_RIGHT 3
 # define MOVE_LEFT 4
+
 # define CLOSE_HIST -1
+# define GET_HIST 1
+# define SAVE_HIST 0
+# define NEXT_HIST 1
+# define PREV_HIST -1
 
 # include "../../libft/includes/libft.h"
 # include "../../parser/includes/ft_parser.h"

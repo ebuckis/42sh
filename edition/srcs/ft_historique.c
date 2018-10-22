@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/07/25 19:03:29 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/09/03 15:55:07 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/22 17:44:04 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,6 +22,7 @@ static t_hist	*ft_init_hist(void)
 	h->str = NULL;
 	h->next = NULL;
 	h->prev = NULL;
+	h->id = -1;
 	return (h);
 }
 
@@ -29,7 +30,7 @@ static t_hist	*ft_init_hist(void)
 ** fonction d'initialisation de la stucture d'historique
 */
 
-static t_hist	*ft_new_hist(char *s, t_hist *m_prev, t_hist *m_next)
+static t_hist	*ft_new_hist(char *s, t_hist *m_prev, t_hist *m_next, int id)
 {
 	t_hist		*h;
 
@@ -37,6 +38,7 @@ static t_hist	*ft_new_hist(char *s, t_hist *m_prev, t_hist *m_next)
 		return (NULL);
 	if (!(h->str = ft_strdup(s)))
 		return (NULL);
+	h->id = id;
 	h->next = m_next;
 	h->prev = m_prev;
 	if (m_next)
@@ -50,20 +52,23 @@ static t_hist	*ft_new_hist(char *s, t_hist *m_prev, t_hist *m_next)
 
 int				ft_add_hist(char *s)
 {
-	t_hist	*h;
+	t_hist		*h;
+	static int	id = 0;
 
-	h = ft_close_hist(1, NULL);
+	h = ft_close_hist(GET_HIST, NULL);
 	if (!h || !s)
 		return (0);
 	if (!h->next)
 	{
-		if (!(h->next = ft_new_hist(s, h, h->next)))
+		if (!(h->next = ft_new_hist(s, h, h->next, id)))
 			return (0);
+		id++;
 	}
 	else if (ft_strcmp(s, h->next->str) != 0)
 	{
-		if (!(h->next = ft_new_hist(s, h, h->next)))
+		if (!(h->next = ft_new_hist(s, h, h->next, id)))
 			return (0);
+		id++;
 	}
 	return (1);
 }
@@ -79,15 +84,15 @@ int				ft_open_hist(void)
 {
 	t_hist	*h;
 
-	if (!(h = ft_close_hist(1, NULL)))
+	if (!(h = ft_close_hist(GET_HIST, NULL)))
 	{
 		if (!(h = ft_init_hist()))
 			return (0);
-		ft_give_hist(0, h);
-		ft_close_hist(0, h);
+		ft_give_hist(SAVE_HIST, h);
+		ft_close_hist(SAVE_HIST, h);
 	}
 	else
-		ft_give_hist(0, h);
+		ft_give_hist(SAVE_HIST, h);
 	return (1);
 }
 
