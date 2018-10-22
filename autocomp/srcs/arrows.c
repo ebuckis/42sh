@@ -87,7 +87,10 @@ void		ac_tab_key(t_navig *info, t_slct *slct)
 
 	tmp = ac_first_elem(slct);
 	if (slct_current(slct, info))
+	{		
+		dprintf(2, "FIRST TAB KEY // x: %d, y: %d\n", slct->x, slct->y);
 		return ;
+	}
 	while (tmp != slct)
 	{
 		if (tmp->current)
@@ -105,7 +108,7 @@ void		ac_tab_key(t_navig *info, t_slct *slct)
 				add_slct(tmp->next, info);
 			}
 
-		dprintf(2, "END TAB KEY // x: %d, y: %d\n", info->x, info->y);
+		dprintf(2, "END TAB KEY // x: %d, y: %d\n", slct->x, slct->y);
 			return ;
 		}
 		tmp = tmp->next;

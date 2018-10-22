@@ -52,8 +52,7 @@ static void	infinite_loop(t_navig *info, t_slct *slct)
 	loop = 1;
 	while (loop)
 	{
-
-	dprintf(2, "LOOP restart // x: %d, y: %d\n", info->x, info->y);
+		
 		if (info->out)
 		{
 			free_slct(slct, info);
@@ -62,6 +61,8 @@ static void	infinite_loop(t_navig *info, t_slct *slct)
 		if (loop && win_big_enough(info) &&
 		key_input(info, slct, &loop))
 		{
+
+	dprintf(2, "LOOP restart // x: %d, y: %d\n", slct->x, slct->y);
 			display(info, slct);
 		}
 		else if (!win_big_enough(info))
@@ -124,10 +125,12 @@ void		autocomp(t_navig *info)
 		return ;
 	update_index(slct);
 	end_key(info);
-	dprintf(2, "x: %d, y: %d\n", info->x, info->y);
+	dprintf(2, "x: %d, y: %d\n", slct->x, slct->y);
 	tputs(tgetstr("vi", NULL), 1, ft_putchar_err);
 	tputs(tgetstr("sf", NULL), 1, ft_putchar_err);
-	ft_move_to_xy(0, info->y + 1);
+	ft_move_to_xy(0, slct->y + 1);
+	ft_recup_pos(&slct->x, &slct->y);
+	dprintf(2, "x: %d, y: %d\n", slct->x, slct->y);
 	display(info, slct);
 	infinite_loop(info, slct);
 }

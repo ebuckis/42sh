@@ -27,10 +27,14 @@ int			get_row_number(t_navig *info)
 void		reset_screen(t_navig *info)
 {
 	int	rows;
+	int	x;
+	int	y;
 
-	ft_recup_pos(&info->x, &info->y);
+	y = 0;
+	x = 0;
+	ft_recup_pos(&x, &y);
 	rows = get_row_number(info);
-	ft_move_to_xy(0, info->y);
+	ft_move_to_xy(0, y);
 	while (rows > 1)
 	{
 		tputs(tgetstr("up", NULL), 1, ft_putchar_err);
