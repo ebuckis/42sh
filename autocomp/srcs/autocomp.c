@@ -104,7 +104,6 @@ void		autocomp(t_navig *info)
 	t_slct	*slct;
 	char	*line;
 
-	ft_printf("looool\n");
 	line = NULL;
 	info->out = 0;
 	if (info->s)
