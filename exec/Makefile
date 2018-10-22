@@ -6,7 +6,7 @@
 #    By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/04/06 14:53:11 by kcabus       #+#   ##    ##    #+#        #
-#    Updated: 2018/09/14 11:58:11 by kcabus      ###    #+. /#+    ###.fr      #
+#    Updated: 2018/10/22 12:54:44 by bpajot      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -36,7 +36,6 @@ N_SRCS =	and_or.c				\
 			echo.c					\
 			env.c					\
 			execve.c				\
-			fg.c					\
 			fork.c					\
 			ft_redir_in.c			\
 			ft_redir_out.c			\

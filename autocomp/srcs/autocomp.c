@@ -14,6 +14,13 @@
 #include "autocomp.h"
 #include "../../edition/includes/ft_edition.h"
 
+static void	end_key(t_navig *n)
+{
+	n->x = n->x_start;
+	n->y = n->y_start;
+	n->i = 0;
+}
+
 /*
 ** Checks if the terminal window is big enough
 ** to display the list.
@@ -52,7 +59,10 @@ static void	infinite_loop(t_navig *info, t_slct *slct)
 		}
 		if (loop && win_big_enough(info) &&
 		key_input(info, slct, &loop))
+		{
+			end_key(info);
 			display(info, slct);
+		}
 		else if (!win_big_enough(info))
 		{
 			tputs(tgetstr("bl", NULL), 1, ft_putchar_err);
@@ -88,12 +98,7 @@ static int	ac_special_cases(t_slct *slct, t_navig *info)
 	return (0);
 }
 
-static void	end_key(t_navig *n)
-{
-	n->x = n->x_start;
-	n->y = n->y_start;
-	n->i = 0;
-}
+
 /*
 ** Inits the autocomp linked list and starts
 ** an infinite loop.
