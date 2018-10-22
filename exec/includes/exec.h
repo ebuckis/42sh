@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/07/20 15:32:40 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/09 16:48:13 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/19 11:30:23 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -51,7 +51,7 @@ int			ft_tab_size(char **arg, char **tab_ref);
 int			ft_setenv(char **arg, char ***env);
 int			ft_unsetenv(char **arg, char ***env);
 void		manage_signal(void);
-int			ft_ret_display(t_parse *p, pid_t pid, int status, char *name);
+int			ft_ret_display(t_parse *p, pid_t pid, int status);
 int			ft_redir_out(t_parse *p, int *i, char **env);
 int			ft_redir_in(t_parse *p, int *i, char **env);
 char		*get_path_redir(t_parse *p, int *i, char **env);

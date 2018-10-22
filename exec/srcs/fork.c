@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/05/29 10:59:08 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/17 13:44:50 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/19 11:37:55 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -100,7 +100,6 @@ static void		ft_fork_shell2(t_parse *p, int *tab_pipe, char ***p_env,
 		int nb_pipe)
 {
 	int			*tab_pid;
-	int			last_pid;
 	int			**tab_pipe_fd;
 	int			status;
 	int			i;
@@ -116,11 +115,14 @@ static void		ft_fork_shell2(t_parse *p, int *tab_pipe, char ***p_env,
 	}
 	i = -1;
 	while (tab_pid[++i])
+	{
 		waitpid(tab_pid[i], &status, WUNTRACED);
-	last_pid = tab_pid[--i];
+		if (WIFSTOPPED(status) && WSTOPSIG(status) == 18)
+			kill(tab_pid[i], 1);
+	}
+	ft_ret_display(p, tab_pid[--i], status);
 	ft_memdel((void**)&tab_pid);
 	ft_memdel_tab_pipe_fd(tab_pipe_fd);
-	ft_ret_display(p, last_pid, status, p->arg[tab_pipe[0]]);
 }
 
 /*
