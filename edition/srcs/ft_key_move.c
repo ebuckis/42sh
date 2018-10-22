@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/06/22 15:58:05 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/09/05 13:33:45 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/22 17:31:00 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -80,7 +80,7 @@ static void		ft_down_hist(t_navig *n)
 	char	*str;
 
 	str = NULL;
-	str = ft_give_hist(-1, NULL);
+	str = ft_give_hist(PREV_HIST, NULL);
 	if (str)
 	{
 		ft_maj_stuct_nav(n, str);
@@ -107,7 +107,7 @@ static void		ft_up_hist(t_navig *n)
 	char	*str;
 
 	str = NULL;
-	str = ft_give_hist(1, NULL);
+	str = ft_give_hist(NEXT_HIST, NULL);
 	if (str)
 	{
 		if (n->id_hist == 0)
