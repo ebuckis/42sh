@@ -64,6 +64,8 @@ void		display(t_navig *info, t_slct *slct)
 		}
 		tmp = tmp->next;
 	}
+
+	dprintf(2, "END of display // x: %d, y: %d\n", info->x, info->y);
 }
 
 /*

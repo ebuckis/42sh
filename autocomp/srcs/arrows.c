@@ -104,8 +104,11 @@ void		ac_tab_key(t_navig *info, t_slct *slct)
 				tmp->next->current = 1;
 				add_slct(tmp->next, info);
 			}
+
+		dprintf(2, "END TAB KEY // x: %d, y: %d\n", info->x, info->y);
 			return ;
 		}
 		tmp = tmp->next;
 	}
+
 }
