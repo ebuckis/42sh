@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/06/04 14:50:45 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/09 16:50:14 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/22 12:54:12 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -87,7 +87,7 @@ static int		ft_env3(t_parse *p, char **arg, char **env, int i)
 			else if (pid > 0)
 			{
 				waitpid(pid, &status, WUNTRACED);
-				ft_ret_display(p, pid, status, p->arg[i % 100 + i / 100]);
+				ft_ret_display(p, pid, status);
 			}
 		}
 		return (p->ret);
