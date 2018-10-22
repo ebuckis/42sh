@@ -21,7 +21,7 @@ int		check_builtin(char **tab_com)
 {
 	if (tab_com && (ft_strequ(tab_com[0], "echo") || ft_strequ(tab_com[0], "cd")
 		|| ft_strequ(tab_com[0], "setenv") || ft_strequ(tab_com[0], "unsetenv")
-		|| ft_strequ(tab_com[0], "env") || ft_strequ(tab_com[0], "exit"))
+		|| ft_strequ(tab_com[0], "env") || ft_strequ(tab_com[0], "exit")))
 		return (1);
 	else
 		return (0);

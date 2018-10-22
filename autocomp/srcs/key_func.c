@@ -93,6 +93,7 @@ static void	restore2(t_navig *info, t_slct *tmp)
 		while (tmp->name[i])
 		{
 			ft_new_char(info, &tmp->name[i]);
+			ft_move_to_xy(info->x, info->y);
 			i++;
 		}
 }
@@ -119,6 +120,9 @@ void		restore_curs(t_navig *info, t_slct *slct)
 	if (tmp->name)
 		restore2(info, tmp);
 	if (!info->out && tmp->is_dir)
+	{
 		ft_new_char(info, "/");
+		ft_move_to_xy(info->x, info->y);
+	}
 	ft_recup_pos(&info->x, &info->y);
 }
