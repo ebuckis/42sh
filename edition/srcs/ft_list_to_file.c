@@ -6,14 +6,13 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/22 13:02:47 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/22 14:12:44 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/23 10:15:14 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "ft_editon.h"
 
-#define HIST_FILE "~/.42sh_history"
 
 void        ft_list_to_file(t_navig *l)
 {
