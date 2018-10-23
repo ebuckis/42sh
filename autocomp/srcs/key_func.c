@@ -19,8 +19,6 @@
 
 static void	arrow_cmds(t_navig *info, t_slct *slct, char *buf)
 {
-
-	dprintf(2, "ARROW // x: %d, y: %d\n", info->ac_x, info->ac_y);
 	if (!info->out)
 	{
 		if (KEY_CODE_RIGHT)
@@ -44,7 +42,6 @@ int			key_input(t_navig *info, t_slct *slct, int *loop)
 {
 	char	buf[50];
 
-	dprintf(2, "KEY INPUT // x: %d, y: %d\n", info->ac_x, info->ac_y);
 	ft_bzero(buf, 50);
 	if (info->out)
 	{
@@ -96,7 +93,7 @@ static void	restore2(t_navig *info, t_slct *tmp)
 		while (tmp->name[i])
 		{
 			ft_new_char(info, &tmp->name[i]);
-			ft_move_to_xy(info->ac_x, info->ac_y);
+			ft_move_to_xy(info->x, info->y);
 			i++;
 		}
 }
@@ -118,6 +115,7 @@ void		restore_curs(t_navig *info, t_slct *slct)
 	ft_putstr(info->prompt);
 	if (!info->out && info->s)
 		ft_putstr(info->s);
+	ft_recup_pos(&info->x, &info->y);
 	while (!tmp->current)
 		tmp = tmp->next;
 	if (tmp->name)
@@ -125,7 +123,7 @@ void		restore_curs(t_navig *info, t_slct *slct)
 	if (!info->out && tmp->is_dir)
 	{
 		ft_new_char(info, "/");
-		ft_move_to_xy(info->ac_x, info->ac_y);
+		ft_move_to_xy(info->x, info->y);
 	}
-	ft_recup_pos(&info->ac_x, &info->ac_y);
+	ft_recup_pos(&info->x, &info->y);
 }
