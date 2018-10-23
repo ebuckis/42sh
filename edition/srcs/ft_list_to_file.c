@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/22 13:02:47 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/23 13:09:42 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/23 17:30:45 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -23,16 +23,19 @@ static void		ft_save_in_file(int fd, t_hist *h)
 
 void			ft_list_to_file(void)
 {
-	int     fd;
+	int		fd;
 	t_hist	*h;
+	char	*path;
 
-	fd = open(HIST_FILE, O_WRONLY| O_CREAT, S_IRUSR | S_IWUSR);
+	path = ft_get_hist_name();
+	fd = open(path, O_WRONLY | O_CREAT, S_IRUSR | S_IWUSR);
 	if (fd == -1)
 	{
+		ft_strdel(&path);
 		dprintf(2, "errror sur lecture du fichier dans %s\n", __func__);
 		return ;
 	}
 	h = ft_close_hist(GET_HIST, NULL);
 	ft_save_in_file(fd, h->next);
-//ft_putendl_fd(s, fd);
+	ft_strdel(&path);
 }
