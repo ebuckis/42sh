@@ -65,14 +65,14 @@ static void	ac_left2(t_navig *info, t_slct *slct, t_slct *tmp)
 	cols = info->x_size / (info->max_len + 2);
 	erase_prev(info);
 	tmp->current = 0;
-	if (tmp->index % cols != 1 && tmp->prev != slct)
+	if (tmp->index % cols != 1)
 	{
 		tmp->prev->current = 1;
 		add_slct(tmp->prev, info);
 	}
 	else
 	{
-		if (tmp->index % rows != 0)
+		if (info->nb_elem - tmp->index > cols)
 			while (tmp->index % cols != 0 || tmp == slct)
 				tmp = tmp->next;
 		else

@@ -38,6 +38,7 @@ void	*free_slct(t_slct *lst, t_navig *info)
 	info->max_len = 0;
 	info->nb_elem = 0;
 	ft_memdel((void**)&lst);
+	ft_move_to_xy(info->x, info->y);
 	return (NULL);
 }
 
