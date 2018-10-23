@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/06/18 14:40:55 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/22 17:31:49 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/23 10:18:22 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -34,6 +34,7 @@
 # define KEY_CTRL_E			(buf[0] == 5 && !buf[1])
 # define KEY_CTRL_W			(buf[0] == 23 && !buf[1])
 # define KEY_CTRL_T			(buf[0] == 20 && !buf[1])
+# define HIST_FILE			"~/.42sh_history"
 
 /*
 ** CTRL + U couper jusqu'au debut
