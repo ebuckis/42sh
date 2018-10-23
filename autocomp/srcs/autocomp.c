@@ -94,6 +94,7 @@ static int	ac_special_cases(t_slct *slct, t_navig *info)
 	{
 		slct->current = 0;
 		slct->next->current = 1;
+		ft_move_to_xy(0, info->ac_y);
 		restore_curs(info, slct);
 		free_slct(slct, info);
 		return (1);
