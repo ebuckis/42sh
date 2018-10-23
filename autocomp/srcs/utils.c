@@ -114,5 +114,5 @@ void	add_slct(t_slct *slct, t_navig *info)
 	if (slct->is_dir)
 		ft_putchar('/');
 	tputs(tgetstr("sf", NULL), 1, ft_putchar_err);
-	ft_move_to_xy(0, info->y);
+	ft_move_to_xy(0, info->ac_y);
 }

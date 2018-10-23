@@ -46,6 +46,8 @@ typedef struct			s_slct
 	int					is_exe;
 	char				*name;
 	int					index;
+	int					x;
+	int					y;
 	struct s_slct		*next;
 	struct s_slct		*prev;
 

@@ -1,37 +1,38 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_give_hist.c                                   .::    .:/ .      .::   */
+/*   ft_list_to_file.c                                .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/07/12 16:27:53 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/22 17:30:49 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Created: 2018/10/22 13:02:47 by kcabus       #+#   ##    ##    #+#       */
+/*   Updated: 2018/10/23 13:09:42 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "ft_edition.h"
 
-char	*ft_give_hist(int i, t_hist *list)
+static void		ft_save_in_file(int fd, t_hist *h)
 {
-	static t_hist	*h = NULL;
-
-	if (i == SAVE_HIST)
-		h = list;
-	else if (i == NEXT_HIST && h->next)
-		h = h->next;
-	else if (i == PREV_HIST && h->prev)
-		h = h->prev;
-	else
-		return (NULL);
-	return (h->str);
+	if (!h)
+		return ;
+	ft_save_in_file(fd, h->next);
+	ft_putendl_fd(h->str, fd);
 }
 
-/*
-** i == 0 -> save de l'hist
-** i == 1 && il y a un maillon apres -> next
-** i == -1 && il y a un maillon avant -> prev
-** sinon on NULL
-** et on revoie le char * correspondant a l'historique demandé
-*/
+void			ft_list_to_file(void)
+{
+	int     fd;
+	t_hist	*h;
+
+	fd = open(HIST_FILE, O_WRONLY| O_CREAT, S_IRUSR | S_IWUSR);
+	if (fd == -1)
+	{
+		dprintf(2, "errror sur lecture du fichier dans %s\n", __func__);
+		return ;
+	}
+	h = ft_close_hist(GET_HIST, NULL);
+	ft_save_in_file(fd, h->next);
+//ft_putendl_fd(s, fd);
+}

@@ -16,9 +16,9 @@
 
 static void	end_key(t_navig *n)
 {
-	n->x = n->x_start;
-	n->y = n->y_start;
-	n->i = 0;
+	n->x = n->x_len;
+	n->y = n->y_len;
+	n->i = ft_strlen(n->s);
 }
 
 /*
@@ -52,6 +52,7 @@ static void	infinite_loop(t_navig *info, t_slct *slct)
 	loop = 1;
 	while (loop)
 	{
+		
 		if (info->out)
 		{
 			free_slct(slct, info);
@@ -60,7 +61,6 @@ static void	infinite_loop(t_navig *info, t_slct *slct)
 		if (loop && win_big_enough(info) &&
 		key_input(info, slct, &loop))
 		{
-			end_key(info);
 			display(info, slct);
 		}
 		else if (!win_big_enough(info))
@@ -111,6 +111,8 @@ void		autocomp(t_navig *info)
 
 	line = NULL;
 	info->out = 0;
+	info->ac_x = info->x;
+	info->ac_y = info->y;
 	if (info->s)
 		line = ft_strdup(info->s);
 	line = get_last_word(line, info);
@@ -123,9 +125,12 @@ void		autocomp(t_navig *info)
 		return ;
 	update_index(slct);
 	end_key(info);
+	dprintf(2, "x: %d, y: %d\n", info->ac_x, info->ac_y);
 	tputs(tgetstr("vi", NULL), 1, ft_putchar_err);
 	tputs(tgetstr("sf", NULL), 1, ft_putchar_err);
-	ft_move_to_xy(0, info->y);
+	ft_move_to_xy(0, info->ac_y + 1);
+	ft_recup_pos(&info->ac_x, &info->ac_y);
+	dprintf(2, "x: %d, y: %d\n", info->ac_x, info->ac_y);
 	display(info, slct);
 	infinite_loop(info, slct);
 }

@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/06/01 18:20:01 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/22 12:52:49 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/22 17:59:14 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -71,6 +71,7 @@ void	run_builtin_fork(t_parse *p, char **tab_com, char ***p_env,
 			;
 	}
 	ret = p->ret;
+	//FIXME: voir l'utilité de ft_close_hist
 	ft_close_hist(CLOSE_HIST, NULL);
 	ft_close_parse();
 	exit(ret);
