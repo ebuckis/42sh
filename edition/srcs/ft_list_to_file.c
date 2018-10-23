@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/22 13:02:47 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/23 17:30:45 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/23 17:46:04 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -32,7 +32,6 @@ void			ft_list_to_file(void)
 	if (fd == -1)
 	{
 		ft_strdel(&path);
-		dprintf(2, "errror sur lecture du fichier dans %s\n", __func__);
 		return ;
 	}
 	h = ft_close_hist(GET_HIST, NULL);

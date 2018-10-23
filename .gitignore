@@ -1,7 +1,7 @@
 *.[ao]
 *.out
 *.dSYM/
-21sh
+42sh
 *.swp
 *.swp
 *.DS_Store
