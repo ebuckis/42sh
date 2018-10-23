@@ -72,11 +72,9 @@ static void	infinite_loop(t_navig *info, t_slct *slct)
 	free_slct(slct, info);
 	ft_recup_pos(&info->x, &info->y);
 	info->x_len = info->x;
-	info->y_len = info->y;
-	
+	info->y_len = info->y;	
 	end_key(info);
 	tputs(tgetstr("ve", NULL), 1, ft_putchar_err);
-	dprintf(2,"str: %s\n", info->s);
 }
 
 /*

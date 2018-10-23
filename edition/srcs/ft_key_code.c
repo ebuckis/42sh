@@ -37,7 +37,7 @@ int		ft_key_code(t_navig *n, char *buf)
 	}
 	else if (KEY_CODE_TAB)
 	{
-		dprintf(2, "GO TO KEY CODE TAB\n");
+		//dprintf(2, "GO TO KEY CODE TAB\n");
 		autocomp(n);
 	}
 	if (!(ft_move_to_xy(n->x, n->y)))
