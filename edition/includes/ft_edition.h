@@ -6,11 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/06/18 14:40:55 by kcabus       #+#   ##    ##    #+#       */
-<<<<<<< HEAD
-/*   Updated: 2018/10/24 10:29:57 by yoginet     ###    #+. /#+    ###.fr     */
-=======
-/*   Updated: 2018/10/23 17:31:17 by kcabus      ###    #+. /#+    ###.fr     */
->>>>>>> 8ff87f3d9caea51e41a55f2a742b457267b8a226
+/*   Updated: 2018/10/24 10:31:38 by yoginet     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -38,11 +34,7 @@
 # define KEY_CTRL_E			(buf[0] == 5 && !buf[1])
 # define KEY_CTRL_W			(buf[0] == 23 && !buf[1])
 # define KEY_CTRL_T			(buf[0] == 20 && !buf[1])
-<<<<<<< HEAD
-# define HIST_FILE			"/Users/yoginet/.42sh_history"
-=======
 # define HIST_FILE			".42sh_history"
->>>>>>> 8ff87f3d9caea51e41a55f2a742b457267b8a226
 # define MAX_HIST			1000000
 
 /*
