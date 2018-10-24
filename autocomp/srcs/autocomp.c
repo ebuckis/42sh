@@ -53,6 +53,7 @@ static void	infinite_loop(t_navig *info, t_slct *slct)
 	while (loop)
 	{
 		
+		ft_move_to_xy(info->ac_x, info->ac_y);
 		if (info->out)
 		{
 			free_slct(slct, info);
@@ -60,9 +61,7 @@ static void	infinite_loop(t_navig *info, t_slct *slct)
 		}
 		if (loop && win_big_enough(info) &&
 		key_input(info, slct, &loop))
-		{
 			display(info, slct);
-		}
 		else if (!win_big_enough(info))
 		{
 			tputs(tgetstr("bl", NULL), 1, ft_putchar_err);
@@ -71,6 +70,10 @@ static void	infinite_loop(t_navig *info, t_slct *slct)
 		}
 	}
 	free_slct(slct, info);
+	ft_recup_pos(&info->x, &info->y);
+	info->x_len = info->x;
+	info->y_len = info->y;	
+	end_key(info);
 	tputs(tgetstr("ve", NULL), 1, ft_putchar_err);
 }
 
@@ -91,6 +94,7 @@ static int	ac_special_cases(t_slct *slct, t_navig *info)
 	{
 		slct->current = 0;
 		slct->next->current = 1;
+		ft_move_to_xy(0, info->ac_y);
 		restore_curs(info, slct);
 		free_slct(slct, info);
 		return (1);
@@ -124,13 +128,11 @@ void		autocomp(t_navig *info)
 	if (ac_special_cases(slct, info))
 		return ;
 	update_index(slct);
-	end_key(info);
-	dprintf(2, "x: %d, y: %d\n", info->ac_x, info->ac_y);
 	tputs(tgetstr("vi", NULL), 1, ft_putchar_err);
 	tputs(tgetstr("sf", NULL), 1, ft_putchar_err);
+	end_key(info);
 	ft_move_to_xy(0, info->ac_y + 1);
 	ft_recup_pos(&info->ac_x, &info->ac_y);
-	dprintf(2, "x: %d, y: %d\n", info->ac_x, info->ac_y);
 	display(info, slct);
 	infinite_loop(info, slct);
 }
