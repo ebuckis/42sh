@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   get_next_line.c                                  .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: kcabus <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
+/*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/05 08:39:05 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2017/12/26 15:21:54 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/24 10:14:57 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -45,15 +45,18 @@ static int	ft_copy_s(char **s, char **line)
 	int		i;
 
 	i = ft_strchr_index(*s, '\n');
+	ft_strdel(line);
 	if (i == -1)
-		i = ft_strlen(*s);
-	*line = ft_strsub(*s, 0, i);
+		*line = ft_strdup(*s);
+	else
+		*line = ft_strsub(*s, 0, i);
 	if (ft_strlen(*s) == 0)
 	{
+		ft_strdel(line);
 		ft_strdel(s);
 		return (0);
 	}
-	*s = ft_strsub_del(*s, i + 1, (ft_strlen(*s) - (i + 1)));
+	ft_strdel(s);
 	return (1);
 }
 

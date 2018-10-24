@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/11/24 08:28:59 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/08/29 16:36:14 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/23 18:10:05 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -62,7 +62,7 @@ char			*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 int				ft_strequ(char const *s1, char const *s2);
 int				ft_strnequ(char const *s1, char const *s2, size_t n);
 char			*ft_strsub(char const *s, unsigned int start, size_t len);
-char			*ft_strsub_del(char const *s, unsigned int start, size_t len);
+char			*ft_strsub_del(char *s, unsigned int start, size_t len);
 char			*ft_strjoin(char const *s1, char const *s2);
 char			*ft_strjoin_del(char const *s1, char const *s2);
 char			*ft_strtrim(char const *s);
