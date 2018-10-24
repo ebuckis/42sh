@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/06/18 14:40:55 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/23 13:09:04 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/24 10:29:57 by yoginet     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -34,7 +34,7 @@
 # define KEY_CTRL_E			(buf[0] == 5 && !buf[1])
 # define KEY_CTRL_W			(buf[0] == 23 && !buf[1])
 # define KEY_CTRL_T			(buf[0] == 20 && !buf[1])
-# define HIST_FILE			"/Users/kcabus/.42sh_history"
+# define HIST_FILE			"/Users/yoginet/.42sh_history"
 # define MAX_HIST			1000000
 
 /*
