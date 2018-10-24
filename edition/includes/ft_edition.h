@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/06/18 14:40:55 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/24 10:31:38 by yoginet     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/24 14:59:50 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -93,6 +93,7 @@ typedef struct		s_navig
 	int				out;
 	int				ac_x;
 	int				ac_y;
+	char			*replace;
 }					t_navig;
 
 typedef struct		s_hist

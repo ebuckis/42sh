@@ -6,12 +6,34 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/24 12:53:13 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/24 14:23:42 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/24 17:44:39 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "ft_edition.h"
+
+int			ft_is_interpreted(char *s, int pos)
+{
+	//TODO: retourner si le '!' est interpreté ou non 
+	if (!s[pos + 1] || ft_is_white([pos + 1]))
+		return (0);
+	return (1);
+}
+
+int			ft_ident_excl(char *s, int pos)
+{
+	if (ft_sidigit(s[pos + 1]))
+		return (ID_NUM);
+	else if (s[pos + 1] == "-")
+	{
+		if (s[pos + 2] && ft_isdigit(s[pos+ 2]))
+			return (LAST_ID_NUM);
+		return (0);
+	}
+	else
+		return (OCCURRENCE);
+}
 
 static int	ft_strchr_index(const char *s, char c)
 {
@@ -29,13 +51,13 @@ static int	ft_strchr_index(const char *s, char c)
 	return (-1);
 }
 
-int		ft_parse_excl(t_navig *n)
+int			ft_parse_excl(t_navig *n)
 {
 	int		ident;
 	int		pos;
 
 	pos = 0;
-	while (ft_strchr_index(n->s, '!') > 0)
+	while ((pos = ft_strchr_index(n->s + pos, '!') > 0))
 	{
 		if (ft_is_interpreted(n->s, pos))
 		{
@@ -44,6 +66,7 @@ int		ft_parse_excl(t_navig *n)
 			ft_replace_line(n, &pos);//modifier la valeur de pos (+= len du remplacement)
 		}
 	}
+	ft_putstr(n->s);
 	return (1);
 }
 
