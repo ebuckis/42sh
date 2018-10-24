@@ -6,7 +6,7 @@
 #    By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/08/22 09:27:21 by bpajot       #+#   ##    ##    #+#        #
-#    Updated: 2018/10/23 11:03:04 by kcabus      ###    #+. /#+    ###.fr      #
+#    Updated: 2018/10/24 14:50:15 by bpajot      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -29,7 +29,7 @@ bpajot :
 
 other :
 - leaks
-- norminette 
+- norminette
 - arg derriere redir a gerer ?
 - effacer .heredoc
 - cd -P -L
