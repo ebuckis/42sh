@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/08/22 14:11:36 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/09/14 12:01:16 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/24 16:07:32 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -59,29 +59,30 @@ static void		ft_getvalue_var(t_parse *p, t_doll *d, int i, int j)
 		d->var = ft_strdup(&(p->arg[i][j + 1]));
 }
 
-t_parse			*ft_dollar(t_parse *p, int i, int j, char ***p_env)
+t_parse			*ft_dollar(t_parse *p, int i, int *j, char ***p_env)
 {
 	t_doll	d;
 
-	d.p1 = ft_strchr(&(p->arg[i][j + 1]), '{');
-	d.p2 = ft_strchr(&(p->arg[i][j + 1]), '}');
-	d.p3 = ft_strchr(&(p->arg[i][j + 1]), '$');
-	ft_getvalue_var(p, &d, i, j);
+	d.p1 = ft_strchr(&(p->arg[i][*j + 1]), '{');
+	d.p2 = ft_strchr(&(p->arg[i][*j + 1]), '}');
+	d.p3 = ft_strchr(&(p->arg[i][*j + 1]), '$');
+	ft_getvalue_var(p, &d, i, *j);
 	if (ft_strequ(d.var, "$"))
 		d.key = ft_itoa(getpid());
 	else
 		d.key = (ft_strequ(d.var, "?")) ?
 			ft_itoa(p->ret) : get_value(*p_env, d.var);
 	if (j)
-		d.tmp = ft_strjoin_free(ft_strsub(p->arg[i], 0, j), d.key, 1, 0);
+		d.tmp = ft_strjoin_free(ft_strsub(p->arg[i], 0, *j), d.key, 1, 0);
 	else
 		d.tmp = (d.key) ? ft_strdup(d.key) : ft_strdup("");
 	if (d.p1 && d.p2 && d.p2 > d.p1)
-		d.arg = ft_strjoin(d.tmp, &(p->arg[i][j + 1]) + ft_strlen(d.var) + 2);
+		d.arg = ft_strjoin(d.tmp, &(p->arg[i][*j + 1]) + ft_strlen(d.var) + 2);
 	else if (d.p3)
-		d.arg = ft_strjoin(d.tmp, &(p->arg[i][j + 1]) + ft_strlen(d.var));
+		d.arg = ft_strjoin(d.tmp, &(p->arg[i][*j + 1]) + ft_strlen(d.var));
 	else
 		d.arg = ft_strdup(d.tmp);
 	ft_end_dollar(p, &d, i);
+	*j = -1;
 	return (p);
 }
