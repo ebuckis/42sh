@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/07/20 15:32:40 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/18 16:42:56 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/24 15:57:55 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -14,29 +14,28 @@
 #ifndef AUTOCOMP_H
 # define AUTOCOMP_H
 
-# include 				"../../libft/includes/libft.h"
-# include				"../../edition/includes/ft_edition.h"
-# include 				<unistd.h>
-# include 				<stdlib.h>
-# include 				<sys/stat.h>
-# include 				<sys/types.h>
-# include 				<sys/wait.h>
-# include 				<fcntl.h>
-# include 				<locale.h>
-# include 				<dirent.h>
+# include "../../libft/includes/libft.h"
+# include "../../edition/includes/ft_edition.h"
+# include <unistd.h>
+# include <stdlib.h>
+# include <sys/stat.h>
+# include <sys/types.h>
+# include <sys/wait.h>
+# include <fcntl.h>
+# include <locale.h>
+# include <dirent.h>
 
-
-# define 				BLACK "\033[30m"
-# define 				BLUE "\033[34m"
-# define 				CYAN "\033[36m"
-# define 				GREEN "\033[32m"
-# define 				ORANGE "\033[38;5;208m"
-# define 				L_BLUE "\033[38;5;51m"
-# define 				MAGENTA "\033[35m"
-# define 				WHITE "\033[37m"
-# define 				YELLOW "\033[33m"
-# define 				RED "\033[31m"
-# define 				RESET "\033[00m"
+# define BLACK "\033[30m"
+# define BLUE "\033[34m"
+# define CYAN "\033[36m"
+# define GREEN "\033[32m"
+# define ORANGE "\033[38;5;208m"
+# define L_BLUE "\033[38;5;51m"
+# define MAGENTA "\033[35m"
+# define WHITE "\033[37m"
+# define YELLOW "\033[33m"
+# define RED "\033[31m"
+# define RESET "\033[00m"
 
 typedef struct			s_slct
 {

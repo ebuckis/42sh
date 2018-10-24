@@ -6,7 +6,7 @@
 #    By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/08/22 09:27:21 by bpajot       #+#   ##    ##    #+#        #
-#    Updated: 2018/10/24 14:50:15 by bpajot      ###    #+. /#+    ###.fr      #
+#    Updated: 2018/10/24 16:09:28 by bpajot      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -16,8 +16,6 @@ kcabus :
 - gestion /n etc
 
 bpajot :
-- echo $a$b $a"$b"
-- $ a refaire invalid read size pour une variable unset plus cd bizarre
 - "$HOME " a gerer
 - cat << kk > l < dddd > test ne pas creer test car erreur avant
 - echo " dquote> \ dquote>"

@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/08/02 13:07:19 by volivry      #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/18 14:50:37 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/24 15:59:32 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -52,7 +52,6 @@ static void	infinite_loop(t_navig *info, t_slct *slct)
 	loop = 1;
 	while (loop)
 	{
-		
 		ft_move_to_xy(info->ac_x, info->ac_y);
 		if (info->out)
 		{
@@ -72,7 +71,7 @@ static void	infinite_loop(t_navig *info, t_slct *slct)
 	free_slct(slct, info);
 	ft_recup_pos(&info->x, &info->y);
 	info->x_len = info->x;
-	info->y_len = info->y;	
+	info->y_len = info->y;
 	end_key(info);
 	tputs(tgetstr("ve", NULL), 1, ft_putchar_err);
 }
@@ -101,7 +100,6 @@ static int	ac_special_cases(t_slct *slct, t_navig *info)
 	}
 	return (0);
 }
-
 
 /*
 ** Inits the autocomp linked list and starts
