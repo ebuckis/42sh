@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/07/19 16:17:54 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/22 13:36:31 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/24 14:10:48 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -62,6 +62,7 @@ char		*ft_lance_edit(t_navig *n)
 		read(0, buf, 4);
 		if (KEY_CODE_ENTER)
 		{
+			//TODO: ajout de la verif du ! ft_parse_excl(n);
 			n->err = ft_push_enter(n);
 			break ;
 		}
