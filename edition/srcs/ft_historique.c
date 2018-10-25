@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/07/25 19:03:29 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/23 17:46:00 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/25 15:49:29 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -55,6 +55,7 @@ int				ft_add_hist(char *s)
 	t_hist		*h;
 	static int	id = 0;
 
+	g_nav.max_id = id;
 	h = ft_close_hist(GET_HIST, NULL);
 	if (!h || !s)
 		return (0);

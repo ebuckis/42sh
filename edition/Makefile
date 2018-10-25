@@ -6,7 +6,7 @@
 #    By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/04/06 14:53:11 by kcabus       #+#   ##    ##    #+#        #
-#    Updated: 2018/10/23 13:09:17 by kcabus      ###    #+. /#+    ###.fr      #
+#    Updated: 2018/10/25 15:59:06 by kcabus      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -58,7 +58,9 @@ N_SRCS =	ft_edition.c			\
 			ft_delta_line.c			\
 			ft_goto_i_from_end.c	\
 			ft_file_to_list.c		\
-			ft_list_to_file.c
+			ft_list_to_file.c		\
+			ft_replace_line.c		\
+			ft_parse_excl.c
 
 all : $(NAME)
 

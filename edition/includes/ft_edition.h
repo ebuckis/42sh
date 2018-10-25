@@ -6,11 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/06/18 14:40:55 by kcabus       #+#   ##    ##    #+#       */
-<<<<<<< HEAD
-/*   Updated: 2018/10/24 14:59:50 by kcabus      ###    #+. /#+    ###.fr     */
-=======
-/*   Updated: 2018/10/24 16:03:47 by bpajot      ###    #+. /#+    ###.fr     */
->>>>>>> b83d1bc17718db5da086b103acfc339d5ba72844
+/*   Updated: 2018/10/25 16:09:28 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -60,6 +56,13 @@
 # define NEXT_HIST 1
 # define PREV_HIST -1
 
+#define	ID_NUM_NULL -1
+#define	LAST_ID_NUM_NULL -2
+#define	OCCURRENCE_NULL -3
+#define	ID_NUM 1
+#define	LAST_ID_NUM 2
+#define	OCCURRENCE 3
+
 # include "../../libft/includes/libft.h"
 # include "../../parser/includes/ft_parser.h"
 # include <curses.h>
@@ -97,7 +100,8 @@ typedef struct		s_navig
 	int				out;
 	int				ac_x;
 	int				ac_y;
-	char			*replace;
+	int				max_id;
+	char			*pattern;
 }					t_navig;
 
 typedef struct		s_hist
@@ -146,5 +150,9 @@ void				ft_signal_size(int s);
 void				ft_delta_line(t_navig *n, int nb);
 void				ft_goto_i_from_end(t_navig *n);
 int					ft_no_new_name(t_navig *n, char *p);
+
+int					ft_parse_excl(t_navig *n);
+int					ft_replace_line(t_navig *n, int *pos, int id);
+int					ft_replace_s(char *s, t_navig *n, int pos);
 
 #endif
