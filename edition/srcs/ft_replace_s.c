@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/25 16:01:31 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/25 16:11:12 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/25 16:30:50 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -19,5 +19,6 @@ int		ft_replace_s(char *s, t_navig *n, int pos)
 }
 
 /*
+** TODO: remplacer la section de string
 ** retourner la longueur du remplacement
 */
