@@ -6,7 +6,7 @@
 #    By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/08/22 09:27:21 by bpajot       #+#   ##    ##    #+#        #
-#    Updated: 2018/10/25 13:00:10 by kcabus      ###    #+. /#+    ###.fr      #
+#    Updated: 2018/10/29 11:56:06 by bpajot      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -16,7 +16,6 @@ kcabus :
 - gestion /n etc
 
 bpajot :
-- "$HOME " a gerer
 - cat << kk > l < dddd > test ne pas creer test car erreur avant
 - echo " dquote> \ dquote>"
 - > test redir sans commandes
