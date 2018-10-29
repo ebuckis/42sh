@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/08/22 14:11:36 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/24 16:07:32 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/29 11:53:23 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -49,14 +49,35 @@ static void		ft_end_dollar(t_parse *p, t_doll *d, int i)
 
 static void		ft_getvalue_var(t_parse *p, t_doll *d, int i, int j)
 {
-	if (d->p1 && d->p2 && d->p2 > d->p1)
+	if (p->arg[i][j + 1] == '$')
+		d->var = ft_strdup("$");
+	else if (p->arg[i][j + 1] == '?')
+		d->var = ft_strdup("?");
+	else if (d->p1 && d->p2 && d->p2 > d->p1)
 		d->var = ft_strsub(d->p1, 1, d->p2 - d->p1 - 1);
 	else if (d->p3 && &(p->arg[i][j + 1]) != d->p3)
 		d->var = ft_strsub(&(p->arg[i][j + 1]), 0, d->p3 - &(p->arg[i][j + 1]));
-	else if (d->p3 && &(p->arg[i][j + 1]) == d->p3)
-		d->var = ft_strdup("$");
 	else
 		d->var = ft_strdup(&(p->arg[i][j + 1]));
+}
+
+static char		*ft_next_dollar_or_space(char *str)
+{
+	char *p;
+	char *next_dollar;
+	char *next_space;
+
+	next_dollar = ft_strchr(str, '$');
+	next_space = ft_strchr(str, ' ');
+	if (next_dollar && next_space)
+		p = (next_dollar < next_space) ? next_dollar : next_space;
+	else if (next_dollar)
+		p = next_dollar;
+	else if (next_space)
+		p = next_space;
+	else
+		p = NULL;
+	return (p);
 }
 
 t_parse			*ft_dollar(t_parse *p, int i, int *j, char ***p_env)
@@ -65,7 +86,7 @@ t_parse			*ft_dollar(t_parse *p, int i, int *j, char ***p_env)
 
 	d.p1 = ft_strchr(&(p->arg[i][*j + 1]), '{');
 	d.p2 = ft_strchr(&(p->arg[i][*j + 1]), '}');
-	d.p3 = ft_strchr(&(p->arg[i][*j + 1]), '$');
+	d.p3 = ft_next_dollar_or_space(&(p->arg[i][*j + 1]));
 	ft_getvalue_var(p, &d, i, *j);
 	if (ft_strequ(d.var, "$"))
 		d.key = ft_itoa(getpid());
