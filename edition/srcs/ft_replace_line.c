@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/25 13:39:56 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/25 16:18:28 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/26 14:26:11 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -48,6 +48,8 @@ static int	ft_get_by_last_id(t_hist *h, char *s2)
 	if (!h->str || !s2)
 		return (0);
 	nb = ft_atoi(s2);
+	if (nb < 0)
+		nb *= -1;
 	if (g_nav.max_id - nb <= 0)
 		return (0);
 	if (h->id == g_nav.max_id - nb)
@@ -78,7 +80,7 @@ int			ft_replace_line(t_navig *n, int *pos, int id)
 	char	*str;
 	int		ret;
 
-	ret = 0;
+	ret = 1;
 	str = NULL;
 	if (id == LAST_ID_NUM)
 		str = ft_get_occ(n, &ft_get_by_last_id);

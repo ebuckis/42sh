@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/25 16:01:31 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/25 16:30:50 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/26 14:24:22 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,6 +15,14 @@
 
 int		ft_replace_s(char *s, t_navig *n, int pos)
 {
+	int		end;
+	int		tmp;
+
+	end = pos + 1;
+	tmp = 0;
+	while (n->s[pos + end] == s[end])
+		end++;
+	n->s = ft_realloc()
 	return (1);
 }
 
