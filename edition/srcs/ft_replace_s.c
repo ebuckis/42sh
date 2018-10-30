@@ -1,41 +1,32 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_strsub_del.c                                  .::    .:/ .      .::   */
+/*   ft_replace_s.c                                   .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/12/26 14:43:01 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/24 09:44:27 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Created: 2018/10/25 16:01:31 by kcabus       #+#   ##    ##    #+#       */
+/*   Updated: 2018/10/26 14:24:22 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_edition.h"
 
-char	*ft_strsub_del(char *s, unsigned int start, size_t len)
+int		ft_replace_s(char *s, t_navig *n, int pos)
 {
-	char				*str;
-	unsigned int		i;
+	int		end;
+	int		tmp;
 
-	i = 0;
-	if (!s || start > ft_strlen(s))
-	{
-		ft_strdel(&s);
-		return (NULL);
-	}
-	str = (char *)malloc(sizeof(*str) * (len + 1));
-	if (str == NULL)
-	{
-		ft_strdel(&s);
-		return (NULL);
-	}
-	while (i < len && s[start + i])
-	{
-		str[i] = s[start + i];
-		i++;
-	}
-	str[len] = '\0';
-	free((void *)s);
-	return (str);
+	end = pos + 1;
+	tmp = 0;
+	while (n->s[pos + end] == s[end])
+		end++;
+	n->s = ft_realloc()
+	return (1);
 }
+
+/*
+** TODO: remplacer la section de string
+** retourner la longueur du remplacement
+*/

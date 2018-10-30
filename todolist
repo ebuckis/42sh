@@ -6,7 +6,7 @@
 #    By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/08/22 09:27:21 by bpajot       #+#   ##    ##    #+#        #
-#    Updated: 2018/10/23 11:03:04 by kcabus      ###    #+. /#+    ###.fr      #
+#    Updated: 2018/10/29 11:56:06 by bpajot      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -16,9 +16,6 @@ kcabus :
 - gestion /n etc
 
 bpajot :
-- echo $a$b $a"$b"
-- $ a refaire invalid read size pour une variable unset plus cd bizarre
-- "$HOME " a gerer
 - cat << kk > l < dddd > test ne pas creer test car erreur avant
 - echo " dquote> \ dquote>"
 - > test redir sans commandes
@@ -29,7 +26,7 @@ bpajot :
 
 other :
 - leaks
-- norminette 
+- norminette
 - arg derriere redir a gerer ?
 - effacer .heredoc
 - cd -P -L
@@ -45,4 +42,5 @@ bonus :
 _______________________________________________________________________________
 nota-bene :
 - le prompt du bash est masqué par le 2> /dev/null
+- SEGFAULT et comportement incohérent sur "./42sh | cat -e"
 _______________________________________________________________________________

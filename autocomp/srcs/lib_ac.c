@@ -6,14 +6,14 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/18 13:12:46 by volivry      #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/18 16:43:27 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/24 16:00:44 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "autocomp.h"
 
-int	ft_putchar_err(int c)
+int		ft_putchar_err(int c)
 {
 	return (write(1, &c, 1));
 }

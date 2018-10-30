@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/06/18 14:40:55 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/23 17:31:17 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/25 16:22:44 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -56,6 +56,13 @@
 # define NEXT_HIST 1
 # define PREV_HIST -1
 
+#define	ID_NUM_NULL -1
+#define	LAST_ID_NUM_NULL -2
+#define	OCCURRENCE_NULL -3
+#define	ID_NUM 1
+#define	LAST_ID_NUM 2
+#define	OCCURRENCE 3
+
 # include "../../libft/includes/libft.h"
 # include "../../parser/includes/ft_parser.h"
 # include <curses.h>
@@ -93,6 +100,8 @@ typedef struct		s_navig
 	int				out;
 	int				ac_x;
 	int				ac_y;
+	int				max_id;
+	char			*pattern;
 }					t_navig;
 
 typedef struct		s_hist
@@ -103,9 +112,8 @@ typedef struct		s_hist
 	struct s_hist	*prev;
 }					t_hist;
 
-t_navig				g_nav;
-
 # include "../../autocomp/includes/autocomp.h"
+t_navig				g_nav;
 
 char				*ft_edition(char *prompt);
 int					ft_putcharint(int c);
@@ -143,5 +151,8 @@ void				ft_delta_line(t_navig *n, int nb);
 void				ft_goto_i_from_end(t_navig *n);
 int					ft_no_new_name(t_navig *n, char *p);
 
+int					ft_parse_excl(t_navig *n);
+int					ft_replace_line(t_navig *n, int *pos, int id);
+int					ft_replace_s(char *s, t_navig *n, int pos);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/08/27 08:57:09 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/17 13:41:57 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/24 15:51:09 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -94,6 +94,6 @@ void			ft_free_tab3(char ***t);
 void			ft_add_space(t_parse *p);
 void			ft_realloc_space(t_parse *p);
 int				ft_heredoc(t_parse *p);
-t_parse			*ft_dollar(t_parse *p, int i, int j, char ***p_env);
+t_parse			*ft_dollar(t_parse *p, int i, int *j, char ***p_env);
 
 #endif
