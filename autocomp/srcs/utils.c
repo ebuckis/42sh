@@ -60,7 +60,7 @@ int		is_exe(char *name)
 }
 
 /*
-** checks fi there are letters to be completed.
+** checks if there are letters to be completed.
 */
 
 int		contains_letters(char *name, char *letters)
@@ -103,7 +103,7 @@ void	add_slct(t_slct *slct, t_navig *info)
 	int	i;
 
 	i = 0;
-	if (info->letters)
+	if (info->letters && last_char(info->s) != ' ')
 		while (info->letters[i])
 			i++;
 	if (slct->name)

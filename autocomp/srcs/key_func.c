@@ -86,7 +86,7 @@ static void	restore2(t_navig *info, t_slct *tmp)
 	int	i;
 
 	i = 0;
-	if (info->letters)
+	if (info->letters && last_char(info->s) != ' ')
 		while (info->letters[i])
 			i++;
 	if (!info->out)

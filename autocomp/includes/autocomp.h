@@ -93,5 +93,6 @@ t_list					*tab_to_lst(char **table);
 void					*free_lst(t_list *lst);
 int						ft_putchar_err(int c);
 void					autocomp(t_navig *info);
+char					*str_append(char *s1, char *s2);
 
 #endif

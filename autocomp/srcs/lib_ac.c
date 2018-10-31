@@ -46,3 +46,17 @@ t_list	*tab_to_lst(char **table)
 	}
 	return (ret);
 }
+
+char	*str_append(char *s1, char *s2)
+{
+	char	*tmp;
+
+	tmp = NULL;
+	tmp = ft_strjoin(s1, s2);
+	if (s1)
+		ft_strdel(&s1);
+	s1 = ft_strdup(tmp);
+	if (tmp)
+		ft_strdel(&tmp);
+	return (s1);
+}
