@@ -118,7 +118,7 @@ void		autocomp(t_navig *info)
 	if (info->s && ft_strcmp(info->s, ""))
 		line = ft_strdup(info->s);
 	line = get_last_word(line, info);
-	g_slct = init_slct(line, info);
+	g_slct = init_slct(&line, info);
 	slct = g_slct;
 	if (line != NULL)
 		ft_strdel(&line);

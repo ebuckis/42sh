@@ -61,7 +61,7 @@ void					ac_add_queue(t_slct *root, struct dirent *dp);
 void					ac_add_head(t_slct *root, struct dirent *dp);
 void					ac_remove_elem(t_slct *elem);
 t_slct					*root_slct(void);
-t_slct					*init_slct(char *line, t_navig *info);
+t_slct					*init_slct(char **line, t_navig *info);
 t_slct					*ac_first_elem(t_slct *root);
 t_slct					*ac_last_elem(t_slct *root);
 void					*free_slct(t_slct *lst, t_navig *info);
@@ -94,5 +94,6 @@ void					*free_lst(t_list *lst);
 int						ft_putchar_err(int c);
 void					autocomp(t_navig *info);
 char					*str_append(char *s1, char *s2);
+void	   				change_tilde(char **str, t_navig *info);
 
 #endif

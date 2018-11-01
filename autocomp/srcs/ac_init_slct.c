@@ -12,8 +12,7 @@
 /* ************************************************************************** */
 
 #include "autocomp.h"
-#include <sys/types.h>
-#include <pwd.h>
+
 
 
 static void	fill_curr_dir(t_slct *root, t_navig *info)
@@ -35,50 +34,7 @@ static void	fill_curr_dir(t_slct *root, t_navig *info)
 	}
 }
 
-static char	*get_user(void)
-{
-	uid_t			uid;
-	char			*name;
-	struct passwd	*pw;
-
-	uid = getuid();
-	pw = getpwuid(uid);
-	name = ft_strdup(pw->pw_name);
-	return (name);
-}
-
-static void	change_tilde(char **str, t_navig *info)
-{
-	char	*usr;
-	char	*tmp;
-	char	*tmp2;
-	int		i;
-
-	i = 1;
-	usr = get_user();
-	tmp = ft_strdup("/Users/");
-	tmp = str_append(tmp, usr);
-
-	ft_printf("str: %s len : %d\n", *str, ft_strlen(*str));
-	tmp2 = ft_strnew(ft_strlen(*str) - 1);
-	while ((*str)[i])
-	{
-		tmp2[i - 1] = (*str)[i];
-		i++;
-	}
-	tmp2 = str_append(tmp2, info->letters);
-	ft_printf("tmp : %s\n", tmp2);
-	ft_strdel(str);
-
-	ft_printf("str : %s\n", *str);
-	tmp = str_append(tmp, tmp2);
-	*str = ft_strdup(tmp);
-	ft_printf("str : %s\n", *str);
-	ft_strdel(&tmp);
-	ft_strdel(&tmp2);
-}
-
-static void	fill_dir(t_slct *root, t_navig *info, char *line, char **table)
+static void	fill_dir(t_slct *root, t_navig *info, char **line, char **table)
 {
 	struct dirent	*dp;
 	DIR				*dirp;
@@ -86,17 +42,18 @@ static void	fill_dir(t_slct *root, t_navig *info, char *line, char **table)
 	char			*tmp;
 
 	i = 0;
-	tmp = ft_strdup(line);
+	tmp = NULL;
+	tmp = ft_strdup(*line);
 	while (table[i + 1])
 		i++;
 	if (info->letters && i && !ft_strcmp(table[i - 1], info->letters))
 		ft_strdel(&info->letters);
-	if (line[0] == '~' && line[1] == '/')
-		change_tilde(&line, info);
+	if ((*line)[0] == '~' && (*line)[1] == '/')
+		change_tilde(&tmp, info);
 	if (!table[i] || (table[i] && !ft_strchr(table[i], '/'))
 	|| last_char(info->s) == ' ')
 		fill_curr_dir(root, info);
-	else if ((dirp = opendir(line)) != NULL)
+	else if ((dirp = opendir(tmp)) != NULL)
 	{
 		while ((dp = readdir(dirp)) != NULL)
 		{
@@ -106,6 +63,7 @@ static void	fill_dir(t_slct *root, t_navig *info, char *line, char **table)
 		}
 		closedir(dirp);
 	}
+	ft_strdel(&tmp);
 }
 
 static char	**fill_pathes(void)
@@ -142,7 +100,7 @@ static int	ends_wo_space(char **table, char **pathes)
 	return (0);
 }
 
-t_slct		*init_slct(char *line, t_navig *info)
+t_slct		*init_slct(char **line, t_navig *info)
 {
 	t_slct	*root;
 	char	**table;
@@ -164,6 +122,7 @@ t_slct		*init_slct(char *line, t_navig *info)
 	else
 		(ends_wo_space(table, pathes)) == 1 ? fill_commands(root, info) :
 			fill_dir(root, info, line, table);
+	ft_strdel(line);
 	free_init_slct(table, pathes);
 	if (root->next != root)
 		return (root);

@@ -42,6 +42,7 @@ N_SRCS =	ac_init_slct.c			\
 			get_info.c				\
 			key_func.c				\
 			lib_ac.c				\
+			change_tilde.c			\
 			utils.c
 
 all : $(NAME)
