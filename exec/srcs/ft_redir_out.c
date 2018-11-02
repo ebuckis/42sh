@@ -89,7 +89,7 @@ static int		ft_fd_redir(t_parse *p, int *i, char **env, int n)
 }
 
 /*
-** ft_redir_outi2 : gere les differentes redirections de sortie >, >>, >&
+** ft_redir_out2 : gere les differentes redirections de sortie >, >>, >&
 ** gestion de la redirection "n>&m"
 */
 
