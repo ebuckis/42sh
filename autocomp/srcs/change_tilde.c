@@ -6,7 +6,7 @@
 /*   By: volivry <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/01 16:30:27 by volivry      #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/01 16:30:41 by volivry     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/02 12:06:15 by volivry     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -27,28 +27,29 @@ static char	*get_user(void)
 	return (name);
 }
 
-void        remove_end(char **str)
+void		remove_end(char **str)
 {
-    int     len;
-    char    *tmp;
-    int     i;
+	int		len;
+	char	*tmp;
+	int		i;
 
-    i = 0;
-    len = ft_strlen(*str) - 1;
-    tmp = ft_strnew(len);
-    while ((*str)[len - 1] != '/')
-        len--;
-    while (i < len)
-    {
-        tmp[i] = (*str)[i];
-        i++;
-    }
-    ft_strdel(str);
-    *str = ft_strdup(tmp);
-    ft_strdel(&tmp);
+	i = 0;
+	*str = str_append(*str, "/");
+	len = ft_strlen(*str) - 1;
+	tmp = ft_strnew(len);
+	while ((*str)[len - 1] != '/')
+		len--;
+	while (i < len)
+	{
+		tmp[i] = (*str)[i];
+		i++;
+	}
+	ft_strdel(str);
+	*str = ft_strdup(tmp);
+	ft_strdel(&tmp);
 }
 
-void	   change_tilde(char **str, t_navig *info)
+void		change_tilde(char **str, t_navig *info)
 {
 	char	*usr;
 	char	*tmp;
@@ -60,7 +61,6 @@ void	   change_tilde(char **str, t_navig *info)
 	tmp = ft_strdup("/Users/");
 	tmp = str_append(tmp, usr);
 	ft_strdel(&usr);
-//	ft_printf("str: %s len : %d\n", *str, ft_strlen(*str));
 	tmp2 = ft_strnew(ft_strlen(*str) - 1);
 	while ((*str)[i])
 	{
@@ -68,14 +68,10 @@ void	   change_tilde(char **str, t_navig *info)
 		i++;
 	}
 	tmp2 = str_append(tmp2, info->letters);
-//	ft_printf("tmp : %s\n", tmp2);
 	ft_strdel(str);
-	//ft_printf("str : %s\n", *str);
 	tmp = str_append(tmp, tmp2);
-    tmp = str_append(tmp, "/");
-    remove_end(&tmp);
+	remove_end(&tmp);
 	*str = ft_strdup(tmp);
-	//ft_printf("str : %s\n", *str);
 	ft_strdel(&tmp);
 	ft_strdel(&tmp2);
 }

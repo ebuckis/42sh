@@ -13,8 +13,6 @@
 
 #include "autocomp.h"
 
-
-
 static void	fill_curr_dir(t_slct *root, t_navig *info)
 {
 	struct dirent	*dp;
@@ -32,6 +30,13 @@ static void	fill_curr_dir(t_slct *root, t_navig *info)
 		}
 		closedir(dirp);
 	}
+}
+
+static void	filling(struct dirent *dp, t_navig *info, t_slct *root)
+{
+	if (dp->d_name[0] != '.' &&
+		contains_letters(dp->d_name, info->letters))
+		ac_add_queue(root, dp);
 }
 
 static void	fill_dir(t_slct *root, t_navig *info, char **line, char **table)
@@ -56,11 +61,7 @@ static void	fill_dir(t_slct *root, t_navig *info, char **line, char **table)
 	else if ((dirp = opendir(tmp)) != NULL)
 	{
 		while ((dp = readdir(dirp)) != NULL)
-		{
-			if (dp->d_name[0] != '.' &&
-					contains_letters(dp->d_name, info->letters))
-				ac_add_queue(root, dp);
-		}
+			filling(dp, info, root);
 		closedir(dirp);
 	}
 	ft_strdel(&tmp);
@@ -78,8 +79,9 @@ static char	**fill_pathes(void)
 	return (pathes);
 }
 
-static void	free_init_slct(char **table, char **pathes)
+static void	free_init_slct(char **table, char **pathes, char **line)
 {
+	ft_strdel(line);
 	if (table)
 		ft_free_tab(&table);
 	if (pathes)
@@ -109,7 +111,7 @@ t_slct		*init_slct(char **line, t_navig *info)
 	table = NULL;
 	root = NULL;
 	pathes = fill_pathes();
-	if (info->s)
+	if (info->s && ft_strcmp(info->s, ""))
 		table = ft_strsplit(info->s, ' ');
 	if (!(root = root_slct()) || !line || !table)
 		return (init_error(root, info, table, pathes));
@@ -118,12 +120,11 @@ t_slct		*init_slct(char **line, t_navig *info)
 	else if (!table[1] && last_char(info->s) != ' ' && ft_strchr(info->s, '/'))
 		fill_dir(root, info, line, table);
 	else if (last_char(info->s) == ' ')
-			fill_dir(root, info, line, table);
+		fill_dir(root, info, line, table);
 	else
 		(ends_wo_space(table, pathes)) == 1 ? fill_commands(root, info) :
 			fill_dir(root, info, line, table);
-	ft_strdel(line);
-	free_init_slct(table, pathes);
+	free_init_slct(table, pathes, line);
 	if (root->next != root)
 		return (root);
 	else
