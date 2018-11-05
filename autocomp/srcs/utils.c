@@ -39,7 +39,7 @@ void	*free_slct(t_slct *lst, t_navig *info)
 	info->nb_elem = 0;
 	ft_memdel((void**)&lst);
 	ft_move_to_xy(info->x, info->y);
-	return (NULL);
+	return (0);
 }
 
 /*
@@ -60,7 +60,7 @@ int		is_exe(char *name)
 }
 
 /*
-** checks fi there are letters to be completed.
+** checks if there are letters to be completed.
 */
 
 int		contains_letters(char *name, char *letters)
@@ -103,7 +103,7 @@ void	add_slct(t_slct *slct, t_navig *info)
 	int	i;
 
 	i = 0;
-	if (info->letters)
+	if (info->letters && last_char(info->s) != ' ')
 		while (info->letters[i])
 			i++;
 	if (slct->name)
@@ -116,4 +116,5 @@ void	add_slct(t_slct *slct, t_navig *info)
 		ft_putchar('/');
 	tputs(tgetstr("sf", NULL), 1, ft_putchar_err);
 	ft_move_to_xy(0, info->ac_y);
+	ft_recup_pos(&info->x, &info->y);
 }

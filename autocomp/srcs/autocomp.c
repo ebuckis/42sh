@@ -30,7 +30,11 @@ static int	win_big_enough(t_navig *info)
 {
 	int		rows;
 	int		line;
+	int		cols;
 
+	cols = info->x_size / (info->max_len + 2);
+	if (!cols)
+		return (0);
 	line = (ft_strlen(info->prompt) + ft_strlen(info->s)) / info->x_size;
 	line += (ft_strlen(info->prompt) + ft_strlen(info->s)) % info->x_size ?
 		1 : 0;
@@ -45,7 +49,7 @@ static int	win_big_enough(t_navig *info)
 ** Infinite loop while navigating in the autocomp linked list.
 */
 
-static void	infinite_loop(t_navig *info, t_slct *slct)
+static void	*infinite_loop(t_navig *info, t_slct *slct)
 {
 	int	loop;
 
@@ -54,18 +58,14 @@ static void	infinite_loop(t_navig *info, t_slct *slct)
 	{
 		ft_move_to_xy(info->ac_x, info->ac_y);
 		if (info->out)
-		{
-			free_slct(slct, info);
-			return ;
-		}
+			return (free_slct(slct, info));
 		if (loop && win_big_enough(info) &&
 		key_input(info, slct, &loop))
 			display(info, slct);
 		else if (!win_big_enough(info))
 		{
 			tputs(tgetstr("bl", NULL), 1, ft_putchar_err);
-			free_slct(slct, info);
-			return ;
+			return (free_slct(slct, info));
 		}
 	}
 	free_slct(slct, info);
@@ -74,6 +74,7 @@ static void	infinite_loop(t_navig *info, t_slct *slct)
 	info->y_len = info->y;
 	end_key(info);
 	tputs(tgetstr("ve", NULL), 1, ft_putchar_err);
+	return (NULL);
 }
 
 /*
@@ -83,7 +84,7 @@ static void	infinite_loop(t_navig *info, t_slct *slct)
 
 static int	ac_special_cases(t_slct *slct, t_navig *info)
 {
-	if (!slct || !win_big_enough(info))
+	if (!slct || !win_big_enough(info) || (size_t)info->i != ft_strlen(info->s))
 	{
 		tputs(tgetstr("bl", NULL), 1, ft_putchar_err);
 		free_slct(slct, info);
@@ -115,10 +116,10 @@ void		autocomp(t_navig *info)
 	info->out = 0;
 	info->ac_x = info->x;
 	info->ac_y = info->y;
-	if (info->s)
+	if (info->s && ft_strcmp(info->s, ""))
 		line = ft_strdup(info->s);
 	line = get_last_word(line, info);
-	g_slct = init_slct(line, info);
+	g_slct = init_slct(&line, info);
 	slct = g_slct;
 	if (line != NULL)
 		ft_strdel(&line);

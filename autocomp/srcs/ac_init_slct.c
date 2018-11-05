@@ -22,7 +22,9 @@ static void	fill_curr_dir(t_slct *root, t_navig *info)
 	{
 		while ((dp = readdir(dirp)) != NULL)
 		{
-			if (dp->d_name[0] != '.' &&
+			if (dp->d_name[0] != '.' && last_char(info->s) == ' ')
+				ac_add_queue(root, dp);
+			else if (dp->d_name[0] != '.' &&
 					contains_letters(dp->d_name, info->letters))
 				ac_add_queue(root, dp);
 		}
@@ -30,25 +32,39 @@ static void	fill_curr_dir(t_slct *root, t_navig *info)
 	}
 }
 
-static void	fill_dir(t_slct *root, t_navig *info, char *line, char **table)
+static void	filling(struct dirent *dp, t_navig *info, t_slct *root)
+{
+	if (dp->d_name[0] != '.' &&
+		contains_letters(dp->d_name, info->letters))
+		ac_add_queue(root, dp);
+}
+
+static void	fill_dir(t_slct *root, t_navig *info, char **line, char **table)
 {
 	struct dirent	*dp;
 	DIR				*dirp;
+	int				i;
+	char			*tmp;
 
-	if (info->letters && !ft_strcmp(table[0], info->letters))
+	i = 0;
+	tmp = NULL;
+	tmp = ft_strdup(*line);
+	while (table[i + 1])
+		i++;
+	if (info->letters && i && !ft_strcmp(table[i - 1], info->letters))
 		ft_strdel(&info->letters);
-	if (!line || (line && !ft_strchr(line, '/')))
+	if ((*line)[0] == '~' && (*line)[1] == '/')
+		change_tilde(&tmp, info);
+	if (!table[i] || (table[i] && !ft_strchr(table[i], '/'))
+	|| last_char(info->s) == ' ')
 		fill_curr_dir(root, info);
-	else if ((dirp = opendir(line)) != NULL)
+	else if ((dirp = opendir(tmp)) != NULL)
 	{
 		while ((dp = readdir(dirp)) != NULL)
-		{
-			if (dp->d_name[0] != '.' &&
-					contains_letters(dp->d_name, info->letters))
-				ac_add_queue(root, dp);
-		}
+			filling(dp, info, root);
 		closedir(dirp);
 	}
+	ft_strdel(&tmp);
 }
 
 static char	**fill_pathes(void)
@@ -63,35 +79,52 @@ static char	**fill_pathes(void)
 	return (pathes);
 }
 
-static void	free_init_slct(char **table, char **pathes)
+static void	free_init_slct(char **table, char **pathes, char **line)
 {
+	ft_strdel(line);
 	if (table)
 		ft_free_tab(&table);
 	if (pathes)
 		ft_free_tab(&pathes);
 }
 
-t_slct		*init_slct(char *line, t_navig *info)
+static int	ends_wo_space(char **table, char **pathes)
+{
+	int	i;
+
+	i = 0;
+	while (table[i + 1])
+		i++;
+	if (i && (last_char(table[i - 1]) == '|' || last_char(table[i - 1]) == ';'
+		|| last_char(table[i - 1]) == '&' || !is_cmd(table[i - 1], pathes))
+		&& !ft_strchr(table[i], '/'))
+		return (1);
+	return (0);
+}
+
+t_slct		*init_slct(char **line, t_navig *info)
 {
 	t_slct	*root;
 	char	**table;
-	int		i;
 	char	**pathes;
 
-	i = 0;
 	table = NULL;
 	root = NULL;
 	pathes = fill_pathes();
-	if (info->s)
+	if (info->s && ft_strcmp(info->s, ""))
 		table = ft_strsplit(info->s, ' ');
 	if (!(root = root_slct()) || !line || !table)
 		return (init_error(root, info, table, pathes));
-	if (!(table[1]) && info->s && last_char(info->s) != ' ' &&
-			last_char(info->s) != '/')
+	if (!table[1] && last_char(info->s) != ' ' && !ft_strchr(info->s, '/'))
 		fill_commands(root, info);
-	else if (is_cmd(table[0], pathes) || last_char(info->s) == '/')
+	else if (!table[1] && last_char(info->s) != ' ' && ft_strchr(info->s, '/'))
 		fill_dir(root, info, line, table);
-	free_init_slct(table, pathes);
+	else if (last_char(info->s) == ' ')
+		fill_dir(root, info, line, table);
+	else
+		(ends_wo_space(table, pathes)) == 1 ? fill_commands(root, info) :
+			fill_dir(root, info, line, table);
+	free_init_slct(table, pathes, line);
 	if (root->next != root)
 		return (root);
 	else

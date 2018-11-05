@@ -14,18 +14,21 @@
 #include "exec.h"
 
 /*
-** chdir change le current working directory puis on met a jour PWD et OLDPWD
-** dans les variables d'env
+**  Mise a jour du PWD et OLDPWD in env
 */
 
-static int		ft_cd3(char ***p_env, char *pwd, char *oldpwd)
+static int      actualise_env(char *new_pwd, char ***p_env)
 {
-	char	buf[1000];
+    char    *pwd;
 
-	chdir(pwd);
-	ft_setpwd(*p_env, 0, getcwd(buf, 1000));
-	ft_setpwd(*p_env, 1, oldpwd);
-	return (0);
+    pwd = NULL;
+    pwd = ft_getpwd(*p_env, 0);
+    if (new_pwd)
+	    ft_setpwd(*p_env, 0, new_pwd);
+    if (pwd)
+	    ft_setpwd(*p_env, 1, pwd);
+    ft_strdel(&pwd);
+    return (0);
 }
 
 /*
@@ -39,60 +42,51 @@ void			ft_putendl_fd_arg(char *str, char *path)
 	ft_putstr_fd("\n", 2);
 }
 
-static int		ft_cd2(char ***p_env, char *pwd, char *oldpwd, char **arg)
-{
-	struct stat		buf;
-	char			*mem;
-	char			*path;
-	int				ret;
-
-	ret = 1;
-	if (ft_strequ(arg[1], "-"))
-		ret = ft_cd3(p_env, oldpwd, pwd);
-	else
-	{
-		mem = ft_strjoin(pwd, "/");
-		path = (arg[1][0] == '/') ? ft_strdup(arg[1]) : ft_strjoin(mem, arg[1]);
-		ft_memdel((void**)&mem);
-		if (stat(path, &buf) != 0)
-			ft_putendl_fd_arg("cd: no such file or directory: ", path);
-		else if (!(buf.st_mode & S_IFDIR) || (buf.st_mode & S_IFCHR))
-			ft_putendl_fd_arg("cd: not a directory: ", path);
-		else if (access(path, X_OK))
-			ft_putendl_fd_arg("cd: permission denied: ", path);
-		else
-			ret = ft_cd3(p_env, path, pwd);
-		ft_memdel((void**)&path);
-	}
-	return (ret);
-}
-
 /*
-** built-in cd, on recupere les 3 variables d'env PWD, OLDPWD, HOME
+** built-in cd
 */
+
+static int      check_target(char **target, char ***p_env)
+{
+    if (*target)
+    {
+        if (ft_strcmp(*target, "cd") == 0)
+        {
+            ft_strdel(target);
+            *target = ft_home(*p_env);
+            if (*target == NULL)
+                ft_putendl_fd("cd: HOME not set", 2);
+        }
+        else if (ft_strcmp(*target, "oldpwd") == 0)
+        {
+            ft_strdel(target);
+            *target = ft_getpwd(*p_env, 1);
+            if (*target == NULL)
+                ft_putendl_fd("cd: OLDPWD not set", 2);
+        }
+    }
+    return (0);
+}
 
 int				ft_cd(char **arg, char ***p_env)
 {
-	char			*home;
-	char			*pwd;
-	char			*oldpwd;
-	int				ret;
+    char        *target;
 
-	ret = 1;
-	home = ft_home(*p_env);
-	pwd = ft_getpwd(*p_env, 0);
-	oldpwd = ft_getpwd(*p_env, 1);
-	if (!arg[1])
-		if (home)
-			ret = ft_cd3(p_env, home, pwd);
-		else
-			ft_putendl_fd("cd: HOME not set", 2);
-	else if (!arg[2])
-		ret = ft_cd2(p_env, pwd, oldpwd, arg);
-	else
-		ft_putendl_fd("cd: too many arguments", 2);
-	ft_memdel((void**)&home);
-	ft_memdel((void**)&pwd);
-	ft_memdel((void**)&oldpwd);
-	return (ret);
+    target = NULL;
+    if (arg[1] == NULL)
+        target = ft_home(*p_env);
+    else
+        target = ret_target(arg, 0, 0, 0);
+    check_target(&target, p_env);
+    if (target == NULL)
+        return (1);
+    if (chdir(target) < 0)
+    {
+        ft_putstr_fd("cd : an error is occured\n", 2);
+        ft_strdel(&target);
+        return (1);
+    }
+    actualise_env(target, p_env);
+    ft_strdel(&target);
+	return (0);
 }
