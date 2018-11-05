@@ -79,29 +79,6 @@ static char	**fill_pathes(void)
 	return (pathes);
 }
 
-static void	free_init_slct(char **table, char **pathes, char **line)
-{
-	ft_strdel(line);
-	if (table)
-		ft_free_tab(&table);
-	if (pathes)
-		ft_free_tab(&pathes);
-}
-
-static int	ends_wo_space(char **table, char **pathes)
-{
-	int	i;
-
-	i = 0;
-	while (table[i + 1])
-		i++;
-	if (i && (last_char(table[i - 1]) == '|' || last_char(table[i - 1]) == ';'
-		|| last_char(table[i - 1]) == '&' || !is_cmd(table[i - 1], pathes))
-		&& !ft_strchr(table[i], '/'))
-		return (1);
-	return (0);
-}
-
 t_slct		*init_slct(char **line, t_navig *info)
 {
 	t_slct	*root;

@@ -74,3 +74,26 @@ void	*init_error(t_slct *root, t_navig *info, char **table, char **pathes)
 	ft_free_tab(&pathes);
 	return (NULL);
 }
+
+void	free_init_slct(char **table, char **pathes, char **line)
+{
+	ft_strdel(line);
+	if (table)
+		ft_free_tab(&table);
+	if (pathes)
+		ft_free_tab(&pathes);
+}
+
+int		ends_wo_space(char **table, char **pathes)
+{
+	int	i;
+
+	i = 0;
+	while (table[i + 1])
+		i++;
+	if (i && (last_char(table[i - 1]) == '|' || last_char(table[i - 1]) == ';'
+		|| last_char(table[i - 1]) == '&' || !is_cmd(table[i - 1], pathes))
+		&& !ft_strchr(table[i], '/'))
+		return (1);
+	return (0);
+}
