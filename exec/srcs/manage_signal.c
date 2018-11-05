@@ -54,6 +54,8 @@ static void		ft_signal_ctrl_c(int s)
 static void		ft_signal_stop(int s)
 {
 	(void)s;
+	if (g_slct->next->name)
+		return ;
 	if (g_nav.statut)
 	{
 		ft_putendl("");
