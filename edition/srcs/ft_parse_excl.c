@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/24 12:53:13 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/29 12:07:38 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/30 13:26:28 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -18,8 +18,15 @@ int			ft_is_interpreted(char *s, int pos)
 	(void)s;
 	(void)pos;
 	//TODO: retourner si le '!' est interpreté ou non 
-	/*if (!s[pos + 1] || ft_is_white(s[pos + 1]))
-		return (0);*/
+
+	/*
+	** parcourir la string depuis zéro,
+	** si on recontre un 
+	**
+	**
+	**
+	**
+	*/
 	return (1);
 }
 
