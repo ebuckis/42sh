@@ -97,7 +97,6 @@ typedef struct		s_navig
 	char			*letters;
 	int				max_len;
 	int				nb_elem;
-	int				out;
 	int				ac_x;
 	int				ac_y;
 	int				max_id;

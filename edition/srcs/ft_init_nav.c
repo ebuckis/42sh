@@ -70,7 +70,7 @@ int			ft_init_nav(t_navig *n, char *p)
 		return (0);
 	n->err = 1;
 	n->statut = 1;
-	n->out = 0;
+	//n->out = 0;
 	n->letters = NULL;
 	n->pattern = NULL;
 	n->max_id = 0;

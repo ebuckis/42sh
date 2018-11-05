@@ -19,19 +19,16 @@
 
 static void	arrow_cmds(t_navig *info, t_slct *slct, char *buf)
 {
-	if (!info->out)
-	{
-		if (KEY_CODE_RIGHT)
-			ac_right_key(info, slct);
-		else if (KEY_CODE_LEFT)
-			ac_left_key(info, slct);
-		else if (KEY_CODE_UP)
-			ac_up_key(info, slct);
-		else if (KEY_CODE_DOWN)
-			ac_down_key(info, slct);
-		else if (KEY_CODE_TAB)
-			ac_tab_key(info, slct);
-	}
+	if (KEY_CODE_RIGHT)
+		ac_right_key(info, slct);
+	else if (KEY_CODE_LEFT)
+		ac_left_key(info, slct);
+	else if (KEY_CODE_UP)
+		ac_up_key(info, slct);
+	else if (KEY_CODE_DOWN)
+		ac_down_key(info, slct);
+	else if (KEY_CODE_TAB)
+		ac_tab_key(info, slct);
 }
 
 /*
@@ -43,11 +40,6 @@ int			key_input(t_navig *info, t_slct *slct, int *loop)
 	char	buf[50];
 
 	ft_bzero(buf, 50);
-	if (info->out)
-	{
-		restore_curs(info, slct);
-		return ((*loop = 0));
-	}
 	read(0, buf, 49);
 	if (buf[3] || buf[0] > 127)
 		return (0);
@@ -89,13 +81,12 @@ static void	restore2(t_navig *info, t_slct *tmp)
 	if (info->letters && last_char(info->s) != ' ')
 		while (info->letters[i])
 			i++;
-	if (!info->out)
-		while (tmp->name[i])
-		{
-			ft_new_char(info, &tmp->name[i]);
-			ft_move_to_xy(info->x, info->y);
-			i++;
-		}
+	while (tmp->name[i])
+	{
+		ft_new_char(info, &tmp->name[i]);
+		ft_move_to_xy(info->x, info->y);
+		i++;
+	}
 }
 
 /*
@@ -109,18 +100,18 @@ void		restore_curs(t_navig *info, t_slct *slct)
 
 	tmp = ac_first_elem(slct);
 	reset_screen(info);
-	if (slct->next->next != slct && !info->out)
+	if (slct->next->next != slct)
 		tputs(tgetstr("up", NULL), 1, ft_putchar_err);
 	tputs(tgetstr("cd", NULL), 1, ft_putchar_err);
 	ft_putstr(info->prompt);
-	if (!info->out && info->s)
+	if (info->s)
 		ft_putstr(info->s);
 	ft_recup_pos(&info->x, &info->y);
 	while (!tmp->current)
 		tmp = tmp->next;
 	if (tmp->name)
 		restore2(info, tmp);
-	if (!info->out && tmp->is_dir)
+	if (tmp->is_dir)
 	{
 		ft_new_char(info, "/");
 		ft_move_to_xy(info->x, info->y);

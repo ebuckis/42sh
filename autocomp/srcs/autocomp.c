@@ -57,8 +57,6 @@ static void	*infinite_loop(t_navig *info, t_slct *slct)
 	while (loop)
 	{
 		ft_move_to_xy(info->ac_x, info->ac_y);
-		if (info->out)
-			return (free_slct(slct, info));
 		if (loop && win_big_enough(info) &&
 		key_input(info, slct, &loop))
 			display(info, slct);
@@ -113,7 +111,6 @@ void		autocomp(t_navig *info)
 	char	*line;
 
 	line = NULL;
-	info->out = 0;
 	info->ac_x = info->x;
 	info->ac_y = info->y;
 	if (info->s && ft_strcmp(info->s, ""))

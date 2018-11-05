@@ -29,12 +29,18 @@ static void		ft_go_to_end(t_navig *n)
 
 static void		ft_signal_ctrl_c(int s)
 {
+	t_navig	*info;
+
+	if (g_slct->next->name)
+		return ;
+	info = &g_nav;
 	(void)s;
 	if (g_nav.statut)
 		ft_go_to_end(&g_nav);
 	ft_putendl("");
 	if (g_nav.statut)
 	{
+
 		ft_strdel(&(g_nav.s));
 		ft_strdel(&(g_nav.s_save));
 		ft_init_nav(&g_nav, g_nav.prompt);

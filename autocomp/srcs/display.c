@@ -36,6 +36,7 @@ void		reset_screen(t_navig *info)
 		info->ac_y--;
 		rows--;
 	}
+	info->y_start = info->y - 1;
 	ft_move_to_xy(info->ac_x, info->ac_y);
 	tputs(tgetstr("cd", NULL), 1, ft_putchar_err);
 }
@@ -56,9 +57,9 @@ void		display(t_navig *info, t_slct *slct)
 	while (tmp != slct)
 	{
 		ac_print_arg(tmp, info);
-		if (tmp->next != slct && !info->out)
+		if (tmp->next != slct)
 			ft_putstr("  ");
-		if (tmp->index % cols == 0 && tmp->next != slct && !info->out)
+		if (tmp->index % cols == 0 && tmp->next != slct)
 		{
 			tputs(tgetstr("sf", NULL), 1, ft_putchar_err);
 			ft_move_to_xy(0, info->ac_y + 1);
@@ -106,8 +107,6 @@ void		ac_print_arg(t_slct *slct, t_navig *info)
 {
 	int	i;
 
-	if (info->out)
-		return ;
 	i = info->max_len - slct->len;
 	if (slct->is_dir || slct->is_exe)
 		print_dir_exe(slct, info);
