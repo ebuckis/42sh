@@ -32,6 +32,7 @@ OBJ_NAME = $(N_SRCS:.c=.o)
 N_SRCS =	and_or.c				\
 			cd.c					\
 			cd_suite.c				\
+			delete_heredoc.c		\
 			check_bin.c				\
 			check_builtin.c			\
 			echo.c					\

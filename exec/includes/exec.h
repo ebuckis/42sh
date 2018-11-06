@@ -59,5 +59,6 @@ int			ft_redir_in(t_parse *p, int *i, char **env);
 char		*get_path_redir(t_parse *p, int *i, char **env);
 void		ft_putendl_fd_arg(char *str, char *path);
 void		ft_manage_and_or(t_parse *p, int begin, char ***p_env);
+int			delete_heredoc(char *file);
 
 #endif
