@@ -91,6 +91,7 @@ static int		ft_redir_heredoc(t_parse *p, int *i, char **env)
 	}
 	ft_strdel(&home);
 	ft_strdel(&tmp);
+	delete_heredoc(path);
 	ft_strdel(&path);
 	return (fd);
 }
