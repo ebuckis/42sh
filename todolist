@@ -28,8 +28,8 @@ other :
 - leaks
 - norminette
 - arg derriere redir a gerer ?
-- effacer .heredoc
-- cd -P -L
+- effacer .heredoc                  > OK
+- cd -P -L                          > OK
 - echo -n -e -E
 - env ???
 - gestion propre ctrl-z pour cat ou emacs OK ??
