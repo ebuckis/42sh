@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/24 12:53:13 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/06 08:07:33 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/06 10:21:25 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -17,13 +17,13 @@ static int	ft_loop_cmp(char *s, int pos, int *i, char c)
 {
 	while (s[*i] && *i < pos)
 	{
-		if (s[*i] == "\\" && *i == pos - 1)
+		if (s[*i] == '\\' && *i == pos - 1)
 			return ((int)s[*i]);
-		else if (s[*i] == "\\" && s[*i + 1] && s[*i + 1] == c)
-			*i++;
+		else if (s[*i] == '\\' && s[*i + 1] && s[*i + 1] == c)
+			(*i)++;
 		else if (s[*i] == c)
 			return (0);
-		*i++;
+		(*i)++;
 	}
 	if (!s[*i])
 		return (-1);
@@ -39,12 +39,12 @@ int			ft_is_interpreted(char *s, int pos)
 	i = 0;
 	while (s[i] && i < pos)
 	{
-		if ((s[i] == "\"" || s[i] == "\"") &&
+		if ((s[i] == '\"' || s[i] == '\"') &&
 			(ret = ft_loop_cmp(s, pos, &i, s[i])) != 0)
 			return (ret);
-		else if (s[i] == "\\" && s[i + 1])
+		else if (s[i] == '\\' && s[i + 1])
 		{
-			if ((s[i + 1] == "\"" || s[i + 1] == "\""))
+			if ((s[i + 1] == '\"' || s[i + 1] == '\"'))
 				i++;
 			ret = (int)s[i];
 		}
@@ -104,7 +104,7 @@ static char	*ft_get_ending_char(char c)
 
 	s = " \t|&;\n";//FIXME: voir tous les separateur
 	tmp[0] = (char)c;
-	tmp[1] = "\0";
+	tmp[1] = '\0';
 	s = ft_strjoin(s, (const char *)tmp);
 	return (s);
 }
@@ -121,7 +121,7 @@ char		*ft_get_pattern(char *s1, int cParse)
 	while (s1[i])
 	{
 		if (ft_strchr(s2, s1[i]))
-			if ((i == 0) || (s1[i - 1] != "\\"))
+			if ((i == 0) || (s1[i - 1] != '\\'))
 				break ;
 		i++;
 	}
@@ -140,12 +140,12 @@ int			ft_parse_excl(t_navig *n)
 	pos = 0;
 	while ((pos = ft_strchr_index(n->s + pos, '!') > 0))
 	{
-		if ((cParse = ft_is_interpreted(n->s, pos)) != -1 && cParse != "\\")
+		if ((cParse = ft_is_interpreted(n->s, pos)) != -1 && (char)cParse != '\\')
 		{
 			if ((ident = ft_ident_excl(n->s, pos)) < 0)
 				return (0);//avec impression du message d'erreur
 			n->pattern = ft_get_pattern(n->s + pos, cParse);
-			ft_replace_line(n, &pos, ident, cParse);//modifier la valeur de pos (+= len du remplacement)
+			ft_replace_line(n, &pos, ident);//modifier la valeur de pos (+= len du remplacement)
 		}
 	}
 	ft_putstr(n->s);
