@@ -6,7 +6,7 @@
 #    By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/08/22 09:27:21 by bpajot       #+#   ##    ##    #+#        #
-#    Updated: 2018/10/29 11:56:06 by bpajot      ###    #+. /#+    ###.fr      #
+#    Updated: 2018/11/06 17:01:51 by bpajot      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -19,10 +19,7 @@ bpajot :
 - cat << kk > l < dddd > test ne pas creer test car erreur avant
 - echo " dquote> \ dquote>"
 - > test redir sans commandes
-- exit avec && || a opti
-- cd gestion lien symbolique
 - afficher message si PATH=/ et commande not found
-- env a revoir pour env -i ls et env env -i ls
 
 other :
 - leaks
@@ -32,7 +29,6 @@ other :
 - cd -P -L                          > OK
 - echo -n -e -E
 - env ???
-- gestion propre ctrl-z pour cat ou emacs OK ??
 
 
 bonus :
