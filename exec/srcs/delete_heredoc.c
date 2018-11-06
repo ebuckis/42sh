@@ -17,7 +17,7 @@ static int		delete_file(char **file)
 {
 	int		fd;
 	int		pid;
-	int     status;
+	int		status;
 
 	fd = 0;
 	pid = 0;
