@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/06/04 10:50:52 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/09/27 15:43:52 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/06 10:24:23 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -34,7 +34,11 @@ void			usage_cd(char *str)
 
 static int		actualise_env(char *new_pwd, char ***p_env)
 {
+<<<<<<< HEAD
 	char		*pwd;
+=======
+	char	*pwd;
+>>>>>>> eab714463fcc844a360846d49dffd7b8c32f6f04
 
 	pwd = NULL;
 	pwd = ft_getpwd(*p_env, 0);
@@ -85,7 +89,11 @@ static int		check_target(char **target, char ***p_env)
 
 int				ft_cd(char **arg, char ***p_env)
 {
+<<<<<<< HEAD
 	char		*target;
+=======
+	char	*target;
+>>>>>>> eab714463fcc844a360846d49dffd7b8c32f6f04
 
 	target = NULL;
 	if (arg[1] == NULL)
