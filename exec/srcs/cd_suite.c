@@ -14,24 +14,6 @@
 #include "../includes/exec.h"
 
 /*
-<<<<<<< HEAD
-=======
-**  Usage cd + print error
-*/
-
-void			usage_cd(char *str)
-{
-	if (str != NULL)
-	{
-		ft_putstr_fd("cd : ", 2);
-		ft_putstr_fd(str, 2);
-		ft_putstr_fd(": invalid option\n", 2);
-	}
-	ft_putstr_fd("cd: usage: cd [-L|-P] [dir]\n", 2);
-}
-
-/*
->>>>>>> eab714463fcc844a360846d49dffd7b8c32f6f04
 **  Verif si str est un repertoire valid et accessible
 */
 
@@ -70,11 +52,7 @@ static int		verif_rep(char *str)
 
 static char		*verif_cd_spe(char *str)
 {
-<<<<<<< HEAD
 	char		*target;
-=======
-	char	*target;
->>>>>>> eab714463fcc844a360846d49dffd7b8c32f6f04
 
 	target = NULL;
 	if (str == NULL)
@@ -92,13 +70,8 @@ static char		*verif_cd_spe(char *str)
 
 static char		*ret_link_symbol(char *rep)
 {
-<<<<<<< HEAD
 	char		*buf;
 	char		*target;
-=======
-	char	*buf;
-	char	*target;
->>>>>>> eab714463fcc844a360846d49dffd7b8c32f6f04
 
 	target = NULL;
 	buf = NULL;
@@ -145,13 +118,8 @@ static int		check_options_cd(char *arg, int *l, int *p)
 
 char			*ret_target(char **arg, int l, int p, int q)
 {
-<<<<<<< HEAD
 	char		*target;
 	int			i;
-=======
-	char	*target;
-	int		i;
->>>>>>> eab714463fcc844a360846d49dffd7b8c32f6f04
 
 	target = NULL;
 	i = 1;
