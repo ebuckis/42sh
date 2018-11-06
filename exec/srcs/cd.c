@@ -11,7 +11,7 @@
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "../includes/xec.h"
+#include "../includes/exec.h"
 
 /*
 **  Usage cd + print error
