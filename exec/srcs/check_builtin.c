@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/06/01 18:20:01 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/24 16:05:42 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/06 16:43:35 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -42,6 +42,8 @@ void	run_builtin(t_parse *p, char **tab_com, char ***p_env)
 			p->ret = ft_setenv(tab_com, p_env);
 		else if (ft_strequ(tab_com[0], "unsetenv"))
 			p->ret = ft_unsetenv(tab_com, p_env);
+		else if (ft_strequ(tab_com[0], "exit"))
+			p->ret = ft_exit(tab_com, p_env);
 		ft_free_tab(&tab_com);
 	}
 }
@@ -68,7 +70,7 @@ void	run_builtin_fork(t_parse *p, char **tab_com, char ***p_env,
 		else if (ft_strequ(tab_com[0], "env"))
 			p->ret = ft_env(p, tab_com, *p_env, tab_pipe_i);
 		else if (ft_strequ(tab_com[0], "exit"))
-			;
+			p->ret = ft_exit(tab_com, p_env);
 	}
 	ret = p->ret;
 	exit(ret);

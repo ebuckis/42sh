@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/08/22 15:06:26 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/17 13:59:29 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/06 16:41:29 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -42,37 +42,10 @@ static void		debug_display_struct(t_parse *p)
 }
 
 /*
-** gestion valeur retour exit que si pas pipe
-*/
-
-static void		ft_exit(int *a, char *arg)
-{
-	int		i;
-
-	i = 0;
-	while (arg && ((i == 0 && arg[i] == '-') || ft_isdigit(arg[i])))
-		i++;
-	if (arg && (ft_strequ(arg, "&&") || ft_strequ(arg, "||")))
-		*a = 0;
-	else if (arg && !arg[i])
-		*a = (unsigned char)ft_atoi(arg);
-	else if (!arg)
-		*a = 0;
-	else
-	{
-		ft_putstr_fd("21sh: exit: ", 2);
-		ft_putstr_fd(arg, 2);
-		ft_putstr_fd(": numeric argument required\n", 2);
-		*a = 255;
-	}
-	ft_printf("exit\n");
-}
-
-/*
 ** gestion exit ou ; en boucle + tilde et dollar
 */
 
-static void		ft_manage_semicolon_exit(t_parse *p, int *a, char ***p_env)
+static void		ft_manage_semicolon_exit(t_parse *p, char ***p_env)
 {
 	int		i;
 	int		n;
@@ -82,10 +55,6 @@ static void		ft_manage_semicolon_exit(t_parse *p, int *a, char ***p_env)
 	i = 0;
 	while (p->arg_id[i])
 	{
-		if (ft_strequ(p->arg[i], "exit") && (!p->arg[i + 1] ||
-			p->arg_id[i + 1][0] < PIPE || p->arg_id[i + 1][0] == OR ||
-			p->arg_id[i + 1][0] == AND))
-			break ;
 		begin = i;
 		while (p->arg_id[i] && !ft_strchr(p->arg_id[i], SEMICOLON))
 			i++;
@@ -94,8 +63,6 @@ static void		ft_manage_semicolon_exit(t_parse *p, int *a, char ***p_env)
 		ft_tilde_dollar(p, begin, p_env);
 		ft_manage_and_or(p, begin, p_env);
 	}
-	if (p->arg_id[i] && ft_strequ(p->arg[i], "exit"))
-		ft_exit(a, p->arg[i + 1]);
 }
 
 /*
@@ -104,7 +71,7 @@ static void		ft_manage_semicolon_exit(t_parse *p, int *a, char ***p_env)
 ** en boucle, edition, parsing puis execution
 */
 
-static void		main2(char *string, char ***p_env, int *a, int debug)
+static void		main2(char *string, char ***p_env, int debug)
 {
 	static int		ret = 0;
 	static int		child_pid = 0;
@@ -116,7 +83,7 @@ static void		main2(char *string, char ***p_env, int *a, int debug)
 		{
 			if (debug)
 				debug_display_struct(p);
-			ft_manage_semicolon_exit(p, a, p_env);
+			ft_manage_semicolon_exit(p, p_env);
 			ret = p->ret;
 			child_pid = p->child_pid;
 		}
@@ -128,7 +95,6 @@ static void		main2(char *string, char ***p_env, int *a, int debug)
 int				main(int argc, char *argv[], char *env[])
 {
 	char	*string;
-	int		a;
 	int		begin;
 	char	**my_env;
 
@@ -136,18 +102,15 @@ int				main(int argc, char *argv[], char *env[])
 		return (0);
 	manage_signal();
 	my_env = ft_getenv(argc, argv, env);
-	a = -1;
 	begin = 0;
-	while (a == -1)
+	while (101)
 	{
 		string = (!begin++) ? ft_strdup("toilet -f bigascii12  42 sh | lolcat")
 			: ft_edition("42sh $> ");
 		if (argc == 2 && ft_strstr(argv[1], "debug"))
-			main2(string, &my_env, &a, 1);
+			main2(string, &my_env, 1);
 		else
-			main2(string, &my_env, &a, 0);
+			main2(string, &my_env, 0);
 	}
-	ft_free_tab(&my_env);
-	ft_close_hist(CLOSE_HIST, NULL);
-	return (a);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/07/20 15:32:40 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/19 11:30:23 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/06 16:42:44 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -60,5 +60,6 @@ char		*get_path_redir(t_parse *p, int *i, char **env);
 void		ft_putendl_fd_arg(char *str, char *path);
 void		ft_manage_and_or(t_parse *p, int begin, char ***p_env);
 int			delete_heredoc(char *file);
+int			ft_exit(char **arg, char ***p_env);
 
 #endif
