@@ -49,7 +49,7 @@ void		add_bs_in_str(char **str)
 	int		j;
 
 	i = 0;
-	if (!(tmp = (char*)malloc(ft_strlen(*str) + 1)))
+	if (!(tmp = (char*)malloc(ft_strlen(*str) + 2)))
 		return ;
 	i = find_spaces(i, str, &tmp);
 	tmp[i] = '\\';

@@ -31,8 +31,8 @@ static void		ft_signal_ctrl_c(int s)
 {
 	t_navig	*info;
 
-//	if (g_slct->next->name)// FIXME: victor -> segfault sur "as" puis ctrl c
-//		return ;
+	if (g_slct && g_slct->next->name)
+		return ;
 	info = &g_nav;
 	(void)s;
 	if (g_nav.statut)
