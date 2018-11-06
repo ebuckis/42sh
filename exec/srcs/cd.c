@@ -3,15 +3,15 @@
 /*                                                              /             */
 /*   cd.c                                             .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
+/*   By: yoginet <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/06/04 10:50:52 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/06 10:24:23 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Created: 2018/11/06 10:44:16 by yoginet      #+#   ##    ##    #+#       */
+/*   Updated: 2018/11/06 10:44:19 by yoginet     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "../includes/xec.h"
+#include "../includes/exec.h"
 
 /*
 **  Usage cd + print error
@@ -34,11 +34,7 @@ void			usage_cd(char *str)
 
 static int		actualise_env(char *new_pwd, char ***p_env)
 {
-<<<<<<< HEAD
 	char		*pwd;
-=======
-	char	*pwd;
->>>>>>> eab714463fcc844a360846d49dffd7b8c32f6f04
 
 	pwd = NULL;
 	pwd = ft_getpwd(*p_env, 0);
@@ -89,11 +85,7 @@ static int		check_target(char **target, char ***p_env)
 
 int				ft_cd(char **arg, char ***p_env)
 {
-<<<<<<< HEAD
 	char		*target;
-=======
-	char	*target;
->>>>>>> eab714463fcc844a360846d49dffd7b8c32f6f04
 
 	target = NULL;
 	if (arg[1] == NULL)

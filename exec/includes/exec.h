@@ -41,6 +41,7 @@ char		*ft_home(char **env);
 char		*ft_getpwd(char **env, int old);
 void		ft_setpwd(char **env, int old, char *pwd);
 int			ft_cd(char **arg, char ***p_env);
+void		usage_cd(char *str);
 char		*ret_target(char **arg, int l, int p, int q);
 int			ft_echo(char **arg);
 int			ft_env(t_parse *p, char **arg, char **env, int tab_pipe_i);
