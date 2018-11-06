@@ -61,9 +61,9 @@ static char	*get_letters(char *line, t_navig *info)
 		return (line);
 	while (line[len - 1] != '/')
 		len--;
-	if (!(tmp = malloc(len)))
+	if (!(tmp = ft_strnew(len)))
 		return (NULL);
-	if (!(info->letters = malloc(ft_strlen(line) - len)))
+	if (!(info->letters = ft_strnew(ft_strlen(line) - len)))
 		return (NULL);
 	return (letters(line, info, tmp, len));
 }
