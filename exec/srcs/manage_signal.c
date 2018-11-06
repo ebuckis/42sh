@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/07/25 17:29:56 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/06 10:32:24 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/06 14:40:21 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -54,7 +54,7 @@ static void		ft_signal_ctrl_c(int s)
 static void		ft_signal_stop(int s)
 {
 	(void)s;
-	if (g_slct->next->name)
+	if (g_slct && g_slct->next->name)
 		return ;
 	if (g_nav.statut)
 	{
