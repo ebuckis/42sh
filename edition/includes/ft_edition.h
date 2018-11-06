@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/06/18 14:40:55 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/25 16:22:44 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/05 19:50:41 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -151,7 +151,7 @@ void				ft_goto_i_from_end(t_navig *n);
 int					ft_no_new_name(t_navig *n, char *p);
 
 int					ft_parse_excl(t_navig *n);
-int					ft_replace_line(t_navig *n, int *pos, int id);
+int					ft_replace_line(t_navig *n, int *pos, int id, int c);
 int					ft_replace_s(char *s, t_navig *n, int pos);
 
 #endif

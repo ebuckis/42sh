@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/25 13:39:56 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/26 14:26:11 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/05 19:47:37 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -75,7 +75,7 @@ static int	ft_get_by_occur(t_hist *h, char *s2)
 	return (0);
 }
 
-int			ft_replace_line(t_navig *n, int *pos, int id)
+int			ft_replace_line(t_navig *n, int *pos, int id, int c)
 {
 	char	*str;
 	int		ret;
