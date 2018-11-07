@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/06/18 14:40:55 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/06 08:17:28 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/07 14:22:53 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -45,23 +45,23 @@
 ** CTRL + T coller
 */
 
-# define CHAR_AJOUT 1
-# define CHAR_SUPPR 2
-# define MOVE_RIGHT 3
-# define MOVE_LEFT 4
+# define CHAR_AJOUT		1
+# define CHAR_SUPPR		2
+# define MOVE_RIGHT		3
+# define MOVE_LEFT		4
 
-# define CLOSE_HIST -1
-# define GET_HIST 1
-# define SAVE_HIST 0
-# define NEXT_HIST 1
-# define PREV_HIST -1
+# define CLOSE_HIST		-1
+# define GET_HIST		1
+# define SAVE_HIST		0
+# define NEXT_HIST		1
+# define PREV_HIST		-1
 
-#define	ID_NUM_NULL -1
-#define	LAST_ID_NUM_NULL -2
-#define	OCCURRENCE_NULL -3
-#define	ID_NUM 1
-#define	LAST_ID_NUM 2
-#define	OCCURRENCE 3
+# define ID_NUM_NULL			-1
+# define LAST_ID_NUM_NULL	-2
+# define OCCURRENCE_NULL		-3
+# define ID_NUM				1
+# define LAST_ID_NUM			2
+# define OCCURRENCE			3
 
 # include "../../libft/includes/libft.h"
 # include "../../parser/includes/ft_parser.h"
