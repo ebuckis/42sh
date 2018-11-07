@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/08/22 14:11:36 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/29 11:53:23 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/07 13:06:27 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -65,16 +65,20 @@ static char		*ft_next_dollar_or_space(char *str)
 {
 	char *p;
 	char *next_dollar;
-	char *next_space;
+	char *next_sp;
+	char *next_nl;
 
 	next_dollar = ft_strchr(str, '$');
-	next_space = ft_strchr(str, ' ');
-	if (next_dollar && next_space)
-		p = (next_dollar < next_space) ? next_dollar : next_space;
+	next_sp = ft_strchr(str, ' ');
+	next_nl = ft_strchr(str, '\n');
+	next_sp = ((next_nl && !next_sp) || (next_nl && next_nl < next_sp))
+		? next_nl : next_sp;
+	if (next_dollar && next_sp)
+		p = (next_dollar < next_sp) ? next_dollar : next_sp;
 	else if (next_dollar)
 		p = next_dollar;
-	else if (next_space)
-		p = next_space;
+	else if (next_sp)
+		p = next_sp;
 	else
 		p = NULL;
 	return (p);
