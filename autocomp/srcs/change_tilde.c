@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   change_tilde.c                                   .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: volivry <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
+/*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/01 16:30:27 by volivry      #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/02 12:06:15 by volivry     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/07 16:06:01 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,7 +22,7 @@ static char	*get_user(void)
 	struct passwd	*pw;
 
 	uid = getuid();
-	pw = getpwuid(uid);
+	pw = getpwuid(uid);//FIXME: voir si autorisée
 	name = ft_strdup(pw->pw_name);
 	return (name);
 }

@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/25 13:39:56 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/06 18:09:54 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/07 18:43:33 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -61,8 +61,9 @@ static int	ft_get_by_occur(t_hist *h, char *s2)
 {
 	int		i;
 
+	dprintf(2, "__Dans %s, s2 : %s__\n", __func__, s2);
 	i = 0;
-	if (h->str || !s2)
+	if (!h->str || !s2)
 		return (0);
 	while (h->str[i] && s2[i])
 	{
