@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/24 12:53:13 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/06 10:21:25 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/06 18:59:02 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -55,7 +55,6 @@ int			ft_is_interpreted(char *s, int pos)
 	if (!s[i])
 		return (-1);
 	return (ret);
-	//TODO: retourner si le '!' est interpreté ou non 
 
 	/*
 	** parcourir la string depuis zéro,
@@ -103,6 +102,8 @@ static char	*ft_get_ending_char(char c)
 	char	tmp[2];
 
 	s = " \t|&;\n";//FIXME: voir tous les separateur
+	if (!c)
+		return (ft_strdup(s));
 	tmp[0] = (char)c;
 	tmp[1] = '\0';
 	s = ft_strjoin(s, (const char *)tmp);
@@ -128,6 +129,7 @@ char		*ft_get_pattern(char *s1, int cParse)
 	if (i != 0)
 		str = ft_strsub(s1, 0, (size_t)i);
 	ft_strdel(&s2);
+	dprintf(2, "__fin de %s, str = : %s__\n", __func__, str);
 	return (str);
 }
 
@@ -136,19 +138,35 @@ int			ft_parse_excl(t_navig *n)
 	int		ident;
 	int		pos;
 	int		cParse;
+	int		check;
 
+	check = 0;
 	pos = 0;
-	while ((pos = ft_strchr_index(n->s + pos, '!') > 0))
+	while ((pos = ft_strchr_index(n->s + pos, '!')) != -1)//voir le !!:
 	{
+		check = 1;
+		dprintf(2, "__s : %s, pos : %d__\n", n->s, pos);
 		if ((cParse = ft_is_interpreted(n->s, pos)) != -1 && (char)cParse != '\\')
 		{
+			dprintf(2, "__cParse : %d__\n", cParse);
 			if ((ident = ft_ident_excl(n->s, pos)) < 0)
+			{
+				dprintf(2, "__ident : %d__\n", ident);
 				return (0);//avec impression du message d'erreur
-			n->pattern = ft_get_pattern(n->s + pos, cParse);
+			}
+			dprintf(2, "__ident : %d__\n", ident);
+			n->pattern = ft_get_pattern(n->s + pos + 1, cParse);
+			dprintf(2, "__pattern : %s__\n", n->pattern);
 			ft_replace_line(n, &pos, ident);//modifier la valeur de pos (+= len du remplacement)
 		}
+		dprintf(2, "__pos : %d__\n", pos);
+		dprintf(2, "__cParse : %d__\n", cParse);
 	}
-	ft_putstr(n->s);
+	if (check)
+	{
+		ft_putstr("");
+		ft_putstr(n->s);
+	}
 	return (1);
 }
 
@@ -169,5 +187,6 @@ int			ft_parse_excl(t_navig *n)
 ** ID_NUM_NULL
 ** LAST_ID_NUM
 ** LAST_ID_NUM_NULL
+	dprintf(2, "\n", );
 */
 

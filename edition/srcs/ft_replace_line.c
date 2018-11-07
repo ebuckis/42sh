@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/25 13:39:56 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/06 12:54:56 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/06 18:09:54 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -88,6 +88,7 @@ int			ft_replace_line(t_navig *n, int *pos, int id)
 		str = ft_get_occ(n, &ft_get_by_id);
 	else if (id == OCCURRENCE)
 		str = ft_get_occ(n, &ft_get_by_occur);
+	dprintf(2, "__Dans %s, str : %s__\n", __func__, str);
 	if (str)
 		ret = ft_replace_s(str, n, *pos);
 	else
