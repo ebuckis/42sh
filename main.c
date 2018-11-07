@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/08/22 15:06:26 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/07 14:36:08 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/07 15:14:13 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -71,9 +71,8 @@ static void		ft_manage_semicolon_exit(t_parse *p, char ***p_env)
 ** en boucle, edition, parsing puis execution
 */
 
-static void		main2(char *string, char ***p_env, int debug)
+static int		main2(char *string, char ***p_env, int debug, int ret)
 {
-	static int		ret = 0;
 	static int		child_pid = 0;
 	t_parse			*p;
 
@@ -90,13 +89,16 @@ static void		main2(char *string, char ***p_env, int debug)
 		ft_memdel((void**)&string);
 		ft_close_parse();
 	}
+	return (ret);
 }
 
 int				main(int argc, char *argv[], char *env[])
 {
-	char	*string;
-	int		begin;
-	char	**my_env;
+	char			*string;
+	int				begin;
+	char			**my_env;
+	static int		ret = 0;
+	char			prompt[30];
 
 	if (!isatty(0))
 		return (0);
@@ -105,13 +107,15 @@ int				main(int argc, char *argv[], char *env[])
 	begin = 0;
 	while (101)
 	{
+		ft_strcpy(prompt, (ret) ? "\033[31m42sh $> \033[00m" :
+				"\033[36m42sh $> \033[00m");
 		string = (!begin++) ? ft_strdup("toilet -f bigascii12  42 sh | lolcat\
 			; setenv CLICOLOR 1")
-			: ft_edition("\033[36m42sh $> \033[00m");
+			: ft_edition(prompt);
 		if (argc == 2 && ft_strstr(argv[1], "debug"))
-			main2(string, &my_env, 1);
+			ret = main2(string, &my_env, 1, ret);
 		else
-			main2(string, &my_env, 0);
+			ret = main2(string, &my_env, 0, ret);
 	}
 	return (0);
 }
