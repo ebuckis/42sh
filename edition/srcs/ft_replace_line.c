@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/25 13:39:56 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/07 18:43:33 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/07 19:37:06 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -31,6 +31,7 @@ static int	ft_get_by_id(t_hist *h, char *s2)
 {
 	int		nb;
 
+	dprintf(2, "__Dans %s, s2 : %s__\n", __func__, s2);
 	if (!h->str || !s2)
 		return (0);
 	nb = ft_atoi(s2);
@@ -45,15 +46,20 @@ static int	ft_get_by_last_id(t_hist *h, char *s2)
 {
 	int		nb;
 
+	dprintf(2, "__Dans %s, s2 : %s__\n", __func__, s2);
 	if (!h->str || !s2)
 		return (0);
+	dprintf(2, "__1__\n");
 	nb = ft_atoi(s2);
 	if (nb < 0)
-		nb *= -1;
+		nb = (nb * -1) - 1;
+	dprintf(2, "__max : |%d| et nb : |%d|__\n", g_nav.max_id, nb);
 	if (g_nav.max_id - nb <= 0)
 		return (0);
+	dprintf(2, "__2__\n");
 	if (h->id == g_nav.max_id - nb)
 		return (1);
+	dprintf(2, "__3__\n");
 	return (0);
 }
 
