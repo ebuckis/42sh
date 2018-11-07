@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/08/22 15:06:26 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/06 16:41:29 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/07 13:18:28 by yoginet     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -106,7 +106,7 @@ int				main(int argc, char *argv[], char *env[])
 	while (101)
 	{
 		string = (!begin++) ? ft_strdup("toilet -f bigascii12  42 sh | lolcat")
-			: ft_edition("42sh $> ");
+			: ft_edition("\033[34m42sh $> \033[00m");
 		if (argc == 2 && ft_strstr(argv[1], "debug"))
 			main2(string, &my_env, 1);
 		else
