@@ -6,7 +6,7 @@
 /*   By: yoginet <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/08 10:41:17 by yoginet      #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/08 14:20:51 by yoginet     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/08 16:48:05 by yoginet     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -14,29 +14,35 @@
 #include "../includes/exec.h"
 
 /*
-**	Print Usage
+**	delete_hist
 */
 
-static void	history_usage(char *err)
+int				delete_line_history(t_opt_h **h, char *str, int i)
 {
-	if (err != NULL)
+	char	*tmp;
+	int		pos;
+
+	tmp = NULL;
+	tmp = ft_strsub(str, i, ft_strlen(str) - i);
+	pos = ft_atoi(tmp);
+	ft_strdel(&tmp);
+	if (pos == 0 || pos > (*h)->histsize)
 	{
-		if (ft_atoi(err) == 0)
-			return ;
+		ft_putstr_fd("42sh: history: ", 2);
+		ft_putstr_fd(str + i, 2);
+		ft_putstr_fd(": history position out of range", 2);
+		return (0);
 	}
-	if (err == NULL)
-		ft_printf("42sh: History:\n");
-	else
-		ft_printf("42sh: History: %s\n", err);
-	ft_printf("history: usage: history [-c] [-d offset] [n] or ");
-	ft_printf("history -awrn [filename] or history -ps [arg...]\n");
+	// sinon on delete la bonne ligne
+	printf("on delete la ligne %d\n", pos);
+	return (0);
 }
 
 /*
 **	Print full historique
 */
-
-static int	ft_print_history(int histsize)
+/*
+static int		ft_print_history(int histsize)
 {
 	t_hist		*h;
 	int			i;
@@ -59,12 +65,12 @@ static int	ft_print_history(int histsize)
 	}
 	return (0);
 }
-
+*/
 /*
 ** Print end historique (max -> nb)
 */
-
-static int	ft_print_history_len(int nb, int histsize)
+/*
+static int		ft_print_history_len(int nb, int histsize)
 {
 	t_hist	*h;
 	int		i;
@@ -93,29 +99,20 @@ static int	ft_print_history_len(int nb, int histsize)
 	}
 	return (0);
 }
-
+*/
 /*
 **	Core History
 **	HISTSIZE a aller recuperer dans les variables set
 */
 
-int			ft_history(char **arg, char ***env)
+int				ft_history(char **arg, char ***env)
 {
-	t_opt_h	*hist_opt;
+	t_opt_h		*hist_opt;
 
 	(void)env;
 	hist_opt = check_hist(arg);
 	if (hist_opt == NULL)
 		return (1);
-	if (len == 1)
-		return (ft_print_history(histsize));
-	else if (len == 2 && ft_atoi(arg[1]) != 0)
-		return (ft_print_history_len(ft_atoi(arg[1]), histsize));
-	else if (ft_strcmp(arg[1], "-c") == 0)
-		ft_printf("clear History\n");
-	else if (ft_strcmp(arg[1], "-d") == 0)
-		ft_printf("clear History offset\n");
-	else
-		history_usage(arg[1]);
+	hist_opt = delete_struct_hist(hist_opt);
 	return (0);
 }
