@@ -6,7 +6,7 @@
 #    By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/04/06 14:53:11 by kcabus       #+#   ##    ##    #+#        #
-#    Updated: 2018/11/06 16:20:34 by bpajot      ###    #+. /#+    ###.fr      #
+#    Updated: 2018/11/08 13:39:15 by yoginet     ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -36,6 +36,8 @@ N_SRCS =	and_or.c				\
 			check_bin.c				\
 			check_builtin.c			\
 			echo.c					\
+			ft_history.c			\
+			infos_hist.c			\
 			env.c					\
 			execve.c				\
 			exit.c					\
@@ -49,6 +51,7 @@ N_SRCS =	and_or.c				\
 			redir.c					\
 			ret_display.c			\
 			setenv.c				\
+			ft_len_tab.c			\
 			unsetenv.c
 
 all : $(NAME)
