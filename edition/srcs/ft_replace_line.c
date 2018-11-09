@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/25 13:39:56 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/09 09:45:52 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/09 15:39:57 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -31,7 +31,7 @@ static int	ft_get_by_id(t_hist *h, char *s2)
 {
 	int		nb;
 
-//	dprintf(2, "__Dans %s, s2 : %s__\n", __func__, s2);
+//	//dprintf(2, "__Dans %s, s2 : %s__\n", __func__, s2);
 	if (!h->str || !s2)
 		return (0);
 	nb = ft_atoi(s2);
@@ -46,20 +46,20 @@ static int	ft_get_by_last_id(t_hist *h, char *s2)
 {
 	int		nb;
 
-//	dprintf(2, "__Dans %s, s2 : %s__\n", __func__, s2);
+//	//dprintf(2, "__Dans %s, s2 : %s__\n", __func__, s2);
 	if (!h->str || !s2)
 		return (0);
-	dprintf(2, "__1__\n");
+	//dprintf(2, "__1__\n");
 	nb = ft_atoi(s2);
 	if (nb < 0)
 		nb = (nb * -1) - 1;
-	dprintf(2, "__max : |%d| et nb : |%d|__\n", g_nav.max_id, nb);
+	//dprintf(2, "__max : |%d| et nb : |%d|__\n", g_nav.max_id, nb);
 	if (g_nav.max_id - nb <= 0)
 		return (0);
-	dprintf(2, "__2__\n");
+	//dprintf(2, "__2__\n");
 	if (h->id == g_nav.max_id - nb)
 		return (1);
-	dprintf(2, "__3__\n");
+	//dprintf(2, "__3__\n");
 	return (0);
 }
 
@@ -67,7 +67,7 @@ static int	ft_get_by_occur(t_hist *h, char *s2)
 {
 	int		i;
 
-//	dprintf(2, "__Dans %s, s2 : %s__\n", __func__, s2);
+//	//dprintf(2, "__Dans %s, s2 : %s__\n", __func__, s2);
 	i = 0;
 	if (!h->str || !s2)
 		return (0);
@@ -104,7 +104,7 @@ int			ft_replace_line(t_navig *n, int *pos, int id)
 		str = ft_get_occ(n, &ft_get_by_id);
 	else if (id == OCCURRENCE)
 		str = ft_get_occ(n, &ft_get_by_occur);
-	dprintf(2, "__Dans %s, str : %s__\n", __func__, str);
+	//dprintf(2, "__Dans %s, str : %s__\n", __func__, str);
 	if (str)
 		*pos = ft_replace_s(str, n, *pos);
 	else

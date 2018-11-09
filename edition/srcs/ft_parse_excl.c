@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/24 12:53:13 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/09 14:44:43 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/09 15:39:57 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -44,7 +44,7 @@ int			ft_is_interpreted(char *s, int pos)
 	int		i;
 	int		ret;
 
-	dprintf(2, "///////////////////debut de |%s|***\n", __func__);
+	//dprintf(2, "///////////////////debut de |%s|***\n", __func__);
 	ret = 0;
 	i = 0;
 	while (s[i] && i < pos)
@@ -52,19 +52,19 @@ int			ft_is_interpreted(char *s, int pos)
 		if ((s[i] == '\'' || s[i] == '\"') && ret != '\\' &&
 			(ret = ft_loop_cmp(s, pos, &i, s[i])) != 0)
 			{
-			dprintf(2, "/////////////////// ret avec une sortie de is interpreted = |%d|***\n", ret);
+			//dprintf(2, "/////////////////// ret avec une sortie de is interpreted = |%d|***\n", ret);
 			return (ret);
 			}
 		else if (s[i] == '\\' && ret != '\\')
 			ret = (int)s[i];
 		else
 			ret = 0;
-		dprintf(2, "/////////////////// ret fi de while = |%d|***\n", ret);
+		//dprintf(2, "/////////////////// ret fi de while = |%d|***\n", ret);
 		i++;
 	}
 //	if (!s[i])
 //		return (-1);
-	dprintf(2, "/////////////////// ret en FIN de  is_interpreted = |%d|***\n", ret);
+	//dprintf(2, "/////////////////// ret en FIN de  is_interpreted = |%d|***\n", ret);
 	return (ret);
 
 	/*
@@ -95,7 +95,7 @@ static int	ft_strchr_index(const char *s, int pos, char c)
 {
 	int i;
 
-		dprintf(2, "__dans : %s, s : %s__\n", __func__, s);
+		//dprintf(2, "__dans : %s, s : %s__\n", __func__, s);
 	i = pos;
 	if (c == '\0')
 		return (ft_strlen(s));
@@ -103,12 +103,12 @@ static int	ft_strchr_index(const char *s, int pos, char c)
 	{
 		if (s[i] == c)
 		{
-		dprintf(2, "__Fin normal: %s__ avec i = %d__\n", __func__, i);
+		//dprintf(2, "__Fin normal: %s__ avec i = %d__\n", __func__, i);
 			return (i);
 		}
 		i++;
 	}
-		dprintf(2, "__Fin error: %s__\n", __func__);
+		//dprintf(2, "__Fin error: %s__\n", __func__);
 	return (-1);
 }
 
@@ -137,7 +137,7 @@ char		*ft_get_pattern(char *s1, int cParse)
 	str = NULL;
 	s2 = ft_get_ending_char(cParse);
 	i = 0;
-	dprintf(2, "___________s1 |%s| s2|%s| cParse|%c|_____________\n", s1, s2, (char)cParse);
+	//dprintf(2, "___________s1 |%s| s2|%s| cParse|%c|_____________\n", s1, s2, (char)cParse);
 	while (s1[i])
 	{
 		if (ft_strchr(s2, s1[i]))
@@ -148,7 +148,7 @@ char		*ft_get_pattern(char *s1, int cParse)
 	if (i != 0)
 		str = ft_strsub(s1, 0, (size_t)i);
 	ft_strdel(&s2);
-	dprintf(2, "__fin de %s, str = : %s__\n", __func__, str);
+	//dprintf(2, "__fin de %s, str = : %s__\n", __func__, str);
 	return (str);
 }
 
@@ -166,18 +166,18 @@ int			ft_parse_excl(t_navig *n)
 	while ((pos = ft_strchr_index(n->s, pos, '!')) != -1)//voir le !!:
 	{
 		check = 1;
-		dprintf(2, "__s : %s, pos : %d__\n", n->s, pos);
+		//dprintf(2, "__s : %s, pos : %d__\n", n->s, pos);
 		if ((cParse = ft_is_interpreted(n->s, pos)) != -1 && (char)cParse != '\\')
 		{
-			dprintf(2, "__cParse : %d__\n", cParse);
+			//dprintf(2, "__cParse : %d__\n", cParse);
 			if ((ident = ft_ident_excl(n->s, pos)) < 0)
 			{
-				dprintf(2, "__ident : %d__\n", ident);
+				//dprintf(2, "__ident : %d__\n", ident);
 				return (0);//avec impression du message d'erreur
 			}
-			dprintf(2, "__ident : %d__\n", ident);
+			//dprintf(2, "__ident : %d__\n", ident);
 			n->pattern = ft_get_pattern(n->s + pos + 1, cParse);
-			dprintf(2, "__pattern : %s__\n", n->pattern);
+			//dprintf(2, "__pattern : %s__\n", n->pattern);
 			if (ft_replace_line(n, &pos, ident) < 0)//modifier la valeur de pos (+= len du remplacement)
 			{
 	//			ft_maj_struct_nav(n, "");
@@ -189,8 +189,8 @@ int			ft_parse_excl(t_navig *n)
 		str = ft_strdup(n->s);
 	//	ft_maj_struct_nav(n, str);
 		ft_strdel(&str);
-		dprintf(2, "__pos : %d__\n", pos);
-		dprintf(2, "__cParse : %d__\n", cParse);
+		//dprintf(2, "__pos : %d__\n", pos);
+		//dprintf(2, "__cParse : %d__\n", cParse);
 	}
 	if (check)
 	{
@@ -217,6 +217,6 @@ int			ft_parse_excl(t_navig *n)
 ** ID_NUM_NULL
 ** LAST_ID_NUM
 ** LAST_ID_NUM_NULL
-	dprintf(2, "\n", );
+	//dprintf(2, "\n", );
 */
 
