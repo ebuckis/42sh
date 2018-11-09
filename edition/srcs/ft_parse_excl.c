@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/24 12:53:13 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/07 15:56:42 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/09 14:44:43 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,6 +15,7 @@
 
 static int	ft_loop_cmp(char *s, int pos, int *i, char c)
 {
+	(*i)++;
 	while (s[*i] && *i < pos)
 	{
 		if (s[*i] == '\\' && *i == pos - 1)
@@ -25,35 +26,45 @@ static int	ft_loop_cmp(char *s, int pos, int *i, char c)
 			return (0);
 		(*i)++;
 	}
-	if (!s[*i])
-		return (-1);
+//	if (!s[*i])
+//		return (-1);
 	return ((int)c);
 }
+
+/*
+** ft_loop_cmp :
+** je boucle sur le char trouvé
+** 1er	if		si j'ai un backslash avant le !
+** 2eme	if		si j'ai un BS avant le char en question j'avance
+** 3eme	if		si je suis su le char en question
+*/
 
 int			ft_is_interpreted(char *s, int pos)
 {
 	int		i;
 	int		ret;
 
+	dprintf(2, "///////////////////debut de |%s|***\n", __func__);
 	ret = 0;
 	i = 0;
 	while (s[i] && i < pos)
 	{
-		if ((s[i] == '\"' || s[i] == '\"') &&
+		if ((s[i] == '\'' || s[i] == '\"') && ret != '\\' &&
 			(ret = ft_loop_cmp(s, pos, &i, s[i])) != 0)
+			{
+			dprintf(2, "/////////////////// ret avec une sortie de is interpreted = |%d|***\n", ret);
 			return (ret);
-		else if (s[i] == '\\' && s[i + 1])
-		{
-			if ((s[i + 1] == '\"' || s[i + 1] == '\"'))
-				i++;
+			}
+		else if (s[i] == '\\' && ret != '\\')
 			ret = (int)s[i];
-		}
 		else
 			ret = 0;
+		dprintf(2, "/////////////////// ret fi de while = |%d|***\n", ret);
 		i++;
 	}
-	if (!s[i])
-		return (-1);
+//	if (!s[i])
+//		return (-1);
+	dprintf(2, "/////////////////// ret en FIN de  is_interpreted = |%d|***\n", ret);
 	return (ret);
 
 	/*
@@ -80,33 +91,40 @@ int			ft_ident_excl(char *s, int pos)
 		return (OCCURRENCE);
 }
 
-static int	ft_strchr_index(const char *s, char c)
+static int	ft_strchr_index(const char *s, int pos, char c)
 {
 	int i;
 
-	i = 0;
+		dprintf(2, "__dans : %s, s : %s__\n", __func__, s);
+	i = pos;
 	if (c == '\0')
 		return (ft_strlen(s));
 	while (s[i] != '\0')
 	{
 		if (s[i] == c)
+		{
+		dprintf(2, "__Fin normal: %s__ avec i = %d__\n", __func__, i);
 			return (i);
+		}
 		i++;
 	}
+		dprintf(2, "__Fin error: %s__\n", __func__);
 	return (-1);
 }
 
 static char	*ft_get_ending_char(char c)
 {
 	char	*s;
-	char	tmp[2];
+	char	*tmp;
 
+	if (c == '\'')
+		tmp = "\"";
+	else if (c == '\"')
+		tmp = "\'";
+	else
+		tmp = "\'\"";
 	s = " \t|&;\n";//FIXME: voir tous les separateur
-	if (!c)
-		return (ft_strdup(s));
-	tmp[0] = (char)c;
-	tmp[1] = '\0';
-	s = ft_strjoin(s, (const char *)tmp);
+	s = ft_strjoin(s, tmp);
 	return (s);
 }
 
@@ -119,6 +137,7 @@ char		*ft_get_pattern(char *s1, int cParse)
 	str = NULL;
 	s2 = ft_get_ending_char(cParse);
 	i = 0;
+	dprintf(2, "___________s1 |%s| s2|%s| cParse|%c|_____________\n", s1, s2, (char)cParse);
 	while (s1[i])
 	{
 		if (ft_strchr(s2, s1[i]))
@@ -133,16 +152,18 @@ char		*ft_get_pattern(char *s1, int cParse)
 	return (str);
 }
 
+
 int			ft_parse_excl(t_navig *n)
 {
 	int		ident;
 	int		pos;
 	int		cParse;
 	int		check;
+	char	*str;
 
 	check = 0;
 	pos = 0;
-	while ((pos = ft_strchr_index(n->s + pos, '!')) != -1)//voir le !!:
+	while ((pos = ft_strchr_index(n->s, pos, '!')) != -1)//voir le !!:
 	{
 		check = 1;
 		dprintf(2, "__s : %s, pos : %d__\n", n->s, pos);
@@ -157,8 +178,17 @@ int			ft_parse_excl(t_navig *n)
 			dprintf(2, "__ident : %d__\n", ident);
 			n->pattern = ft_get_pattern(n->s + pos + 1, cParse);
 			dprintf(2, "__pattern : %s__\n", n->pattern);
-			ft_replace_line(n, &pos, ident);//modifier la valeur de pos (+= len du remplacement)
+			if (ft_replace_line(n, &pos, ident) < 0)//modifier la valeur de pos (+= len du remplacement)
+			{
+	//			ft_maj_struct_nav(n, "");
+				return (-1);
+			}
 		}
+		else
+			pos++;
+		str = ft_strdup(n->s);
+	//	ft_maj_struct_nav(n, str);
+		ft_strdel(&str);
 		dprintf(2, "__pos : %d__\n", pos);
 		dprintf(2, "__cParse : %d__\n", cParse);
 	}

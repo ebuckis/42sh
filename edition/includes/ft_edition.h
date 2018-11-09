@@ -6,7 +6,11 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/06/18 14:40:55 by kcabus       #+#   ##    ##    #+#       */
+<<<<<<< HEAD
 /*   Updated: 2018/11/09 10:58:21 by yoginet     ###    #+. /#+    ###.fr     */
+=======
+/*   Updated: 2018/11/09 09:32:12 by kcabus      ###    #+. /#+    ###.fr     */
+>>>>>>> 543c42313dd2eeeef5088a66203cf8f0e795fa1b
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -134,8 +138,9 @@ int					ft_key_alt(t_navig *n, char *buf);
 int					ft_move_up(t_navig *n);
 int					ft_push_enter(t_navig *n);
 int					ft_copy_paste(t_navig *n, char *buf, int fr);
-char				*ft_get_hist_name(void);
+int					ft_maj_struct_nav(t_navig *n, char *str);
 
+char				*ft_get_hist_name(void);
 int					ft_open_hist(void);
 void				ft_file_to_list(void);
 char				*ft_give_hist(int i, t_hist *list);
