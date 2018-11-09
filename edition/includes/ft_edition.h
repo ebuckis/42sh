@@ -6,7 +6,11 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/06/18 14:40:55 by kcabus       #+#   ##    ##    #+#       */
+<<<<<<< HEAD
+/*   Updated: 2018/11/09 10:58:21 by yoginet     ###    #+. /#+    ###.fr     */
+=======
 /*   Updated: 2018/11/09 09:32:12 by kcabus      ###    #+. /#+    ###.fr     */
+>>>>>>> 543c42313dd2eeeef5088a66203cf8f0e795fa1b
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -154,5 +158,6 @@ int					ft_no_new_name(t_navig *n, char *p);
 int					ft_parse_excl(t_navig *n);
 int					ft_replace_line(t_navig *n, int *pos, int id);
 int					ft_replace_s(char *s, t_navig *n, int pos);
+void				ft_free_hist(t_hist *h);
 
 #endif
