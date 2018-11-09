@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/24 12:53:13 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/09 14:11:44 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/09 14:44:43 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -115,14 +115,16 @@ static int	ft_strchr_index(const char *s, int pos, char c)
 static char	*ft_get_ending_char(char c)
 {
 	char	*s;
-	char	tmp[2];
+	char	*tmp;
 
+	if (c == '\'')
+		tmp = "\"";
+	else if (c == '\"')
+		tmp = "\'";
+	else
+		tmp = "\'\"";
 	s = " \t|&;\n";//FIXME: voir tous les separateur
-	if (!c)
-		return (ft_strdup(s));
-	tmp[0] = (char)c;
-	tmp[1] = '\0';
-	s = ft_strjoin(s, (const char *)tmp);
+	s = ft_strjoin(s, tmp);
 	return (s);
 }
 
