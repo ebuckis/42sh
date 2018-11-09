@@ -6,7 +6,7 @@
 /*   By: yoginet <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/08 13:43:32 by yoginet      #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/08 16:48:12 by yoginet     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/09 14:52:43 by yoginet     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -14,25 +14,18 @@
 #include "../includes/exec.h"
 
 /*
-**	Print Usage
-*/
-/*
-static int		history_usage(char err)
-{
-	ft_putstr_fd("42sh: history: -", 2);
-	ft_putchar_fd(err, 2);
-	ft_putstr_fd("\nhistory: usage: history [-c] [-d offset] [n] or ", 2);
-	ft_putstr_fd("history -awrn [filename] or history -ps [arg...]\n", 2);
-	return (1);
-}
-*/
-/*
-**	Check si argument valide
+**	Delete Historique
 */
 
-static int		delete_history(void)
+int				delete_history(void)
 {
-	printf("DELETE FULL HISTORIQUE\n");
+	t_hist		*h;
+
+	h = NULL;
+	// marche pas
+	printf("DELETE HISTORY\n");
+	//h = ft_close_hist(GET_HIST, NULL);
+	//ft_free_hist(h);
 	return (0);
 }
 
@@ -40,33 +33,41 @@ static int		delete_history(void)
 **	Insert les options dans la structure
 */
 
-static int		insert_option(t_opt_h **h, char *str, int i)
+static int		insert_option(t_opt_h **h, char **arg, int j, int i)
 {
-	while (str[i])
+	while (arg[j][i])
 	{
-		if (str[i] == 'c')
-			return (delete_history());
-		else if (str[i] == 'd')
-			return (delete_line_history(h, str, i));
-		else if (str[i] == 'a')
+		if (arg[j][i] == 'c')
+			(*h)->c = 1;
+		else if (arg[j][i] == 'd')
+		{
+			(*h)->d = 1;
+			return (delete_line_history(h, arg, j, i));
+		}
+		else if (arg[j][i] == 'a')
 			(*h)->a = 1;
-		else if (str[i] == 'n')
+		else if (arg[j][i] == 'n')
 			(*h)->n = 1;
-		else if (str[i] == 'r')
+		else if (arg[j][i] == 'r')
 			(*h)->r = 1;
-		else if (str[i] == 'w')
+		else if (arg[j][i] == 'w')
 			(*h)->w = 1;
-		else if (str[i] == 'p')
+		else if (arg[j][i] == 'p')
 			(*h)->p = 1;
-		else if (str[i] == 's')
+		else if (arg[j][i] == 's')
 			(*h)->s = 1;
 		else
-			printf("JE FAIS QUOI ?\n");
+		{
+			ft_putstr_fd("42sh: history: ", 2);
+			ft_putstr_fd(arg[j], 2);
+			ft_putstr_fd(" invalid option\n", 2);
+			history_usage();
+			return (1);
+		}
 		i++;
 	}
 	return (0);
 }
-
 
 /*
 **	Search les options History
@@ -83,18 +84,20 @@ int				search_options(t_opt_h **h, char **arg)
 	{
 		if (arg[i] == NULL)
 			return (0);
-		if (arg[i][0] == '-')
+		if (arg[i][0] == 0)
+			return (0);
+		else if (arg[i][0] == '-')
 		{
-			if (insert_option(h, arg[i], 1) == 1)
+			if (insert_option(h, arg, i, 1) == 1)
 				return (1);
 		}
-		else if ((*h)->p == 1 || (*h)->s == 1)
-			(*h)->arg = i;
-		else 
-			(*h)->filename = ft_strdup(arg[i]);
+		else if (ft_atoi(arg[i]) != 0 && (*h)->d == 0)
+			ft_print_history_len(ft_atoi(arg[i]));
+		else if (ft_atoi(arg[i]) != 0 && (*h)->d == 1)
+			return (0);
 		i++;
 	}
-	return (0);
+	return (histo_suite(h, arg));
 }
 
 /*

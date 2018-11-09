@@ -6,14 +6,14 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/07/12 16:32:16 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/23 13:10:37 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/09 11:00:26 by yoginet     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "ft_edition.h"
 
-static void			ft_free_hist(t_hist *h)
+void				ft_free_hist(t_hist *h)
 {
 	if (!h)
 		return ;
