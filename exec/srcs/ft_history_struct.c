@@ -6,7 +6,7 @@
 /*   By: yoginet <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/08 13:43:32 by yoginet      #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/09 14:52:43 by yoginet     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/09 16:25:28 by yoginet     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -42,7 +42,8 @@ static int		insert_option(t_opt_h **h, char **arg, int j, int i)
 		else if (arg[j][i] == 'd')
 		{
 			(*h)->d = 1;
-			return (delete_line_history(h, arg, j, i));
+			(*h)->di = i;
+			(*h)->dj = j;
 		}
 		else if (arg[j][i] == 'a')
 			(*h)->a = 1;
@@ -56,11 +57,9 @@ static int		insert_option(t_opt_h **h, char **arg, int j, int i)
 			(*h)->p = 1;
 		else if (arg[j][i] == 's')
 			(*h)->s = 1;
-		else
+		else if (ft_isdigit(arg[j][i]) == 0)
 		{
-			ft_putstr_fd("42sh: history: ", 2);
-			ft_putstr_fd(arg[j], 2);
-			ft_putstr_fd(" invalid option\n", 2);
+			history_invalid(arg[j], 1);
 			history_usage();
 			return (1);
 		}
@@ -82,6 +81,7 @@ int				search_options(t_opt_h **h, char **arg)
 		return (1);
 	while (arg[i])
 	{
+		printf("arg[i] = %s\n", arg[i]);
 		if (arg[i] == NULL)
 			return (0);
 		if (arg[i][0] == 0)
@@ -94,7 +94,13 @@ int				search_options(t_opt_h **h, char **arg)
 		else if (ft_atoi(arg[i]) != 0 && (*h)->d == 0)
 			ft_print_history_len(ft_atoi(arg[i]));
 		else if (ft_atoi(arg[i]) != 0 && (*h)->d == 1)
-			return (0);
+			;
+		else
+		{
+			history_invalid(arg[i], 2);
+			return (1);
+		}
+
 		i++;
 	}
 	return (histo_suite(h, arg));
@@ -114,6 +120,8 @@ t_opt_h			*check_hist(char **arg)
 		return (NULL);
 	h->c = 0;
 	h->d = 0;
+	h->di = 0;
+	h->dj = 0;
 	h->a = 0;
 	h->n = 0;
 	h->r = 0;

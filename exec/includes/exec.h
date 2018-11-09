@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/07/20 15:32:40 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/09 14:49:10 by yoginet     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/09 16:04:05 by yoginet     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -28,6 +28,8 @@ typedef struct	s_opt_h
 {
 	int			c;
 	int			d;
+	int			di;
+	int			dj;
 	int			a;
 	int			n;
 	int			r;
@@ -92,6 +94,7 @@ t_opt_h			*check_hist(char **arg);
 t_opt_h			*delete_struct_hist(t_opt_h *h);
 int				history_usage(void);
 int				history_out(char *str, int i);
+int				history_invalid(char *str, int i);
 int				histo_suite(t_opt_h **h, char **arg);
 
 #endif

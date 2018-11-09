@@ -6,7 +6,7 @@
 /*   By: yoginet <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/09 10:01:38 by yoginet      #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/09 11:21:22 by yoginet     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/09 16:03:45 by yoginet     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -28,5 +28,16 @@ int			history_out(char *str, int i)
 	else
 		ft_putstr_fd(str + i, 2);
 	ft_putstr_fd(": history position out of range\n", 2);
+	return (0);
+}
+
+int			history_invalid(char *str, int i)
+{
+	ft_putstr_fd("42sh: history: ", 2);
+	ft_putstr_fd(str, 2);
+	if (i == 1)
+		ft_putstr_fd(": invalid option\n", 2);
+	else if (i == 2)
+		ft_putstr_fd(": numeric argument required\n", 2);
 	return (0);
 }

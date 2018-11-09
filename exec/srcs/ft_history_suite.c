@@ -6,7 +6,7 @@
 /*   By: yoginet <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/09 14:10:29 by yoginet      #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/09 15:04:03 by yoginet     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/09 15:59:26 by yoginet     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -24,6 +24,11 @@ static int	histo_a(void)
 	return (0);
 }
 
+static int	histo_n(void)
+{
+	return (0);
+}
+
 int			histo_suite(t_opt_h **h, char **arg)
 {
 	int		ret;
@@ -32,9 +37,13 @@ int			histo_suite(t_opt_h **h, char **arg)
 	(void)h;
 	(void)arg;
 	printf("HISTORIQUE SUITE\n");
+	if ((*h)->d == 1)
+			delete_line_history(h, arg, (*h)->di, (*h)->dj);
 	if ((*h)->c == 1)
-		return (delete_history());
-	else if((*h)->a == 1 || (*h)->n == 1)
+		delete_history();
+	else if((*h)->a == 1)
 		ret = histo_a();
+	else if((*h)->n == 1)
+		ret = histo_n();
 	return (ret);
 }

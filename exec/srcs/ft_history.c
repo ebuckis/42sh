@@ -6,7 +6,7 @@
 /*   By: yoginet <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/08 10:41:17 by yoginet      #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/09 14:39:02 by yoginet     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/09 16:25:26 by yoginet     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -23,6 +23,9 @@ int				delete_line_history(t_opt_h **h, char **arg, int j, int i)
 	int		pos;
 
 	tmp = NULL;
+	// a gerer :
+	// si history -d 5-c
+	// --> return error
 	if (i + 1 >= (int)ft_strlen(arg[j]) && arg[j + 1] == NULL)
 	{
 		ft_putstr_fd("42sh: history: -d: option requires an arguments\n", 2);
