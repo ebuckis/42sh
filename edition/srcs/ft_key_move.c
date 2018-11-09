@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/06/22 15:58:05 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/22 17:31:00 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/09 09:32:24 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -41,7 +41,7 @@ static int		ft_re_print_s(t_navig *n, int *y_add, int calc)
 	return (1);
 }
 
-static int		ft_maj_stuct_nav(t_navig *n, char *str)
+int				ft_maj_struct_nav(t_navig *n, char *str)
 {
 	char	*ret;
 	int		calc;
@@ -83,12 +83,12 @@ static void		ft_down_hist(t_navig *n)
 	str = ft_give_hist(PREV_HIST, NULL);
 	if (str)
 	{
-		ft_maj_stuct_nav(n, str);
+		ft_maj_struct_nav(n, str);
 		n->id_hist--;
 	}
 	else if (n->id_hist == 1)
 	{
-		ft_maj_stuct_nav(n, n->s_save);
+		ft_maj_struct_nav(n, n->s_save);
 		free(n->s_save);
 		n->s_save = NULL;
 		n->id_hist--;
@@ -112,7 +112,7 @@ static void		ft_up_hist(t_navig *n)
 	{
 		if (n->id_hist == 0)
 			n->s_save = ft_strdup(n->s);
-		ft_maj_stuct_nav(n, str);
+		ft_maj_struct_nav(n, str);
 		n->id_hist++;
 	}
 }

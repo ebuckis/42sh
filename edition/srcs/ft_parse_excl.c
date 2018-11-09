@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/24 12:53:13 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/07 15:56:42 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/09 10:34:52 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -133,6 +133,7 @@ char		*ft_get_pattern(char *s1, int cParse)
 	return (str);
 }
 
+
 int			ft_parse_excl(t_navig *n)
 {
 	int		ident;
@@ -157,8 +158,13 @@ int			ft_parse_excl(t_navig *n)
 			dprintf(2, "__ident : %d__\n", ident);
 			n->pattern = ft_get_pattern(n->s + pos + 1, cParse);
 			dprintf(2, "__pattern : %s__\n", n->pattern);
-			ft_replace_line(n, &pos, ident);//modifier la valeur de pos (+= len du remplacement)
+			if (ft_replace_line(n, &pos, ident) < 0)//modifier la valeur de pos (+= len du remplacement)
+			{
+				ft_maj_struct_nav(n, "");
+				return (-1);
+			}
 		}
+		ft_maj_struct_nav(n, ft_strdup(n->s));
 		dprintf(2, "__pos : %d__\n", pos);
 		dprintf(2, "__cParse : %d__\n", cParse);
 	}

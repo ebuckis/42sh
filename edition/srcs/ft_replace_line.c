@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/25 13:39:56 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/07 19:37:06 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/09 09:45:52 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -31,7 +31,7 @@ static int	ft_get_by_id(t_hist *h, char *s2)
 {
 	int		nb;
 
-	dprintf(2, "__Dans %s, s2 : %s__\n", __func__, s2);
+//	dprintf(2, "__Dans %s, s2 : %s__\n", __func__, s2);
 	if (!h->str || !s2)
 		return (0);
 	nb = ft_atoi(s2);
@@ -46,7 +46,7 @@ static int	ft_get_by_last_id(t_hist *h, char *s2)
 {
 	int		nb;
 
-	dprintf(2, "__Dans %s, s2 : %s__\n", __func__, s2);
+//	dprintf(2, "__Dans %s, s2 : %s__\n", __func__, s2);
 	if (!h->str || !s2)
 		return (0);
 	dprintf(2, "__1__\n");
@@ -67,7 +67,7 @@ static int	ft_get_by_occur(t_hist *h, char *s2)
 {
 	int		i;
 
-	dprintf(2, "__Dans %s, s2 : %s__\n", __func__, s2);
+//	dprintf(2, "__Dans %s, s2 : %s__\n", __func__, s2);
 	i = 0;
 	if (!h->str || !s2)
 		return (0);
@@ -80,6 +80,15 @@ static int	ft_get_by_occur(t_hist *h, char *s2)
 	if (!s2[i])
 		return (1);
 	return (0);
+}
+
+int			ft_message_err(t_navig *n)
+{
+	ft_putstr_fd("\n42sh : !", 2);
+	ft_putstr_fd(n->pattern, 2);
+	ft_putendl_fd(": event not found\n", 2);
+	ft_strdel(&n->pattern);
+	return (-1);
 }
 
 int			ft_replace_line(t_navig *n, int *pos, int id)
@@ -97,10 +106,10 @@ int			ft_replace_line(t_navig *n, int *pos, int id)
 		str = ft_get_occ(n, &ft_get_by_occur);
 	dprintf(2, "__Dans %s, str : %s__\n", __func__, str);
 	if (str)
-		ret = ft_replace_s(str, n, *pos);
+		*pos = ft_replace_s(str, n, *pos);
 	else
-		n->err = id * -1;
+		return (ft_message_err(n));
 	ft_strdel(&n->pattern);
-	*pos = ret + *pos;
+	//*pos = ret + *pos;
 	return (0);
 }

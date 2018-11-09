@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/25 16:01:31 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/08 14:00:13 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/09 10:32:11 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -30,9 +30,13 @@ int		ft_replace_s(char *s, t_navig *n, int pos)
 	dprintf(2, "///string 1 |%s|***\n", string[1]);
 	dprintf(2, "///string 2 |%s|***\n", string[2]);
 	tmp = ft_strjoin(string[0], (char *)string[1]);	
-	nb = ft_strlen(tmp) - pos;
+	nb = ft_strlen(tmp);// +1 ou non
 	ft_strdel(&(n->s));
+
 	n->s = ft_strjoin(tmp, string[2]);	
+	//dprintf(2, "//888888888888888888888888888888 |%d| |%d| |%d| |%d| |%d| |%d| |%d| |%d|***\n", n->s[0], n->s[1], n->s[2], n->s[3], n->s[4], n->s[5], n->s[6], n->s[7]);
+
+	dprintf(2, "_n->s__tmp__nb______%s | %s | %d_____________\n", n->s, tmp, nb);
 	ft_free_tab(&string);
 	ft_strdel(&tmp);
 	return (nb);
