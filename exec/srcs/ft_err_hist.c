@@ -6,7 +6,7 @@
 /*   By: yoginet <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/09 10:01:38 by yoginet      #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/09 16:03:45 by yoginet     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/14 11:46:00 by yoginet     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -20,13 +20,18 @@ int			history_usage(void)
 	return (1);
 }
 
-int			history_out(char *str, int i)
+int			history_out_str(char *str)
 {
 	ft_putstr_fd("42sh: history: ", 2);
-	if (str == NULL)
-		ft_putnbr_fd(i, 2);
-	else
-		ft_putstr_fd(str + i, 2);
+	ft_putstr_fd(str, 2);
+	ft_putstr_fd(": history position out of range\n", 2);
+	return (0);
+}
+
+int			history_out(int id)
+{
+	ft_putstr_fd("42sh: history: ", 2);
+	ft_putnbr_fd(id, 2);
 	ft_putstr_fd(": history position out of range\n", 2);
 	return (0);
 }

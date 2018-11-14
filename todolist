@@ -6,7 +6,7 @@
 #    By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/08/22 09:27:21 by bpajot       #+#   ##    ##    #+#        #
-#    Updated: 2018/11/08 13:15:53 by kcabus      ###    #+. /#+    ###.fr      #
+#    Updated: 2018/11/14 13:15:56 by yoginet     ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -34,6 +34,7 @@ history :
 		1- Taille de l'historique, verifier la taille a chaque coup de boucle et conservation de l'id
 		2- Localisation du fichier, si erreur mettre en place un define pour loc par defaut
 		3- Lors de la save limiter la taille de save
+		Pour avoir HISSIZE, HISTFILE .... ---->  exec/srcs/infos_hist.c
 
 bonus :
 - kcabus history et !

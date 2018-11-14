@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/07/20 15:32:40 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/09 16:04:05 by yoginet     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/14 12:56:00 by yoginet     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -28,8 +28,6 @@ typedef struct	s_opt_h
 {
 	int			c;
 	int			d;
-	int			di;
-	int			dj;
 	int			a;
 	int			n;
 	int			r;
@@ -37,8 +35,6 @@ typedef struct	s_opt_h
 	int			p;
 	int			s;
 	int			offset;
-	int			arg;
-	int			histsize;
 	char		*filename;
 }				t_opt_h;
 
@@ -80,21 +76,25 @@ void			ft_putendl_fd_arg(char *str, char *path);
 void			ft_manage_and_or(t_parse *p, int begin, char ***p_env);
 int				delete_heredoc(char *file);
 int				ft_exit(char **arg, char ***p_env);
+
 int				ft_len_tab(char **tabl);
 int				info_histsize(void);
 int				info_histfile(void);
 int				info_histfilesize(void);
+
+int				delete_history(void);
+int				delete_line_history(int id);
+
 int				ft_print_history_len(int nb);
 int				ft_history(char **arg, char ***p_env);
-int				delete_line_history(t_opt_h **h, char **arg, int j, int i);
 int				history_del_pos(int pos);
 int				search_options(t_opt_h **h, char **arg);
-int				delete_history(void);
 t_opt_h			*check_hist(char **arg);
 t_opt_h			*delete_struct_hist(t_opt_h *h);
 int				history_usage(void);
-int				history_out(char *str, int i);
+int				history_out(int id);
+int				history_out_str(char *str);
 int				history_invalid(char *str, int i);
-int				histo_suite(t_opt_h **h, char **arg);
+int				histo_suite(t_opt_h *h);
 
 #endif

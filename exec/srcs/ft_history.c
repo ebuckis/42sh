@@ -6,7 +6,7 @@
 /*   By: yoginet <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/08 10:41:17 by yoginet      #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/09 16:42:50 by yoginet     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/14 13:08:01 by yoginet     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,7 +16,7 @@
 /*
 **	delete_hist
 */
-
+/*
 int				delete_line_history(t_opt_h **h, char **arg, int j, int i)
 {
 	char	*tmp;
@@ -46,10 +46,6 @@ int				delete_line_history(t_opt_h **h, char **arg, int j, int i)
 	return (0);
 }
 
-/*
-**	Supprime la ligne donner
-*/
-
 int				history_del_pos(int pos)
 {
 	t_hist		*h;
@@ -72,7 +68,7 @@ int				history_del_pos(int pos)
 	}
 	return (0);
 }
-
+*/
 /*
 **	Print full historique
 */
@@ -128,7 +124,7 @@ int			ft_print_history_len(int nb)
 	}
 	while (nb != 0 && h)
 	{
-		if (h->id != -1)
+			if (h->id != -1)
 		{
 			ft_printf("  %d\t%s\n", h->id + 1, h->str);
 			nb--;
@@ -156,6 +152,19 @@ int				ft_history(char **arg, char ***env)
 	hist_opt = check_hist(arg);
 	if (hist_opt == NULL)
 		return (1);
+	printf("*** DEBUG ***\n");
+	printf("h->c = %d\n", hist_opt->c);
+	printf("h->d = %d\n", hist_opt->d);
+	printf("h->a = %d\n", hist_opt->a);
+	printf("h->n = %d\n", hist_opt->n);
+	printf("h->r = %d\n", hist_opt->r);
+	printf("h->w = %d\n", hist_opt->w);
+	printf("h->p = %d\n", hist_opt->p);
+	printf("h->s = %d\n", hist_opt->s);
+	printf("h->offset = %d\n", hist_opt->c);
+	printf("h->filename = %s\n", hist_opt->filename);
+	printf("*** END ***\n");
+	histo_suite(hist_opt);
 	hist_opt = delete_struct_hist(hist_opt);
 	return (0);
 }

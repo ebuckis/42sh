@@ -6,7 +6,7 @@
 /*   By: yoginet <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/08 13:43:32 by yoginet      #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/09 16:42:52 by yoginet     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/14 13:07:42 by yoginet     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -14,19 +14,49 @@
 #include "../includes/exec.h"
 
 /*
-**	Delete Historique
+**	Found offset if option -d
 */
 
-int				delete_history(void)
+static int		found_offset(t_opt_h **h, char **arg, int j, int i)
 {
-	t_hist		*h;
+	char	*tmp;
+	int		len;
 
-	h = NULL;
-	// marche pas
-	printf("DELETE HISTORY\n");
-	//h = ft_close_hist(GET_HIST, NULL);
-	//ft_free_hist(h);
-	return (0);
+	tmp = NULL;
+	len = 0;
+	if (ft_isdigit(arg[j][i + 1]) != 1)
+	{
+		if (arg[j + 1] == NULL)
+		{
+			ft_putstr_fd("42sh: history: -d: option requires an arguments\n", 2);
+			history_usage();
+			return (-10);
+		}
+		(*h)->offset = ft_atoi(arg[j + 1]);
+		len = ft_strlen(arg[j + 1]);
+		tmp = ft_strdup(arg[j + 1]);
+	}
+	else
+	{
+		tmp = ft_strsub(arg[j], i + 1, ft_strlen(arg[j]) - (i + 1));
+		(*h)->offset = ft_atoi(tmp);
+		len = ft_strlen(tmp);
+	}
+	j = (*h)->offset;
+	i = 1;
+	while (j > 10)
+	{
+		j /= 10;
+		i++;
+	}
+	if (i != len)
+	{
+		history_out_str(tmp);
+		ft_strdel(&tmp);
+		return (-10);
+	}
+	ft_strdel(&tmp);
+	return (i);
 }
 
 /*
@@ -42,8 +72,8 @@ static int		insert_option(t_opt_h **h, char **arg, int j, int i)
 		else if (arg[j][i] == 'd')
 		{
 			(*h)->d = 1;
-			(*h)->di = i;
-			(*h)->dj = j;
+			if ((i += found_offset(h, arg, j, i)) < 0)
+				return (1);
 		}
 		else if (arg[j][i] == 'a')
 			(*h)->a = 1;
@@ -57,10 +87,9 @@ static int		insert_option(t_opt_h **h, char **arg, int j, int i)
 			(*h)->p = 1;
 		else if (arg[j][i] == 's')
 			(*h)->s = 1;
-		else if (ft_isdigit(arg[j][i]) == 0)
+		else
 		{
-			history_invalid(arg[j], 1);
-			history_usage();
+			printf("Option inconnu ? -> %s\n", arg[j] + i);
 			return (1);
 		}
 		i++;
@@ -81,7 +110,6 @@ int				search_options(t_opt_h **h, char **arg)
 		return (1);
 	while (arg[i])
 	{
-		printf("arg[i] = %s\n", arg[i]);
 		if (arg[i] == NULL)
 			return (0);
 		if (arg[i][0] == 0)
@@ -91,19 +119,17 @@ int				search_options(t_opt_h **h, char **arg)
 			if (insert_option(h, arg, i, 1) == 1)
 				return (1);
 		}
-		else if (ft_atoi(arg[i]) != 0 && (*h)->d == 0)
+		else if (ft_isdigit(arg[i][0]) == 1)
 			ft_print_history_len(ft_atoi(arg[i]));
-		else if (ft_atoi(arg[i]) != 0 && (*h)->d == 1)
-			;
 		else
 		{
-			history_invalid(arg[i], 2);
-			return (1);
+			(*h)->filename = ft_strdup(arg[i]);
+			return (0);
 		}
 
 		i++;
 	}
-	return (histo_suite(h, arg));
+	return (0);
 }
 
 /*
@@ -120,18 +146,14 @@ t_opt_h			*check_hist(char **arg)
 		return (NULL);
 	h->c = 0;
 	h->d = 0;
-	h->di = 0;
-	h->dj = 0;
 	h->a = 0;
 	h->n = 0;
 	h->r = 0;
 	h->w = 0;
 	h->p = 0;
 	h->s = 0;
-	h->arg = 0;
 	h->offset = 0;
 	h->filename = NULL;
-	h->histsize = info_histsize();
 	if (search_options(&h, arg) == 1)
 	{
 		h = delete_struct_hist(h);
