@@ -6,7 +6,7 @@
 #    By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/08/22 09:27:21 by bpajot       #+#   ##    ##    #+#        #
-#    Updated: 2018/11/14 13:15:56 by yoginet     ###    #+. /#+    ###.fr      #
+#    Updated: 2018/11/14 13:18:14 by yoginet     ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -35,6 +35,7 @@ history :
 		2- Localisation du fichier, si erreur mettre en place un define pour loc par defaut
 		3- Lors de la save limiter la taille de save
 		Pour avoir HISSIZE, HISTFILE .... ---->  exec/srcs/infos_hist.c
+		Ajouter booleen pour savoir si la ligne de l'historique vient de la session en cour ou du fichier
 
 bonus :
 - kcabus history et !
