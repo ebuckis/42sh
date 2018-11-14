@@ -6,7 +6,7 @@
 /*   By: yoginet <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/09 14:10:29 by yoginet      #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/14 14:18:02 by yoginet     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/14 14:55:00 by yoginet     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -100,21 +100,23 @@ int			histo_suite(t_opt_h *h)
 {
 	int		ret;
 
-	ret = 0;
-	printf("HISTORIQUE SUITE\n");
+	ret = -1;
 	if (h->d == 1)
-		delete_line_history(h->offset);
+		ret = delete_line_history(h->offset);
 	if (h->c == 1)
-		delete_history();
-	else if(h->a == 1)
+		ret = delete_history();
+	if (h->a == 1)
 		ret = histo_a(h);
-	else if(h->n == 1)
+	if (h->n == 1)
 		ret = histo_n(h);
-	else if(h->r == 1)
+	if (h->r == 1)
 		ret = histo_r(h);
-	else if(h->w == 1)
+	if (h->w == 1)
 		ret = histo_w(h);
-	else
+	if (ret == -1)
+	{
 		history_invalid(h->filename, 2);
+		return (1);
+	}
 	return (ret);
 }
