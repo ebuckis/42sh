@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/07/20 15:32:40 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/21 19:29:02 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/21 20:16:28 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -100,5 +100,8 @@ t_parse			*ft_dollar(t_parse *p, int i, int *j, char ***p_env);
 t_parse			*ft_tilde_dollar(t_parse *p, int i, char ***p_env);
 int				ft_equal(t_parse *p, char **arg, char ***env, int tab_pipe_i);
 int				ft_set(char ***p_env);
+int				ft_unset(char **arg, char ***p_env);
+int				ft_doublon3(char *line, char **arg);
+char			**ft_unsetenv2(char **arg, char **env, int nb_double);
 
 #endif

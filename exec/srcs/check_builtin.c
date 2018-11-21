@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/06/01 18:20:01 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/21 19:34:03 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/21 20:19:30 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -21,7 +21,8 @@ int		check_builtin(char **tab_com)
 {
 	if (tab_com && (ft_strequ(tab_com[0], "echo") || ft_strequ(tab_com[0], "cd")
 		|| ft_strequ(tab_com[0], "setenv") || ft_strequ(tab_com[0], "set")
-		|| ft_strequ(tab_com[0], "unsetenv") || ft_strequ(tab_com[0], "env")
+		|| ft_strequ(tab_com[0], "unsetenv") || ft_strequ(tab_com[0], "unset")
+		|| ft_strequ(tab_com[0], "export") || ft_strequ(tab_com[0], "env")
 		|| ft_strequ(tab_com[0], "exit") || ft_strequ(tab_com[0], "history")
 		|| ft_strchr(tab_com[0], '=')))
 		return (1);
@@ -46,6 +47,8 @@ void	run_builtin(t_parse *p, char **tab_com, char ***p_env)
 			p->ret = ft_set(p_env);
 		else if (ft_strequ(tab_com[0], "unsetenv"))
 			p->ret = ft_unsetenv(tab_com, p_env);
+		else if (ft_strequ(tab_com[0], "unset"))
+			p->ret = ft_unset(tab_com, p_env);
 		else if (ft_strequ(tab_com[0], "exit"))
 			p->ret = ft_exit(tab_com, p_env);
 		else if (ft_strchr(tab_com[0], '='))
@@ -75,6 +78,8 @@ void	run_builtin_fork(t_parse *p, char **tab_com, char ***p_env,
 			p->ret = ft_set(p_env);
 		else if (ft_strequ(tab_com[0], "unsetenv"))
 			p->ret = ft_unsetenv(tab_com, p_env);
+		else if (ft_strequ(tab_com[0], "unset"))
+			p->ret = ft_unset(tab_com, p_env);
 		else if (ft_strequ(tab_com[0], "env"))
 			p->ret = ft_env(p, tab_com, *p_env, tab_pipe_i);
 		else if (ft_strequ(tab_com[0], "exit"))
