@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/08/22 15:06:26 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/21 14:16:21 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/21 14:36:20 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -60,7 +60,6 @@ static void		ft_manage_semicolon_exit(t_parse *p, char ***p_env)
 			i++;
 		i += (p->arg_id[i]) ? 1 : 0;
 		n++;
-		ft_tilde_dollar(p, begin, p_env);
 		ft_manage_and_or(p, begin, p_env);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/08/14 12:03:04 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/21 14:14:01 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/21 14:33:51 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -61,7 +61,7 @@ t_parse			*ft_tilde_dollar(t_parse *p, int i, char ***p_env)
 	i--;
 	if (p->arg)
 	{
-		while (p->arg[++i] && p->arg_id[i][0] < SEMICOLON)
+		while (p->arg[++i] && p->arg_id[i][0] < AND)
 		{
 			if (p->arg[i][0] == '~' && p->arg_id[i][0] == WORD)
 				ft_tilde(p, i);

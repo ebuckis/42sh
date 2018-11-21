@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/07/20 15:32:40 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/21 14:15:20 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/21 14:51:55 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -97,5 +97,6 @@ int				history_invalid(char *str, int i);
 int				histo_suite(t_opt_h *h);
 t_parse			*ft_dollar(t_parse *p, int i, int *j, char ***p_env);
 t_parse			*ft_tilde_dollar(t_parse *p, int i, char ***p_env);
+int				ft_equal(char **arg, char ***env);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/04/06 14:53:11 by kcabus       #+#   ##    ##    #+#        #
-#    Updated: 2018/11/21 14:12:01 by bpajot      ###    #+. /#+    ###.fr      #
+#    Updated: 2018/11/21 14:51:41 by bpajot      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -43,6 +43,7 @@ N_SRCS =	and_or.c				\
 			ft_delete_history.c		\
 			ft_dollar.c				\
 			ft_err_hist.c			\
+			ft_equal.c				\
 			ft_history.c			\
 			ft_history_struct.c		\
 			ft_history_suite.c		\
