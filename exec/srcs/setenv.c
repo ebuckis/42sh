@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/06/05 16:51:13 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/09/27 16:05:38 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/21 16:14:24 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -57,18 +57,19 @@ char		**ft_mix_env(char **env, char **env2)
 	int		j;
 	int		k;
 
-	size_tab = ft_tab_size(env, NULL) + ft_tab_size(env2, env);
+	size_tab = ft_tab_size(env, NULL);
+	size_tab += ft_tab_size(env2, env);
 	arg = (char**)malloc(sizeof(char*) * (size_tab + 1));
 	i = 0;
 	j = -1;
-	while (env[++j])
+	while (env && env[++j])
 	{
 		if (!(ft_doublon(env[j], env2, -1)))
 			arg[i++] = ft_strdup(env[j]);
 	}
 	j = i;
 	k = i;
-	while (env2[k - j])
+	while (env2 && env2[k - j])
 	{
 		if (!ft_doublon(env2[k - j], env2, k - j))
 			arg[i++] = ft_strdup(env2[k - j]);

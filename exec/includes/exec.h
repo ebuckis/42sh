@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/07/20 15:32:40 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/21 14:51:55 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/21 16:11:26 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -64,6 +64,7 @@ int				display_env(char **env);
 char			**ft_mix_env(char **env, char **env2);
 int				ft_doublon(char *line, char **arg, int j);
 int				ft_tab_size(char **arg, char **tab_ref);
+int				ft_tab_size2(char **arg);
 int				ft_setenv(char **arg, char ***env);
 int				ft_unsetenv(char **arg, char ***env);
 void			manage_signal(void);

@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/06/04 14:50:45 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/22 12:54:12 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/21 16:12:15 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -47,7 +47,7 @@ int				ft_doublon(char *line, char **arg, int j)
 }
 
 /*
-** return la taille du tableau qui sera la fusuon de env et env2 sans les
+** return la taille du tableau qui sera la fusion de env et env2 sans les
 ** doublons
 */
 
@@ -58,6 +58,10 @@ int				ft_tab_size(char **arg, char **tab_ref)
 
 	i = -1;
 	doublon = 0;
+	if (!arg)
+		return (ft_tab_size2(tab_ref));
+	if (!tab_ref)
+		return (ft_tab_size2(arg));
 	while (arg[++i])
 		doublon += (tab_ref && (ft_doublon(arg[i], tab_ref, -1) ||
 					ft_doublon(arg[i], arg, i))) ? 1 : 0;

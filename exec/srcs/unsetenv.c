@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/06/06 15:06:04 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/09/27 16:12:17 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/21 16:11:08 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -61,7 +61,7 @@ static int	ft_doublon2(char *line, char **arg)
 	return (0);
 }
 
-static int	ft_tab_size2(char **arg)
+int			ft_tab_size2(char **arg)
 {
 	int		i;
 
