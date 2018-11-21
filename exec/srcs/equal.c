@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/21 14:50:43 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/21 16:15:14 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/21 18:01:07 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -14,7 +14,7 @@
 #include "exec.h"
 
 /*
-** 
+** ajoute une ligne aux variables locales si pas doublons, sinon remplace
 */
 
 static int			ft_setenvloc2(char *str, char ***p_env)
@@ -41,10 +41,11 @@ static int			ft_setenvloc2(char *str, char ***p_env)
 ** la fin des arguments est traite comme une commande normale via env
 */
 
-int			ft_equal(char **arg, char ***p_env)
+int			ft_equal(t_parse *p, char **arg, char ***p_env)
 {
 	int		i;
 	int		ret;
+	int		tab_pipe[2];
 
 	ret = 1;
 	i = -1;
@@ -57,10 +58,12 @@ int			ft_equal(char **arg, char ***p_env)
 		}
 		ret = ft_setenvloc2(arg[i], p_env);
 	}
+	//display_env(p_env[1]);
 	if (arg[i])
-		;
-	//env du reste
-	ft_printf("debug display var local\n");
-	display_env(p_env[1]);
+	{
+		tab_pipe[0] = i;
+		tab_pipe[1] = -1;
+		ft_fork_shell(p, tab_pipe, p_env, 0);
+	}
 	return (ret);
 }

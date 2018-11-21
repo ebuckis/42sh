@@ -6,7 +6,7 @@
 #    By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/04/06 14:53:11 by kcabus       #+#   ##    ##    #+#        #
-#    Updated: 2018/11/21 15:50:02 by bpajot      ###    #+. /#+    ###.fr      #
+#    Updated: 2018/11/21 18:04:53 by bpajot      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -59,6 +59,7 @@ N_SRCS =	and_or.c				\
 			redir.c					\
 			ret_display.c			\
 			setenv.c				\
+			set.c					\
 			unsetenv.c
 
 all : $(NAME)

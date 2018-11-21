@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/06/05 16:51:13 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/21 16:14:24 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/21 18:08:24 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -18,8 +18,11 @@ int			display_env(char **env)
 	int		i;
 
 	i = -1;
-	while (env[++i])
-		ft_putendl(env[i]);
+	if (env)
+	{
+		while (env[++i])
+			ft_putendl(env[i]);
+	}
 	return (0);
 }
 
