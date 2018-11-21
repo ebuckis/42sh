@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/08/22 15:06:26 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/07 15:14:13 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/21 14:16:21 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -92,13 +92,19 @@ static int		main2(char *string, char ***p_env, int debug, int ret)
 	return (ret);
 }
 
+/*
+** affichage ascii art au demarrage
+** puis prompt turquoise si retour commande = 0 , sinon prompt rouge
+** my_env[0] = listing variables d'environnement recupere au lancement de 42sh
+** my_env[1] = listing variables locales (vide au demarrage)
+*/
+
 int				main(int argc, char *argv[], char *env[])
 {
 	char			*string;
 	int				begin;
-	char			**my_env;
+	char			***my_env;
 	static int		ret = 0;
-	char			prompt[30];
 
 	if (!isatty(0))
 		return (0);
@@ -107,15 +113,16 @@ int				main(int argc, char *argv[], char *env[])
 	begin = 0;
 	while (101)
 	{
-		ft_strcpy(prompt, (ret) ? "\033[31m42sh $> \033[00m" :
-				"\033[36m42sh $> \033[00m");
-		string = (!begin++) ? ft_strdup("toilet -f bigascii12  42 sh | lolcat\
-			; setenv CLICOLOR 1")
-			: ft_edition(prompt);
-		if (argc == 2 && ft_strstr(argv[1], "debug"))
-			ret = main2(string, &my_env, 1, ret);
+		if (!begin++)
+			string = ft_strdup("toilet -f bigascii12  42 sh | lolcat\
+			; setenv CLICOLOR 1");
 		else
-			ret = main2(string, &my_env, 0, ret);
+			string = ft_edition((ret) ? "\033[31m42sh $> \033[00m" :
+				"\033[36m42sh $> \033[00m");
+		if (argc == 2 && ft_strstr(argv[1], "debug"))
+			ret = main2(string, my_env, 1, ret);
+		else
+			ret = main2(string, my_env, 0, ret);
 	}
 	return (0);
 }

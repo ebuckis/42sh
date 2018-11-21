@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/06 16:15:29 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/06 16:43:59 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/21 13:58:04 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -35,7 +35,7 @@ int		ft_exit(char **arg, char ***p_env)
 		}
 	}
 	ft_printf("exit\n");
-	ft_free_tab(p_env);
+	ft_free_tab3(p_env);
 	ft_free_tab(&arg);
 	ft_close_hist(CLOSE_HIST, NULL);
 	exit(ret);

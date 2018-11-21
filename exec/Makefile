@@ -6,7 +6,7 @@
 #    By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/04/06 14:53:11 by kcabus       #+#   ##    ##    #+#        #
-#    Updated: 2018/11/14 10:37:44 by yoginet     ###    #+. /#+    ###.fr      #
+#    Updated: 2018/11/21 14:12:01 by bpajot      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -32,30 +32,32 @@ OBJ_NAME = $(N_SRCS:.c=.o)
 N_SRCS =	and_or.c				\
 			cd.c					\
 			cd_suite.c				\
-			delete_heredoc.c		\
 			check_bin.c				\
 			check_builtin.c			\
+			delete_heredoc.c		\
 			echo.c					\
-			ft_history.c			\
-			ft_history_suite.c		\
-			ft_history_struct.c		\
-			ft_delete_history.c		\
-			ft_err_hist.c			\
-			infos_hist.c			\
 			env.c					\
 			execve.c				\
 			exit.c					\
 			fork.c					\
+			ft_delete_history.c		\
+			ft_dollar.c				\
+			ft_err_hist.c			\
+			ft_history.c			\
+			ft_history_struct.c		\
+			ft_history_suite.c		\
+			ft_len_tab.c			\
 			ft_redir_in.c			\
 			ft_redir_out.c			\
+			ft_tilde_dollar.c		\
 			getenv.c				\
+			infos_hist.c			\
 			manage_redir.c			\
 			manage_signal.c			\
 			pipes.c					\
 			redir.c					\
 			ret_display.c			\
 			setenv.c				\
-			ft_len_tab.c			\
 			unsetenv.c
 
 all : $(NAME)

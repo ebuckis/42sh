@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/07/20 15:32:40 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/14 12:56:00 by yoginet     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/21 14:15:20 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -38,7 +38,6 @@ typedef struct	s_opt_h
 	char		*filename;
 }				t_opt_h;
 
-
 void			ft_manage_pipe(t_parse *p, int begin, char ***p_env);
 void			ft_fork_shell(t_parse *p, int *tab_pipe, char ***p_env,
 		int nb_pipe);
@@ -51,7 +50,7 @@ void			run_builtin_fork(t_parse *p, char **tab_com, char ***p_env,
 		int tab_pipe_i);
 char			*check_bin(char **tab_pipe_i, char **env);
 void			ft_execve(t_parse *p, int tab_pipe_i, char ***p_env);
-char			**ft_getenv(int argc, char **argv, char **env);
+char			***ft_getenv(int argc, char **argv, char **env);
 char			*ft_home(char **env);
 char			*ft_getpwd(char **env, int old);
 void			ft_setpwd(char **env, int old, char *pwd);
@@ -96,5 +95,7 @@ int				history_out(int id);
 int				history_out_str(char *str);
 int				history_invalid(char *str, int i);
 int				histo_suite(t_opt_h *h);
+t_parse			*ft_dollar(t_parse *p, int i, int *j, char ***p_env);
+t_parse			*ft_tilde_dollar(t_parse *p, int i, char ***p_env);
 
 #endif

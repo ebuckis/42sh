@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/05/31 09:21:41 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/09/03 15:05:16 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/21 13:31:08 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -17,23 +17,26 @@
 ** retourne l'env au lancement d'un programme
 */
 
-char		**ft_getenv(int argc, char *argv[], char *env[])
+char		***ft_getenv(int argc, char *argv[], char *env[])
 {
 	int		i;
-	char	**myenv;
+	char	***myenv;
 
-	argc = 1;
-	argv = NULL;
-	i = -1;
-	if (!env)
+	if (!(myenv = (char***)malloc(sizeof(char**) * 2)) || argc < 0 || argv < 0)
 		return (NULL);
+	myenv[0] = NULL;
+	myenv[1] = NULL;
+	if (!env)
+		return (myenv);
+	i = -1;
 	while (env[++i])
 		;
-	myenv = (char**)malloc(sizeof(char*) * (i + 1));
+	if (!(myenv[0] = (char**)malloc(sizeof(char*) * (i + 1))))
+		return (NULL);
 	i = -1;
 	while (env[++i])
-		myenv[i] = ft_strdup(env[i]);
-	myenv[i] = NULL;
+		myenv[0][i] = ft_strdup(env[i]);
+	myenv[0][i] = NULL;
 	i = -1;
 	return (myenv);
 }

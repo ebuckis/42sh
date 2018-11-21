@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/08/27 08:57:09 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/24 15:51:09 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/21 14:09:50 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -73,7 +73,6 @@ int				ft_is_white(char c);
 int				ft_is_red(char c);
 int				ft_parse_dquote(t_parse *p);
 int				ft_parse_quote(t_parse *p);
-t_parse			*ft_tilde_dollar(t_parse *p, int i, char ***p_env);
 int				ft_suite_line(t_parse *p, int i, char *prompt);
 void			ft_end_while(t_parse *p, char c);
 int				ft_separator(t_parse *p, int tmp);
@@ -94,6 +93,5 @@ void			ft_free_tab3(char ***t);
 void			ft_add_space(t_parse *p);
 void			ft_realloc_space(t_parse *p);
 int				ft_heredoc(t_parse *p);
-t_parse			*ft_dollar(t_parse *p, int i, int *j, char ***p_env);
 
 #endif

@@ -6,12 +6,12 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/08/14 12:03:04 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/24 15:50:50 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/21 14:14:01 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "ft_parser.h"
+#include "../includes/exec.h"
 
 char			*ft_strjoin_free(char *line1, char *line2, int i, int j)
 {
@@ -26,7 +26,7 @@ char			*ft_strjoin_free(char *line1, char *line2, int i, int j)
 }
 
 /*
-** remplacement de la string
+** remplacement ~ par la value de la variable HOME
 */
 
 static t_parse	*ft_tilde(t_parse *p, int i)
@@ -48,6 +48,11 @@ static t_parse	*ft_tilde(t_parse *p, int i)
 	}
 	return (p);
 }
+
+/*
+** on boucle sur les arguments afin de remplacer un ~ ou encore un $
+** par les variables associees
+*/
 
 t_parse			*ft_tilde_dollar(t_parse *p, int i, char ***p_env)
 {
@@ -75,8 +80,3 @@ t_parse			*ft_tilde_dollar(t_parse *p, int i, char ***p_env)
 	}
 	return (p);
 }
-
-/*
-** on boucle sur les arguments afin de remplacer un ~ ou encore un $
-** par les variables associees
-*/
