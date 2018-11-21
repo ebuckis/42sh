@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/21 14:50:43 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/21 18:01:07 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/21 19:59:03 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -17,13 +17,13 @@
 ** ajoute une ligne aux variables locales si pas doublons, sinon remplace
 */
 
-static int			ft_setenvloc2(char *str, char ***p_env)
+static int	ft_setenvloc2(char *str, char ***p_env)
 {
 	char	**env2;
 	char	**tmp;
 
 	if (!(env2 = (char**)malloc(sizeof(char*) * 2)))
-		return(1);
+		return (1);
 	env2[0] = ft_strdup(str);
 	env2[1] = NULL;
 	tmp = ft_mix_env(p_env[1], env2);
@@ -33,19 +33,36 @@ static int			ft_setenvloc2(char *str, char ***p_env)
 	return (0);
 }
 
+static void	ft_equal2(t_parse *p, char ***p_env, int pos_cmd)
+{
+	int		pid;
+	int		status;
+
+	pid = fork();
+	if (pid == 0)
+		ft_execve(p, pos_cmd, p_env);
+	else
+	{
+		waitpid(pid, &status, WUNTRACED);
+		if (WIFSTOPPED(status) && WSTOPSIG(status) == 18)
+			kill(pid, 1);
+		ft_ret_display(p, pid, status);
+	}
+}
+
 /*
-* built-in equal : si presence de = dans arg , il faut au moins un char avant
+** built-in equal : si presence de = dans arg , il faut au moins un char avant
 ** il peut ne rien avoir apres le egal
 ** a stocker dans p_env[1] (partie var locale)
 ** il peut y avoir plusieurs arg susccessif avec =
-** la fin des arguments est traite comme une commande normale via env
+** la fin des arguments est traite comme une commande normale
+** besoin de la forker dans le cas ou zero pipe (tab_pipe_i = - 1)
 */
 
-int			ft_equal(t_parse *p, char **arg, char ***p_env)
+int			ft_equal(t_parse *p, char **arg, char ***p_env, int tab_pipe_i)
 {
 	int		i;
 	int		ret;
-	int		tab_pipe[2];
 
 	ret = 1;
 	i = -1;
@@ -58,12 +75,13 @@ int			ft_equal(t_parse *p, char **arg, char ***p_env)
 		}
 		ret = ft_setenvloc2(arg[i], p_env);
 	}
-	//display_env(p_env[1]);
-	if (arg[i])
+	if (arg[i] && ret == 0)
 	{
-		tab_pipe[0] = i;
-		tab_pipe[1] = -1;
-		ft_fork_shell(p, tab_pipe, p_env, 0);
+		if (tab_pipe_i < 0 && ft_strcmp(arg[i], "exit"))
+			ft_equal2(p, p_env, tab_pipe_i + i);
+		else
+			ft_execve(p, tab_pipe_i + i, p_env);
+		ret = p->ret;
 	}
 	return (ret);
 }
