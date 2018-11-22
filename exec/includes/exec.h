@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/07/20 15:32:40 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/21 20:16:28 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/22 12:14:40 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -103,5 +103,7 @@ int				ft_set(char ***p_env);
 int				ft_unset(char **arg, char ***p_env);
 int				ft_doublon3(char *line, char **arg);
 char			**ft_unsetenv2(char **arg, char **env, int nb_double);
+int				ft_export(char **arg, char ***p_env);
+char			*get_value(char ***p_env, char *key, int start, int end);
 
 #endif

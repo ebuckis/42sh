@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/06/01 18:20:01 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/21 20:19:30 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/22 12:03:07 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -45,6 +45,8 @@ void	run_builtin(t_parse *p, char **tab_com, char ***p_env)
 			p->ret = ft_setenv(tab_com, p_env);
 		else if (ft_strequ(tab_com[0], "set"))
 			p->ret = ft_set(p_env);
+		else if (ft_strequ(tab_com[0], "export"))
+			p->ret = ft_export(tab_com, p_env);
 		else if (ft_strequ(tab_com[0], "unsetenv"))
 			p->ret = ft_unsetenv(tab_com, p_env);
 		else if (ft_strequ(tab_com[0], "unset"))
@@ -76,6 +78,8 @@ void	run_builtin_fork(t_parse *p, char **tab_com, char ***p_env,
 			p->ret = ft_setenv(tab_com, p_env);
 		else if (ft_strequ(tab_com[0], "set"))
 			p->ret = ft_set(p_env);
+		else if (ft_strequ(tab_com[0], "export"))
+			p->ret = ft_export(tab_com, p_env);
 		else if (ft_strequ(tab_com[0], "unsetenv"))
 			p->ret = ft_unsetenv(tab_com, p_env);
 		else if (ft_strequ(tab_com[0], "unset"))

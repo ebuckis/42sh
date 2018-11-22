@@ -6,21 +6,21 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/08/22 14:11:36 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/21 14:13:47 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/22 12:15:03 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../includes/exec.h"
 
-static char		*get_value(char ***p_env, char *key)
+char			*get_value(char ***p_env, char *key, int start, int end)
 {
 	int		i;
 	int		j;
 	char	*tmp;
 
-	i = -1;
-	while (++i < 2)
+	i = start - 1;
+	while (++i <= end)
 	{
 		j = -1;
 		while (p_env[i] && p_env[i][++j])
@@ -101,7 +101,7 @@ t_parse			*ft_dollar(t_parse *p, int i, int *j, char ***p_env)
 		d.key = ft_itoa(getpid());
 	else
 		d.key = (ft_strequ(d.var, "?")) ?
-			ft_itoa(p->ret) : get_value(p_env, d.var);
+			ft_itoa(p->ret) : get_value(p_env, d.var, 0, 1);
 	if (j)
 		d.tmp = ft_strjoin_free(ft_strsub(p->arg[i], 0, *j), d.key, 1, 0);
 	else
