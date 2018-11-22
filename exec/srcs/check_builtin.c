@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/06/01 18:20:01 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/22 13:25:48 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/22 13:26:44 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -63,9 +63,9 @@ void	run_builtin_fork2(t_parse *p, char **tab_com, char ***p_env,
 		int tab_pipe_i)
 {
 	if (ft_strequ(tab_com[0], "history"))
-			p->ret = ft_history(tab_com, p_env);
+		p->ret = ft_history(tab_com, p_env);
 	else if (ft_strchr(tab_com[0], '='))
-			p->ret = ft_equal(p, tab_com, p_env, tab_pipe_i);
+		p->ret = ft_equal(p, tab_com, p_env, tab_pipe_i);
 	exit(p->ret);
 }
 

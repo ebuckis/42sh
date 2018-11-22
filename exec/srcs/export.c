@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/21 20:09:29 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/22 13:15:42 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/22 13:27:21 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -31,7 +31,6 @@ int			ft_export(char **arg, char ***p_env)
 	{
 		if (arg[i] && (val = get_value(p_env, arg[i], 1, 1)))
 		{
-			printf("%s\n", val);
 			env2 = (char**)malloc(sizeof(char*) * 2);
 			tmp = ft_strjoin(arg[i], "=");
 			env2[0] = ft_strjoin(tmp, val);
