@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/08/27 11:55:19 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/09/27 15:53:14 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/23 12:12:40 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -19,12 +19,15 @@
 
 static int		ft_get_redir_fd1(t_parse *p, int *i, char **env)
 {
-	char	*path;
-	int		fd;
+	char		*path;
+	int			fd;
+	struct stat	buf;
 
 	path = get_path_redir(p, i, env);
 	if ((fd = open(path, O_RDONLY)) >= 0)
 		dup2(fd, STDIN_FILENO);
+	if (fd < 0 && stat(path, &buf) < 0)
+		fd = -2;
 	ft_strdel(&path);
 	return (fd);
 }
@@ -35,12 +38,15 @@ static int		ft_get_redir_fd1(t_parse *p, int *i, char **env)
 
 static int		ft_get_redir_fd2(t_parse *p, int *i, char **env, int n)
 {
-	int		fd;
-	char	*path;
+	int			fd;
+	char		*path;
+	struct stat	buf;
 
 	path = get_path_redir(p, i, env);
 	if ((fd = open(path, O_RDONLY)) >= 0)
 		dup2(fd, n);
+	if (fd < 0 && stat(path, &buf) < 0)
+		fd = -2;
 	ft_strdel(&path);
 	return (fd);
 }
@@ -76,6 +82,7 @@ int				ft_redir_in(t_parse *p, int *i, char **env)
 		return (-1);
 	}
 	if (fd < 0)
-		ft_putendl_fd_arg("42sh: Permission denied: ", p->arg[*i]);
+		n = (fd == -2) ? ft_putendl_fd_arg("42sh: No file: ", p->arg[*i]) :
+			ft_putendl_fd_arg("42sh: Permission denied: ", p->arg[*i]);
 	return (fd);
 }

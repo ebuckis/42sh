@@ -6,7 +6,7 @@
 /*   By: yoginet <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/06 10:44:16 by yoginet      #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/06 10:44:19 by yoginet     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/23 11:49:55 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -50,11 +50,12 @@ static int		actualise_env(char *new_pwd, char ***p_env)
 ** gestion du cd -, des paths absolus et relatifs et des erreurs
 */
 
-void			ft_putendl_fd_arg(char *str, char *path)
+int				ft_putendl_fd_arg(char *str, char *path)
 {
 	ft_putstr_fd(str, 2);
 	ft_putstr_fd(path, 2);
 	ft_putstr_fd("\n", 2);
+	return (0);
 }
 
 /*

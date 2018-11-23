@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/07/20 15:32:40 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/22 12:14:40 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/23 11:50:06 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -72,7 +72,7 @@ int				ft_ret_display(t_parse *p, pid_t pid, int status);
 int				ft_redir_out(t_parse *p, int *i, char **env);
 int				ft_redir_in(t_parse *p, int *i, char **env);
 char			*get_path_redir(t_parse *p, int *i, char **env);
-void			ft_putendl_fd_arg(char *str, char *path);
+int				ft_putendl_fd_arg(char *str, char *path);
 void			ft_manage_and_or(t_parse *p, int begin, char ***p_env);
 int				delete_heredoc(char *file);
 int				ft_exit(char **arg, char ***p_env);
