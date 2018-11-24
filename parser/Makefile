@@ -6,7 +6,7 @@
 #    By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/04/06 14:53:11 by kcabus       #+#   ##    ##    #+#        #
-#    Updated: 2018/11/21 14:09:26 by bpajot      ###    #+. /#+    ###.fr      #
+#    Updated: 2018/11/24 15:13:49 by kcabus      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -47,7 +47,7 @@ all : $(NAME)
 
 $(NAME):	$(OBJ)
 			@ar rc $(NAME) $(OBJ) 
-			@printf "\033[34m parser OK ! \n\033[0m"
+			@printf "\033[34;5m parser OK ! \n\033[0m"
 
 $(OBJ_PATH)%.o:	$(SRC_PATH)%.c
 				@mkdir -p $(OBJ_PATH)
