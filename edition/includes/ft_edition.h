@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/06/18 14:40:55 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/09 15:20:09 by yoginet     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/24 11:06:14 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -28,6 +28,7 @@
 # define KEY_CTRL_D			(buf[0] == 4 && !buf[1])
 # define KEY_CODE_DEL		(buf[0] == 127 && !buf[1])
 # define SIG_CTRLD			-4
+# define EVENT_NO_FOUND		-3
 # define IS_PRINTABLE		(buf[0] > 31 && buf[0] < 127 && !buf[1])
 # define KEY_CTRL_U			(buf[0] == 21 && !buf[1])
 # define KEY_CTRL_K			(buf[0] == 11 && !buf[1])
@@ -56,11 +57,11 @@
 # define NEXT_HIST		1
 # define PREV_HIST		-1
 
-# define ID_NUM_NULL			-1
+# define ID_NUM_NULL		-1
 # define LAST_ID_NUM_NULL	-2
-# define OCCURRENCE_NULL		-3
+# define OCCURRENCE_NULL	-3
 # define ID_NUM				1
-# define LAST_ID_NUM			2
+# define LAST_ID_NUM		2
 # define OCCURRENCE			3
 
 # include "../../libft/includes/libft.h"
