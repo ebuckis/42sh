@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/06/01 18:20:01 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/22 13:26:44 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/26 14:46:11 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -31,49 +31,41 @@ int		check_builtin(char **tab_com)
 }
 
 /*
-** lance le builtin sans fork si pas de pipe seulement pour cd, setenv
-** et unsetenv qui modifie l'env
+** lance le builtin et free tab_com (pas le cas pour builtin dans env)
 */
 
-void	run_builtin(t_parse *p, char **tab_com, char ***p_env)
+void	run_builtin_free(t_parse *p, char **tab_com, char ***p_env,
+		int tab_pipe_i)
 {
-	if (tab_com)
-	{
-		if (ft_strequ(tab_com[0], "cd"))
-			p->ret = ft_cd(tab_com, p_env);
-		else if (ft_strequ(tab_com[0], "setenv"))
-			p->ret = ft_setenv(tab_com, p_env);
-		else if (ft_strequ(tab_com[0], "set"))
-			p->ret = ft_set(p_env);
-		else if (ft_strequ(tab_com[0], "export"))
-			p->ret = ft_export(tab_com, p_env);
-		else if (ft_strequ(tab_com[0], "unsetenv"))
-			p->ret = ft_unsetenv(tab_com, p_env);
-		else if (ft_strequ(tab_com[0], "unset"))
-			p->ret = ft_unset(tab_com, p_env);
-		else if (ft_strequ(tab_com[0], "exit"))
-			p->ret = ft_exit(tab_com, p_env);
-		else if (ft_strchr(tab_com[0], '='))
-			p->ret = ft_equal(p, tab_com, p_env, -1);
-		ft_free_tab(&tab_com);
-	}
+	run_builtin(p, tab_com, p_env, tab_pipe_i);
+	ft_free_tab(&tab_com);
 }
 
-void	run_builtin_fork2(t_parse *p, char **tab_com, char ***p_env,
+/*
+** lance le builtin et exit dans le cas d'un fork
+*/
+
+void	run_builtin_exit(t_parse *p, char **tab_com, char ***p_env,
+		int tab_pipe_i)
+{
+	run_builtin_free(p, tab_com, p_env, tab_pipe_i);
+	exit(p->ret);
+}
+
+void	run_builtin2(t_parse *p, char **tab_com, char ***p_env,
 		int tab_pipe_i)
 {
 	if (ft_strequ(tab_com[0], "history"))
 		p->ret = ft_history(tab_com, p_env);
 	else if (ft_strchr(tab_com[0], '='))
 		p->ret = ft_equal(p, tab_com, p_env, tab_pipe_i);
-	exit(p->ret);
 }
 
 /*
-** lance le builtin apres fork et exit une fois le builtin fini
+** lance le builtin
 */
 
-void	run_builtin_fork(t_parse *p, char **tab_com, char ***p_env,
+void	run_builtin(t_parse *p, char **tab_com, char ***p_env,
 		int tab_pipe_i)
 {
 	if (tab_com)
@@ -97,7 +89,6 @@ void	run_builtin_fork(t_parse *p, char **tab_com, char ***p_env,
 		else if (ft_strequ(tab_com[0], "exit"))
 			p->ret = ft_exit(tab_com, p_env);
 		else
-			run_builtin_fork2(p, tab_com, p_env, tab_pipe_i);
+			run_builtin2(p, tab_com, p_env, tab_pipe_i);
 	}
-	exit(p->ret);
 }
