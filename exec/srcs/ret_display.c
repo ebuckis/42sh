@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/08/29 11:37:28 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/19 11:30:37 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/26 13:19:18 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -82,6 +82,7 @@ static void		ft_ret_display_signal(pid_t pid, int status, int stop)
 		else
 			ft_ret_display_signal2(signal);
 		ft_ret_display_signal4(signal);
+		ft_printf("%C\n", L'💣');
 	}
 }
 
