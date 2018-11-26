@@ -12,20 +12,7 @@
 /* ************************************************************************** */
 
 #include "autocomp.h"
-#include <sys/types.h>
 #include <pwd.h>
-
-static char	*get_user(void)
-{
-	uid_t			uid;
-	char			*name;
-	struct passwd	*pw;
-
-	uid = getuid();
-	pw = getpwuid(uid);//FIXME: voir si autorisée
-	name = ft_strdup(pw->pw_name);
-	return (name);
-}
 
 void		remove_end(char **str)
 {
@@ -57,10 +44,10 @@ void		change_tilde(char **str, t_navig *info)
 	int		i;
 
 	i = 1;
-	usr = get_user();
-	tmp = ft_strdup("/Users/");
-	tmp = str_append(tmp, usr);
-	ft_strdel(&usr);
+	usr = getenv("HOME");
+	if (!usr)
+		return ;
+	tmp = ft_strdup(usr);
 	tmp2 = ft_strnew(ft_strlen(*str) - 1);
 	while ((*str)[i])
 	{

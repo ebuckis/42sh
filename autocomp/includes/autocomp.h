@@ -94,10 +94,11 @@ void					*free_lst(t_list *lst);
 int						ft_putchar_err(int c);
 void					autocomp(t_navig *info);
 char					*str_append(char *s1, char *s2);
-void	   				change_tilde(char **str, t_navig *info);
+void					change_tilde(char **str, t_navig *info);
 void					add_bs_in_str(char **str);
 int						add_bs(char *str);
-void					free_init_slct(char **table, char **pathes, char **line);
+void					free_init_slct(char **table, char **pathes,
+						char **line);
 int						ends_wo_space(char **table, char **pathes);
 
 #endif
