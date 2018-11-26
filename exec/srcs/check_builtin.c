@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/06/01 18:20:01 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/22 13:26:44 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/26 14:06:46 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -35,11 +35,13 @@ int		check_builtin(char **tab_com)
 ** et unsetenv qui modifie l'env
 */
 
-void	run_builtin(t_parse *p, char **tab_com, char ***p_env)
+/*void	run_builtin(t_parse *p, char **tab_com, char ***p_env)
 {
 	if (tab_com)
 	{
-		if (ft_strequ(tab_com[0], "cd"))
+		if (ft_strequ(tab_com[0], "echo"))//
+			p->ret = ft_echo(tab_com);//
+		else if (ft_strequ(tab_com[0], "cd"))
 			p->ret = ft_cd(tab_com, p_env);
 		else if (ft_strequ(tab_com[0], "setenv"))
 			p->ret = ft_setenv(tab_com, p_env);
@@ -53,11 +55,15 @@ void	run_builtin(t_parse *p, char **tab_com, char ***p_env)
 			p->ret = ft_unset(tab_com, p_env);
 		else if (ft_strequ(tab_com[0], "exit"))
 			p->ret = ft_exit(tab_com, p_env);
+		else if (ft_strequ(tab_com[0], "env"))//
+			p->ret = ft_env(p, tab_com, *p_env, tab_pipe_i);//
+		else if (ft_strequ(tab_com[0], "history"))//
+			p->ret = ft_history(tab_com, p_env);//
 		else if (ft_strchr(tab_com[0], '='))
 			p->ret = ft_equal(p, tab_com, p_env, -1);
 		ft_free_tab(&tab_com);
 	}
-}
+}*/
 
 void	run_builtin_fork2(t_parse *p, char **tab_com, char ***p_env,
 		int tab_pipe_i)
@@ -66,7 +72,7 @@ void	run_builtin_fork2(t_parse *p, char **tab_com, char ***p_env,
 		p->ret = ft_history(tab_com, p_env);
 	else if (ft_strchr(tab_com[0], '='))
 		p->ret = ft_equal(p, tab_com, p_env, tab_pipe_i);
-	exit(p->ret);
+	//exit(p->ret);
 }
 
 /*
@@ -99,5 +105,5 @@ void	run_builtin_fork(t_parse *p, char **tab_com, char ***p_env,
 		else
 			run_builtin_fork2(p, tab_com, p_env, tab_pipe_i);
 	}
-	exit(p->ret);
+	//exit(p->ret);
 }
