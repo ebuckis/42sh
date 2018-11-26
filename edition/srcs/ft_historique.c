@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/07/25 19:03:29 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/25 15:49:29 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/26 14:10:51 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -85,16 +85,12 @@ int				ft_open_hist(void)
 {
 	t_hist	*h;
 
-	if (!(h = ft_close_hist(GET_HIST, NULL)))
-	{
-		if (!(h = ft_init_hist()))
-			return (0);
-		ft_give_hist(SAVE_HIST, h);
-		ft_close_hist(SAVE_HIST, h);
-		ft_file_to_list();
-	}
-	else
-		ft_give_hist(SAVE_HIST, h);
+	if ((h = ft_close_hist(GET_HIST, NULL)))
+		return (1);
+	if (!(h = ft_init_hist()))
+		return (0);
+	ft_close_hist(SAVE_HIST, h);
+	ft_file_to_list();
 	return (1);
 }
 

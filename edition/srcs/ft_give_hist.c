@@ -6,19 +6,20 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/07/12 16:27:53 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/22 17:30:49 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/26 14:12:07 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "ft_edition.h"
 
-char	*ft_give_hist(int i, t_hist *list)
+char	*ft_give_hist(int i)
 {
-	static t_hist	*h = NULL;
+	t_hist	*h = NULL;
 
-	if (i == SAVE_HIST)
-		h = list;
+	h = ft_close_hist(GET_HIST, NULL);
+	if (!h)
+		return (NULL);
 	else if (i == NEXT_HIST && h->next)
 		h = h->next;
 	else if (i == PREV_HIST && h->prev)
