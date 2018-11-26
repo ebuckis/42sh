@@ -6,7 +6,7 @@
 /*   By: yoginet <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/14 10:29:36 by yoginet      #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/14 15:52:18 by yoginet     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/26 14:22:39 by yoginet     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -19,7 +19,16 @@
 
 int			delete_history(void)
 {
-	printf("DELETE History (a faire)\n");
+	t_hist	*h;
+
+	h = NULL;
+	printf("%s START\n", __func__);
+	h = ft_close_hist(GET_HIST, NULL);
+	if (h && h->next)
+		ft_free_hist(&h);
+	ft_close_hist(SAVE_HIST, NULL);
+	printf("%s END\n", __func__);
+	printf("DELETE FILE\n");
 	return (0);
 }
 
