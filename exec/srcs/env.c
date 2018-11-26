@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/06/04 14:50:45 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/21 17:33:11 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/26 14:29:32 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -82,7 +82,7 @@ static int		ft_env3(t_parse *p, char **arg, char **env, int i)
 	if (arg[i % 100])
 	{
 		if (check_builtin(&arg[i % 100]))
-			run_builtin_fork(p, &arg[i % 100], &env, i / 100);
+			run_builtin(p, &arg[i % 100], &env, i / 100);
 		else
 		{
 			pid = fork();

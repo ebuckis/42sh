@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/05/29 10:59:08 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/26 14:08:24 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/26 14:47:12 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -139,14 +139,12 @@ void			ft_fork_shell(t_parse *p, int *tab_pipe, char ***p_env,
 	if (!nb_pipe && check_builtin(&(p->arg[tab_pipe[0]])))
 	{
 		tab_com = manage_redir(p, 0, p_env, 1);
-		run_builtin_fork(p, tab_com, p_env, tab_pipe[0]);
-		//run_builtin(p, tab_com, p_env);
+		run_builtin_free(p, tab_com, p_env, tab_pipe[0]);
 	}
 	else if (ft_strequ(p->arg[tab_pipe[0]], "exit"))
 	{
 		tab_com = manage_redir(p, tab_pipe[0], p_env, 0);
-		run_builtin_fork(p, tab_com, p_env, tab_pipe[0]);
-		//run_builtin(p, tab_com, p_env);
+		run_builtin_free(p, tab_com, p_env, tab_pipe[0]);
 	}
 	else
 		ft_fork_shell2(p, tab_pipe, p_env, nb_pipe);

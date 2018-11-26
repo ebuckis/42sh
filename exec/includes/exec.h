@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/07/20 15:32:40 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/23 11:50:06 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/26 14:47:08 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -45,8 +45,11 @@ char			**manage_redir(t_parse *p, int begin, char ***p_env, int off);
 void			ft_redir(t_parse *p, int redir_lim[2], char **env,
 		int nb_redirec);
 int				check_builtin(char **tab_pipe_i);
-void			run_builtin(t_parse *p, char **tab_com, char ***p_env);
-void			run_builtin_fork(t_parse *p, char **tab_com, char ***p_env,
+void			run_builtin_free(t_parse *p, char **tab_com, char ***p_env,
+		int tab_pipe_i);
+void			run_builtin_exit(t_parse *p, char **tab_com, char ***p_env,
+		int tab_pipe_i);
+void			run_builtin(t_parse *p, char **tab_com, char ***p_env,
 		int tab_pipe_i);
 char			*check_bin(char **tab_pipe_i, char **env);
 void			ft_execve(t_parse *p, int tab_pipe_i, char ***p_env);
