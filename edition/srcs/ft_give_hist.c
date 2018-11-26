@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/07/12 16:27:53 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/26 14:12:07 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/26 14:24:44 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -35,4 +35,8 @@ char	*ft_give_hist(int i)
 ** i == -1 && il y a un maillon avant -> prev
 ** sinon on NULL
 ** et on revoie le char * correspondant a l'historique demandé
+*/
+
+/*
+** TODO: var static a remettre a zero
 */
