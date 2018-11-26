@@ -53,7 +53,7 @@ static void	fill_dir(t_slct *root, t_navig *info, char **line, char **table)
 		i++;
 	if (info->letters && i && !ft_strcmp(table[i - 1], info->letters))
 		ft_strdel(&info->letters);
-	if ((*line)[0] == '~' && (*line)[1] == '/')
+	if ((*line)[0] == '~' && (*line)[1] == '/' && (*line)[2] != '/')
 		change_tilde(&tmp, info);
 	if (!table[i] || (table[i] && !ft_strchr(table[i], '/'))
 	|| last_char(info->s) == ' ')
@@ -95,7 +95,7 @@ t_slct		*init_slct(char **line, t_navig *info)
 	if (!table[1] && last_char(info->s) != ' ' && !ft_strchr(info->s, '/'))
 		fill_commands(root, info);
 	else if ((!table[1] && last_char(info->s) != ' ' && ft_strchr(info->s, '/'))
-	|| last_char(info->s) == ' ')
+		|| last_char(info->s) == ' ')
 		fill_dir(root, info, line, table);
 	else
 		(ends_wo_space(table, pathes)) == 1 ? fill_commands(root, info) :
