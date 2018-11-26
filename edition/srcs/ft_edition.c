@@ -6,16 +6,26 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/07/19 16:17:54 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/06 17:56:41 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/24 12:55:18 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "ft_edition.h"
 
+static char *ft_not_found(t_navig *n)
+{
+	ft_strdel(&(n->s));
+	ft_strdel(&(n->s_save));
+	ft_strdel(&(n->pattern));
+	n->statut = 0;
+	return (NULL);
+}
+
 static char	*ft_ctrl_d(t_navig *n)
 {
 	ft_strdel(&(n->s));
+	ft_strdel(&(n->s_save));
 	n->s = ft_strdup("exit");
 	if (!(n->err = ft_push_enter(n)))
 		return (NULL);
@@ -62,8 +72,8 @@ char		*ft_lance_edit(t_navig *n)
 		read(0, buf, 4);
 		if (KEY_CODE_ENTER)
 		{
-			ft_parse_excl(n);
-			//TODO: ajout de la verif du ! ft_parse_excl(n);
+			if ((n->err = ft_parse_excl(n)) == EVENT_NO_FOUND)
+				return (ft_not_found(n));
 			n->err = ft_push_enter(n);
 			break ;
 		}

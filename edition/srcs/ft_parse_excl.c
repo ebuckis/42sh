@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/24 12:53:13 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/09 15:39:57 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/24 14:04:51 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -159,38 +159,25 @@ int			ft_parse_excl(t_navig *n)
 	int		pos;
 	int		cParse;
 	int		check;
-	char	*str;
+//	char	*str;
 
 	check = 0;
 	pos = 0;
-	while ((pos = ft_strchr_index(n->s, pos, '!')) != -1)//voir le !!:
+	while ((pos = ft_strchr_index(n->s, pos, '!')) != -1)//TODO: voir le !!:
 	{
 		check = 1;
-		//dprintf(2, "__s : %s, pos : %d__\n", n->s, pos);
 		if ((cParse = ft_is_interpreted(n->s, pos)) != -1 && (char)cParse != '\\')
 		{
-			//dprintf(2, "__cParse : %d__\n", cParse);
 			if ((ident = ft_ident_excl(n->s, pos)) < 0)
-			{
-				//dprintf(2, "__ident : %d__\n", ident);
-				return (0);//avec impression du message d'erreur
-			}
-			//dprintf(2, "__ident : %d__\n", ident);
+				return (EVENT_NO_FOUND);
 			n->pattern = ft_get_pattern(n->s + pos + 1, cParse);
-			//dprintf(2, "__pattern : %s__\n", n->pattern);
-			if (ft_replace_line(n, &pos, ident) < 0)//modifier la valeur de pos (+= len du remplacement)
-			{
-	//			ft_maj_struct_nav(n, "");
-				return (-1);
-			}
+			if (ft_replace_line(n, &pos, ident) < 0)
+				return (EVENT_NO_FOUND);
 		}
 		else
 			pos++;
-		str = ft_strdup(n->s);
-	//	ft_maj_struct_nav(n, str);
-		ft_strdel(&str);
-		//dprintf(2, "__pos : %d__\n", pos);
-		//dprintf(2, "__cParse : %d__\n", cParse);
+//		str = ft_strdup(n->s);
+//		ft_strdel(&str);
 	}
 	if (check)
 	{
@@ -199,10 +186,6 @@ int			ft_parse_excl(t_navig *n)
 	}
 	return (1);
 }
-
-/*
-** TODO: remplir n->pattern
-*/
 
 /*
 ** a gérer :

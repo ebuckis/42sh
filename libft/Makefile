@@ -6,7 +6,7 @@
 #    By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2017/11/24 08:13:59 by kcabus       #+#   ##    ##    #+#        #
-#    Updated: 2018/09/14 11:58:25 by kcabus      ###    #+. /#+    ###.fr      #
+#    Updated: 2018/11/24 15:10:29 by kcabus      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -149,7 +149,7 @@ all : $(NAME)
 
 $(NAME) :	$(OBJ)
 			@ar rc $(NAME) $(OBJ)
-			@printf "\033[32m libft OK ! \n\033[0m"
+			@printf "\033[32;5m libft OK ! \n\033[0m"
 
 $(OBJ_PATH)%.o:	$(SRC_PATH)%.c
 				@mkdir -p $(OBJ_PATH)
