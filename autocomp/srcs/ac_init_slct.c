@@ -94,9 +94,8 @@ t_slct		*init_slct(char **line, t_navig *info)
 		return (init_error(root, info, table, pathes));
 	if (!table[1] && last_char(info->s) != ' ' && !ft_strchr(info->s, '/'))
 		fill_commands(root, info);
-	else if (!table[1] && last_char(info->s) != ' ' && ft_strchr(info->s, '/'))
-		fill_dir(root, info, line, table);
-	else if (last_char(info->s) == ' ')
+	else if ((!table[1] && last_char(info->s) != ' ' && ft_strchr(info->s, '/'))
+	|| last_char(info->s) == ' ')
 		fill_dir(root, info, line, table);
 	else
 		(ends_wo_space(table, pathes)) == 1 ? fill_commands(root, info) :

@@ -94,6 +94,9 @@ int		ends_wo_space(char **table, char **pathes)
 	if (i && (last_char(table[i - 1]) == '|' || last_char(table[i - 1]) == ';'
 		|| last_char(table[i - 1]) == '&' || !is_cmd(table[i - 1], pathes))
 		&& !ft_strchr(table[i], '/'))
-		return (1);
+		{
+			if (table[i - 1][0] != '-')
+				return (1);
+		}
 	return (0);
 }
