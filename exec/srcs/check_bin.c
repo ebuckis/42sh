@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/06/01 14:24:58 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/09/27 16:48:44 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/27 14:55:21 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -46,7 +46,7 @@ char		*check_bin3(char *bin, int warning)
 	int			ret;
 
 	if ((ret = stat(bin, &buf)) == 0)
-		return (bin);
+		return (ft_strdup(bin));
 	else
 	{
 		if (warning)
@@ -66,6 +66,7 @@ char		*check_bin2(char *tab0, char **env)
 	char		**tab_path;
 	int			i;
 	char		*bin;
+	char		*bin2;
 
 	bin = tab0;
 	tab_path = ft_path(env);
@@ -75,10 +76,11 @@ char		*check_bin2(char *tab0, char **env)
 		tmp = ft_strjoin(tab_path[i], "/");
 		bin = ft_strjoin(tmp, tab0);
 		ft_memdel((void**)&tmp);
-		if (check_bin3(bin, 0))
+		if ((bin2 = check_bin3(bin, 0)))
 		{
 			ft_free_tab(&tab_path);
-			return (bin);
+			ft_memdel((void**)&bin);
+			return (bin2);
 		}
 		ft_memdel((void**)&bin);
 	}

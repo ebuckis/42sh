@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/06/19 11:15:08 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/21 14:38:13 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/27 15:32:11 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -25,7 +25,7 @@ static int			*create_tab_pipe(t_parse *p, int i, int nb_pipe,
 	tab_pipe = (int*)malloc(sizeof(int) * (nb_pipe + 2));
 	tab_pipe[0] = i;
 	j = 1;
-	while (p->arg[i] && !ft_strchr(p->arg_id[i], SEMICOLON))
+	while (p->arg[i] && p->arg_id[i] && p->arg_id[i][0] < AND)
 	{
 		if (ft_strchr(p->arg_id[i], PIPE))
 			tab_pipe[j++] = ++i;
