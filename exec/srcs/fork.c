@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/05/29 10:59:08 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/26 14:47:12 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/27 11:48:40 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -118,7 +118,7 @@ static void		ft_fork_shell2(t_parse *p, int *tab_pipe, char ***p_env,
 	{
 		waitpid(tab_pid[i], &status, WUNTRACED);
 		if (WIFSTOPPED(status) && WSTOPSIG(status) == 18)
-			kill(tab_pid[i], 1);
+			kill(tab_pid[i], 9);
 	}
 	ft_ret_display(p, tab_pid[--i], status);
 	ft_memdel((void**)&tab_pid);
