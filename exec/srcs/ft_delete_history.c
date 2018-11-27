@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/27 13:57:57 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/27 16:48:33 by yoginet     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/27 16:51:02 by yoginet     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -29,7 +29,7 @@ int			delete_line_h(t_hist **h, int id)
 			del = *h;
 			*h = (*h)->prev;
 			(*h)->next = del->next;
-			*h = (*h)->next->next;
+			*h = (*h)->next;
 			(*h)->prev = del->prev;
 			free(del);
 			return (0);
