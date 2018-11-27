@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/05/29 10:59:08 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/26 14:47:12 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/27 12:06:25 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -118,7 +118,7 @@ static void		ft_fork_shell2(t_parse *p, int *tab_pipe, char ***p_env,
 	{
 		waitpid(tab_pid[i], &status, WUNTRACED);
 		if (WIFSTOPPED(status) && WSTOPSIG(status) == 18)
-			kill(tab_pid[i], 1);
+			kill(tab_pid[i], 9);
 	}
 	ft_ret_display(p, tab_pid[--i], status);
 	ft_memdel((void**)&tab_pid);
@@ -135,8 +135,13 @@ void			ft_fork_shell(t_parse *p, int *tab_pipe, char ***p_env,
 		int nb_pipe)
 {
 	char			**tab_com;
+	char			*exec;
 
-	if (!nb_pipe && check_builtin(&(p->arg[tab_pipe[0]])))
+	exec = NULL;
+	if (!check_builtin(&(p->arg[tab_pipe[0]])) &&
+			!(exec = check_bin(&(p->arg[tab_pipe[0]]), *p_env)))
+		;
+	else if (!nb_pipe && check_builtin(&(p->arg[tab_pipe[0]])))
 	{
 		tab_com = manage_redir(p, 0, p_env, 1);
 		run_builtin_free(p, tab_com, p_env, tab_pipe[0]);
@@ -148,4 +153,5 @@ void			ft_fork_shell(t_parse *p, int *tab_pipe, char ***p_env,
 	}
 	else
 		ft_fork_shell2(p, tab_pipe, p_env, nb_pipe);
+	ft_memdel((void**)&exec);
 }

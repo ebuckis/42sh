@@ -5,8 +5,8 @@
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/11/14 10:29:36 by yoginet      #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/27 13:55:00 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Created: 2018/11/27 13:57:57 by kcabus       #+#   ##    ##    #+#       */
+/*   Updated: 2018/11/27 13:57:58 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,6 +15,7 @@
 
 /*
 **	Delete History
+**	Ne suprime rien dans le fichier .bash_history (sauf a la fermeture du shell)
 */
 
 int			delete_history(void)
@@ -28,7 +29,6 @@ int			delete_history(void)
 		ft_free_hist(&(h->next));
 //	ft_close_hist(SAVE_HIST, NULL);
 	printf("%s END\n", __func__);
-	printf("DELETE FILE\n");
 	return (0);
 }
 
