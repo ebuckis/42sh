@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/06/22 15:48:03 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/07 19:34:40 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/27 13:31:18 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -64,8 +64,6 @@ int			ft_init_nav(t_navig *n, char *p)
 		return (0);
 	n->s_save = NULL;
 	n->id_hist = 0;
-	if (!(ft_open_hist()))
-		return (0);
 	if (!(ft_move_to_xy(n->x_start, n->y_start)))
 		return (0);
 	n->err = 1;

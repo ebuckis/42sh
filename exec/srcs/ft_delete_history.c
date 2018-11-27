@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   ft_delete_history.c                              .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: yoginet <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
+/*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/11/14 10:29:36 by yoginet      #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/27 10:13:43 by yoginet     ###    #+. /#+    ###.fr     */
+/*   Created: 2018/11/27 13:57:57 by kcabus       #+#   ##    ##    #+#       */
+/*   Updated: 2018/11/27 14:00:31 by yoginet     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -26,8 +26,8 @@ int			delete_history(void)
 	printf("%s START\n", __func__);
 	h = ft_close_hist(GET_HIST, NULL);
 	if (h && h->next)
-		ft_free_hist(&h);
-	ft_close_hist(SAVE_HIST, NULL);
+		ft_free_hist(&(h->next));
+//	ft_close_hist(SAVE_HIST, NULL);
 	printf("%s END\n", __func__);
 	return (0);
 }
