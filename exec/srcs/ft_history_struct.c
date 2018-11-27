@@ -6,7 +6,7 @@
 /*   By: yoginet <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/08 13:43:32 by yoginet      #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/14 13:23:27 by yoginet     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/27 16:27:48 by yoginet     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -119,8 +119,11 @@ int				search_options(t_opt_h **h, char **arg)
 			if (insert_option(h, arg, i, 1) == 1)
 				return (1);
 		}
-		else if (ft_isdigit(arg[i][0]) == 1)
+		else if (ft_isdigit(arg[i][0]) == 1 && (*h)->d == 0)
+		{
+			printf("%s\n", __func__);
 			ft_print_history_len(ft_atoi(arg[i]));
+		}
 		else
 		{
 			(*h)->filename = ft_strdup(arg[i]);

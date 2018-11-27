@@ -6,12 +6,38 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/27 13:57:57 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/27 14:00:31 by yoginet     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/27 16:48:33 by yoginet     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../includes/exec.h"
+
+/*
+**	Delete maillon
+*/
+
+int			delete_line_h(t_hist **h, int id)
+{
+	t_hist	*del;
+
+	del = NULL;
+	while (*h)
+	{
+		if ((*h)->id == id)
+		{
+			del = *h;
+			*h = (*h)->prev;
+			(*h)->next = del->next;
+			*h = (*h)->next->next;
+			(*h)->prev = del->prev;
+			free(del);
+			return (0);
+		}
+		*h = (*h)->next;
+	}
+	return (0);
+}
 
 /*
 **	Delete History
@@ -23,12 +49,9 @@ int			delete_history(void)
 	t_hist	*h;
 
 	h = NULL;
-	printf("%s START\n", __func__);
 	h = ft_close_hist(GET_HIST, NULL);
 	if (h && h->next)
 		ft_free_hist(&(h->next));
-//	ft_close_hist(SAVE_HIST, NULL);
-	printf("%s END\n", __func__);
 	return (0);
 }
 
@@ -38,11 +61,20 @@ int			delete_history(void)
 
 int			delete_line_history(int id)
 {
+	t_hist	*h;
+	t_hist	*cpy;
 	int		max;
+	int		len_h;
 
+	h = ft_close_hist(GET_HIST, NULL);
+	cpy = h;
 	max = info_histsize();
-	if (id <= 0 || id > max)
+	len_h = cpy->next->id;
+	if (id <= 0 || id > len_h || id < len_h - max)
+	{
 		history_out(id);
-	printf("DELETE LINE History : %d\n", id);
+		return (1);
+	}
+	delete_line_h(&h, id - 1);
 	return (0);
 }
