@@ -6,18 +6,29 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/07/12 16:27:53 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/26 14:24:44 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/27 13:16:48 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "ft_edition.h"
 
-char	*ft_give_hist(int i)
+static t_hist	*ft_loop_hist(t_hist *h, int id)
+{
+	while (id && h)
+	{
+		h = h->next;
+		id--;
+	}
+	return (h);
+}
+
+char	*ft_give_hist(int i, int id)
 {
 	t_hist	*h = NULL;
 
 	h = ft_close_hist(GET_HIST, NULL);
+	h = ft_loop_hist(h, id);
 	if (!h)
 		return (NULL);
 	else if (i == NEXT_HIST && h->next)

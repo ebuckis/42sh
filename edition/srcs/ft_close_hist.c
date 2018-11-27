@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/07/12 16:32:16 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/26 13:33:44 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/27 13:49:37 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -20,7 +20,7 @@ void				ft_free_hist(t_hist **h)
 	ft_free_hist(&((*h)->next));
 	if ((*h)->str)
 		ft_strdel(&((*h)->str));
-	(*h)->prev = NULL;
+	//(*h)->prev = NULL;
 	free(*h);
 	*h = NULL;
 }
