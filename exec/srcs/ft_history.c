@@ -6,7 +6,7 @@
 /*   By: yoginet <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/08 10:41:17 by yoginet      #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/26 13:29:20 by yoginet     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/27 10:12:50 by yoginet     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -137,7 +137,6 @@ int			ft_print_history_len(int nb)
 
 /*
 **	Core History
-**	HISTSIZE a aller recuperer dans les variables set
 */
 
 int				ft_history(char **arg, char ***env)
