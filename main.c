@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/08/22 15:06:26 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/27 13:30:34 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/27 15:08:43 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -45,7 +45,7 @@ static void		debug_display_struct(t_parse *p)
 ** gestion exit ou ; en boucle + tilde et dollar
 */
 
-static void		ft_manage_semicolon_exit(t_parse *p, char ***p_env)
+static void		ft_manage_semicolon(t_parse *p, char ***p_env)
 {
 	int		i;
 	int		n;
@@ -81,7 +81,7 @@ static int		main2(char *string, char ***p_env, int debug, int ret)
 		{
 			if (debug)
 				debug_display_struct(p);
-			ft_manage_semicolon_exit(p, p_env);
+			ft_manage_semicolon(p, p_env);
 			ret = p->ret;
 			child_pid = p->child_pid;
 		}
