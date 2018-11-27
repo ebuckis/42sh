@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/23 11:04:22 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/24 10:14:59 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/27 13:23:29 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -32,6 +32,7 @@ void		ft_file_to_list(void)
 	char	*path;
 	int		fd;
 
+dprintf(2, "**************%s\n", __func__);
 	line = NULL;
 	path = ft_get_hist_name();
 	fd = open(path, O_RDONLY);
@@ -42,7 +43,7 @@ void		ft_file_to_list(void)
 	}
 	while (get_next_line(fd, &line))
 	{
-		ft_add_hist(line);
+		ft_add_hist(line, 0);
 		ft_strdel(&line);
 	}
 	ft_strdel(&path);

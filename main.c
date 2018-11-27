@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/08/22 15:06:26 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/21 14:36:20 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/27 13:30:34 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -110,6 +110,8 @@ int				main(int argc, char *argv[], char *env[])
 	manage_signal();
 	my_env = ft_getenv(argc, argv, env);
 	begin = 0;
+	if (!(ft_open_hist()))
+		return (0);
 	while (101)
 	{
 		if (!begin++)
@@ -118,6 +120,7 @@ int				main(int argc, char *argv[], char *env[])
 		else
 			string = ft_edition((ret) ? "\033[31m42sh $> \033[00m" :
 				"\033[36m42sh $> \033[00m");
+		dprintf(2, "------------%s\n", string);//TODO: a rm
 		if (argc == 2 && ft_strstr(argv[1], "debug"))
 			ret = main2(string, my_env, 1, ret);
 		else

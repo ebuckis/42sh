@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/07/19 16:17:54 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/24 12:55:18 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/27 13:56:33 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -72,7 +72,7 @@ char		*ft_lance_edit(t_navig *n)
 		read(0, buf, 4);
 		if (KEY_CODE_ENTER)
 		{
-			if ((n->err = ft_parse_excl(n)) == EVENT_NO_FOUND)
+			if (ft_parse_excl(n) == EVENT_NO_FOUND)
 				return (ft_not_found(n));
 			n->err = ft_push_enter(n);
 			break ;
