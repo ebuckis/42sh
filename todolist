@@ -6,18 +6,14 @@
 #    By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/08/22 09:27:21 by bpajot       #+#   ##    ##    #+#        #
-#    Updated: 2018/11/26 15:10:51 by bpajot      ###    #+. /#+    ###.fr      #
+#    Updated: 2018/11/27 14:56:46 by bpajot      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
 
 kcabus :
-- gestion tabulation avec Ctrl+v Tab ?
-- gestion /n etc
 
 bpajot :
-- cat << kk > l < dddd > test ne pas creer test car erreur avant
-- echo " dquote> \ dquote>"
 - > test redir sans commandes
 
 other :
@@ -29,7 +25,6 @@ other :
 - echo -n -e -E
 - env ???
 
-- message d'erreur en quittant 42sh apres Ctrl_Z sur vim ou emacs
 
 history :
 - variables locales -> 1-HISTSIZE, 2-HISTFILE, 3-HISTFILESIZE

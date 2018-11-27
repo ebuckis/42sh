@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/07/20 15:32:40 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/26 14:47:08 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/27 14:14:32 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -53,6 +53,7 @@ void			run_builtin(t_parse *p, char **tab_com, char ***p_env,
 		int tab_pipe_i);
 char			*check_bin(char **tab_pipe_i, char **env);
 void			ft_execve(t_parse *p, int tab_pipe_i, char ***p_env);
+int				ft_check_all_exec(t_parse *p, int *tab_pipe, char ***p_env);
 char			***ft_getenv(int argc, char **argv, char **env);
 char			*ft_home(char **env);
 char			*ft_getpwd(char **env, int old);
