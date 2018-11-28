@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/22 13:02:47 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/23 17:46:04 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/28 13:07:37 by yoginet     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -28,7 +28,8 @@ void			ft_list_to_file(void)
 	char	*path;
 
 	path = ft_get_hist_name();
-	fd = open(path, O_WRONLY | O_CREAT, S_IRUSR | S_IWUSR);
+	fd = open(path, O_CREAT | O_TRUNC | O_WRONLY, S_IRUSR | S_IWUSR | S_IRGRP |
+	S_IROTH);
 	if (fd == -1)
 	{
 		ft_strdel(&path);

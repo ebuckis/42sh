@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/27 13:57:57 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/28 11:06:36 by yoginet     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/28 13:54:39 by yoginet     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -74,7 +74,10 @@ int			delete_history(void)
 	h = NULL;
 	h = ft_close_hist(GET_HIST, NULL);
 	if (h && h->next)
+	{
 		ft_free_hist(&(h->next));
+		ft_add_hist(NULL, 1);
+	}
 	return (0);
 }
 
