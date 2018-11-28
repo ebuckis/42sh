@@ -6,12 +6,35 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/27 13:57:57 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/27 16:51:02 by yoginet     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/28 10:28:45 by yoginet     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../includes/exec.h"
+
+/*
+**	Reindex les id de l'historique
+*/
+
+int			reset_index(t_hist **h)
+{
+	int		i;
+
+	i = 0;
+	if (*h == NULL)
+		return (0);
+	while (*h)
+		*h = (*h)->next;
+	while (*h && (*h)->id != -1)
+	{
+		(*h)->id = i;
+		i++;
+		*h = (*h)->prev;
+	}
+	return (0);
+}
+
 
 /*
 **	Delete maillon
@@ -32,11 +55,12 @@ int			delete_line_h(t_hist **h, int id)
 			*h = (*h)->next;
 			(*h)->prev = del->prev;
 			free(del);
+			reset_index(h);
 			return (0);
 		}
 		*h = (*h)->next;
 	}
-	return (0);
+	return (1);
 }
 
 /*
