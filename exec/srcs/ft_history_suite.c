@@ -6,7 +6,7 @@
 /*   By: yoginet <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/09 14:10:29 by yoginet      #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/28 11:10:22 by yoginet     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/28 12:52:05 by yoginet     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -47,7 +47,8 @@ static int	histo_n(t_opt_h *h)
 
 /*
 **	Option -r:
-**	Lit le fichier d'historique actuel et ajoute son contenu à la liste d'historique.
+**	Lit le fichier d'historique actuel et ajoute son contenu à la liste
+**	d'historique.
 */
 
 static int	histo_r(t_opt_h *h)

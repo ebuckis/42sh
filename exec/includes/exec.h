@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/07/20 15:32:40 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/28 11:21:09 by yoginet     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/28 12:47:22 by yoginet     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -97,10 +97,13 @@ int				history_del_pos(int pos);
 int				search_options(t_opt_h **h, char **arg);
 t_opt_h			*check_hist(char **arg);
 t_opt_h			*delete_struct_hist(t_opt_h *h);
+// ft_err_hist
 int				history_usage(void);
 int				history_out(int id);
 int				history_out_str(char *str);
 int				history_invalid(char *str, int i);
+int				history_arg(char *str);
+
 int				histo_suite(t_opt_h *h);
 t_parse			*ft_dollar(t_parse *p, int i, int *j, char ***p_env);
 t_parse			*ft_tilde_dollar(t_parse *p, int i, char ***p_env);

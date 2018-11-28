@@ -6,7 +6,7 @@
 /*   By: yoginet <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/08 13:43:32 by yoginet      #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/28 11:21:17 by yoginet     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/28 12:46:58 by yoginet     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,6 +16,24 @@
 /*
 **	Found offset if option -d
 */
+
+static int		found_offset_suite(int i, int j, int len, char **tmp)
+{
+	i = 1;
+	while (j > 10)
+	{
+		j /= 10;
+		i++;
+	}
+	if (i != len)
+	{
+		history_out_str(*tmp);
+		ft_strdel(tmp);
+		return (-10);
+	}
+	ft_strdel(tmp);
+	return (i);
+}
 
 static int		found_offset(t_opt_h **h, char **arg, int j, int i)
 {
@@ -28,8 +46,7 @@ static int		found_offset(t_opt_h **h, char **arg, int j, int i)
 	{
 		if (arg[j + 1] == NULL)
 		{
-			ft_putstr_fd("42sh: history: -d: option requires an arguments\n", 2);
-			history_usage();
+			history_arg("42sh: history: -d: option requires an arguments\n");
 			return (-10);
 		}
 		(*h)->offset = ft_atoi(arg[j + 1]);
@@ -43,19 +60,7 @@ static int		found_offset(t_opt_h **h, char **arg, int j, int i)
 		len = ft_strlen(tmp);
 	}
 	j = (*h)->offset;
-	i = 1;
-	while (j > 10)
-	{
-		j /= 10;
-		i++;
-	}
-	if (i != len)
-	{
-		history_out_str(tmp);
-		ft_strdel(&tmp);
-		return (-10);
-	}
-	ft_strdel(&tmp);
+	i = found_offset_suite(i, j, len, &tmp);
 	return (i);
 }
 
@@ -89,7 +94,8 @@ static int		insert_option(t_opt_h **h, char **arg, int j, int i)
 			(*h)->s = 1;
 		else
 		{
-			printf("Option inconnu ? -> %s\n", arg[j] + i);
+			history_invalid(arg[j] + i, 1);
+			history_usage();
 			return (1);
 		}
 		i++;
@@ -106,19 +112,14 @@ int				search_options(t_opt_h **h, char **arg)
 	int		i;
 
 	i = 1;
-	if (!arg)
-		return (1);
 	while (arg[i])
 	{
-		if (arg[i] == NULL)
-			return (0);
-		if (arg[i][0] == 0)
+		if (arg[i] == NULL || arg[i][0] == 0)
 			return (0);
 		else if (ft_isdigit(arg[i][0]) == 1 && (*h)->d == 0)
 		{
 			(*h)->print_line = 1;
-			ft_print_history_len(ft_atoi(arg[i]), 0, 0);
-			return (0);
+			return (ft_print_history_len(ft_atoi(arg[i]), 0, 0));
 		}
 		else if (arg[i][0] == '-')
 		{
@@ -133,49 +134,4 @@ int				search_options(t_opt_h **h, char **arg)
 		i++;
 	}
 	return (0);
-}
-
-/*
-**	Init struct for check options History
-*/
-
-t_opt_h			*check_hist(char **arg)
-{
-	t_opt_h		*h;
-
-	h = NULL;
-	h = (t_opt_h *)malloc(sizeof(t_opt_h));
-	if (h == NULL)
-		return (NULL);
-	h->c = 0;
-	h->d = 0;
-	h->a = 0;
-	h->n = 0;
-	h->r = 0;
-	h->w = 0;
-	h->p = 0;
-	h->s = 0;
-	h->print_line = 0;
-	h->offset = 0;
-	h->filename = NULL;
-	if (search_options(&h, arg) == 1)
-	{
-		h = delete_struct_hist(h);
-		return (NULL);
-	}
-	return (h);
-}
-
-/*
-**	Delete Struct
-*/
-
-t_opt_h			*delete_struct_hist(t_opt_h *h)
-{
-	if (!h)
-		return (NULL);
-	ft_strdel(&h->filename);
-	free(h);
-	h = NULL;
-	return (NULL);
 }

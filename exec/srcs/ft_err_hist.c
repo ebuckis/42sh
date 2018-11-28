@@ -6,7 +6,7 @@
 /*   By: yoginet <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/09 10:01:38 by yoginet      #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/14 11:46:00 by yoginet     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/28 12:39:59 by yoginet     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -44,5 +44,12 @@ int			history_invalid(char *str, int i)
 		ft_putstr_fd(": invalid option\n", 2);
 	else if (i == 2)
 		ft_putstr_fd(": numeric argument required\n", 2);
+	return (0);
+}
+
+int			history_arg(char *str)
+{
+	ft_putstr_fd(str, 2);
+	history_usage();
 	return (0);
 }
