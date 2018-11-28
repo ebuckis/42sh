@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/07/20 15:32:40 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/27 14:14:32 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/28 11:21:09 by yoginet     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -34,6 +34,7 @@ typedef struct	s_opt_h
 	int			w;
 	int			p;
 	int			s;
+	int			print_line;
 	int			offset;
 	char		*filename;
 }				t_opt_h;
@@ -85,12 +86,13 @@ int				ft_len_tab(char **tabl);
 int				info_histsize(void);
 int				info_histfile(void);
 int				info_histfilesize(void);
-
+// delete
 int				delete_history(void);
 int				delete_line_history(int id);
-
-int				ft_print_history_len(int nb);
+// history
+int				ft_print_history_len(int nb, int i, int histsize);
 int				ft_history(char **arg, char ***p_env);
+// history struct
 int				history_del_pos(int pos);
 int				search_options(t_opt_h **h, char **arg);
 t_opt_h			*check_hist(char **arg);

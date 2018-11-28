@@ -6,7 +6,7 @@
 /*   By: yoginet <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/08 13:43:32 by yoginet      #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/27 16:27:48 by yoginet     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/28 11:21:17 by yoginet     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -114,22 +114,22 @@ int				search_options(t_opt_h **h, char **arg)
 			return (0);
 		if (arg[i][0] == 0)
 			return (0);
+		else if (ft_isdigit(arg[i][0]) == 1 && (*h)->d == 0)
+		{
+			(*h)->print_line = 1;
+			ft_print_history_len(ft_atoi(arg[i]), 0, 0);
+			return (0);
+		}
 		else if (arg[i][0] == '-')
 		{
 			if (insert_option(h, arg, i, 1) == 1)
 				return (1);
-		}
-		else if (ft_isdigit(arg[i][0]) == 1 && (*h)->d == 0)
-		{
-			printf("%s\n", __func__);
-			ft_print_history_len(ft_atoi(arg[i]));
 		}
 		else
 		{
 			(*h)->filename = ft_strdup(arg[i]);
 			return (0);
 		}
-
 		i++;
 	}
 	return (0);
@@ -141,7 +141,7 @@ int				search_options(t_opt_h **h, char **arg)
 
 t_opt_h			*check_hist(char **arg)
 {
-	t_opt_h 	*h;
+	t_opt_h		*h;
 
 	h = NULL;
 	h = (t_opt_h *)malloc(sizeof(t_opt_h));
@@ -155,6 +155,7 @@ t_opt_h			*check_hist(char **arg)
 	h->w = 0;
 	h->p = 0;
 	h->s = 0;
+	h->print_line = 0;
 	h->offset = 0;
 	h->filename = NULL;
 	if (search_options(&h, arg) == 1)
@@ -166,7 +167,7 @@ t_opt_h			*check_hist(char **arg)
 }
 
 /*
-**	Delete Struct 
+**	Delete Struct
 */
 
 t_opt_h			*delete_struct_hist(t_opt_h *h)

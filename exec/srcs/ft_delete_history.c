@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/27 13:57:57 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/28 10:28:45 by yoginet     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/28 11:06:36 by yoginet     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -17,7 +17,7 @@
 **	Reindex les id de l'historique
 */
 
-int			reset_index(t_hist **h)
+static int	reset_index(t_hist **h)
 {
 	int		i;
 
@@ -35,12 +35,11 @@ int			reset_index(t_hist **h)
 	return (0);
 }
 
-
 /*
 **	Delete maillon
 */
 
-int			delete_line_h(t_hist **h, int id)
+static int	delete_line_h(t_hist **h, int id)
 {
 	t_hist	*del;
 
