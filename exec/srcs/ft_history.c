@@ -6,7 +6,7 @@
 /*   By: yoginet <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/08 10:41:17 by yoginet      #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/29 12:53:25 by yoginet     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/29 13:34:39 by yoginet     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -87,6 +87,8 @@ int				ft_history(char **arg, char ***env)
 	(void)env;
 	if (arg == NULL)
 		return (1);
+	if (info_histsize() == 0)
+		return (0);
 	if (ft_len_tab(arg) == 1)
 		return (ft_print_history());
 	hist_opt = check_hist(arg);

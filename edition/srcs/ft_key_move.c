@@ -6,12 +6,13 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/06/22 15:58:05 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/29 11:40:59 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/29 13:21:49 by yoginet     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "ft_edition.h"
+#include "../../exec/includes/exec.h"
 
 static int		ft_re_print_s(t_navig *n, int *y_add, int calc)
 {

@@ -32,6 +32,7 @@ other :
 
 history :
 - variables locales -> 1-HISTSIZE, 2-HISTFILE, 3-HISTFILESIZE
+		----> exec/srcs/infos_hist.c --> il faut recuperer les valeurs dans les variables set
 		1- Taille de l'historique, verifier la taille a chaque coup de boucle et conservation de l'id
 		2- Localisation du fichier, si erreur mettre en place un define pour loc par defaut
 		3- Lors de la save limiter la taille de save
