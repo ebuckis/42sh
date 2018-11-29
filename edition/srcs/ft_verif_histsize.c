@@ -1,50 +1,33 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_file_to_list.c                                .::    .:/ .      .::   */
+/*   ft_verif_histsize.c                              .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/10/23 11:04:22 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/29 11:44:41 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Created: 2018/11/29 13:34:49 by kcabus       #+#   ##    ##    #+#       */
+/*   Updated: 2018/11/29 13:44:03 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "ft_edition.h"
 
-char	*ft_get_hist_name(void)
+void	ft_verif_histsize(t_navig *n)
 {
-	char	*name;
-	char	*s;
+	int		i;
+	t_hist	*h;
 
-	s = getenv("HOME");
-	if (!s)
-		return (ft_strjoin("/tmp/", HIST_FILE));
-	s = ft_strjoin(s, "/");
-	name = ft_strjoin_del(s, HIST_FILE);
-	return (name);
-}
-
-void		ft_file_to_list(void)
-{
-	char	*line;
-	char	*path;
-	int		fd;
-
-	line = NULL;
-	path = ft_get_hist_name();
-	fd = open(path, O_RDONLY);
-	if (fd == -1)
+	i = 0;
+	h = ft_close_hist(GET_HIST, NULL)->next;
+	while (h)
 	{
-		ft_strdel(&path);
-		return ;
+		if (i >= info_histsize())
+		{
+			ft_free_hist(&h);
+			return ;
+		}
+		h = h->next;
+		i++;
 	}
-	while (get_next_line(fd, &line))
-	{
-		ft_add_hist(line, 0);
-		ft_strdel(&line);
-	}
-	ft_strdel(&path);
-	close(fd);
 }
