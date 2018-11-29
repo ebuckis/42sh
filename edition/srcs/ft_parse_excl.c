@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/24 12:53:13 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/24 14:04:51 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/29 14:33:10 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -26,8 +26,6 @@ static int	ft_loop_cmp(char *s, int pos, int *i, char c)
 			return (0);
 		(*i)++;
 	}
-//	if (!s[*i])
-//		return (-1);
 	return ((int)c);
 }
 
@@ -44,36 +42,26 @@ int			ft_is_interpreted(char *s, int pos)
 	int		i;
 	int		ret;
 
-	//dprintf(2, "///////////////////debut de |%s|***\n", __func__);
 	ret = 0;
 	i = 0;
 	while (s[i] && i < pos)
 	{
 		if ((s[i] == '\'' || s[i] == '\"') && ret != '\\' &&
 			(ret = ft_loop_cmp(s, pos, &i, s[i])) != 0)
-			{
-			//dprintf(2, "/////////////////// ret avec une sortie de is interpreted = |%d|***\n", ret);
+		{
 			return (ret);
-			}
+		}
 		else if (s[i] == '\\' && ret != '\\')
 			ret = (int)s[i];
 		else
 			ret = 0;
-		//dprintf(2, "/////////////////// ret fi de while = |%d|***\n", ret);
 		i++;
 	}
-//	if (!s[i])
-//		return (-1);
-	//dprintf(2, "/////////////////// ret en FIN de  is_interpreted = |%d|***\n", ret);
 	return (ret);
 
 	/*
 	** parcourir la string depuis zéro,
 	** si on recontre un 
-	**
-	**
-	**
-	**
 	*/
 }
 
@@ -95,20 +83,15 @@ static int	ft_strchr_index(const char *s, int pos, char c)
 {
 	int i;
 
-		//dprintf(2, "__dans : %s, s : %s__\n", __func__, s);
 	i = pos;
 	if (c == '\0')
 		return (ft_strlen(s));
 	while (s[i] != '\0')
 	{
 		if (s[i] == c)
-		{
-		//dprintf(2, "__Fin normal: %s__ avec i = %d__\n", __func__, i);
 			return (i);
-		}
 		i++;
 	}
-		//dprintf(2, "__Fin error: %s__\n", __func__);
 	return (-1);
 }
 
@@ -137,7 +120,6 @@ char		*ft_get_pattern(char *s1, int cParse)
 	str = NULL;
 	s2 = ft_get_ending_char(cParse);
 	i = 0;
-	//dprintf(2, "___________s1 |%s| s2|%s| cParse|%c|_____________\n", s1, s2, (char)cParse);
 	while (s1[i])
 	{
 		if (ft_strchr(s2, s1[i]))
@@ -148,7 +130,6 @@ char		*ft_get_pattern(char *s1, int cParse)
 	if (i != 0)
 		str = ft_strsub(s1, 0, (size_t)i);
 	ft_strdel(&s2);
-	//dprintf(2, "__fin de %s, str = : %s__\n", __func__, str);
 	return (str);
 }
 
@@ -159,11 +140,10 @@ int			ft_parse_excl(t_navig *n)
 	int		pos;
 	int		cParse;
 	int		check;
-//	char	*str;
 
 	check = 0;
 	pos = 0;
-	while ((pos = ft_strchr_index(n->s, pos, '!')) != -1)//TODO: voir le !!:
+	while ((pos = ft_strchr_index(n->s, pos, '!')) != -1)
 	{
 		check = 1;
 		if ((cParse = ft_is_interpreted(n->s, pos)) != -1 && (char)cParse != '\\')
@@ -176,8 +156,6 @@ int			ft_parse_excl(t_navig *n)
 		}
 		else
 			pos++;
-//		str = ft_strdup(n->s);
-//		ft_strdel(&str);
 	}
 	if (check)
 	{
@@ -200,6 +178,5 @@ int			ft_parse_excl(t_navig *n)
 ** ID_NUM_NULL
 ** LAST_ID_NUM
 ** LAST_ID_NUM_NULL
-	//dprintf(2, "\n", );
 */
 
