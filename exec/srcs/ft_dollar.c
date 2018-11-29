@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/08/22 14:11:36 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/22 12:15:03 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/29 12:54:22 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -72,20 +72,20 @@ static char		*ft_next_dollar_or_space(char *str)
 	char *next_dollar;
 	char *next_sp;
 	char *next_nl;
+	char *next_tilde;
 
 	next_dollar = ft_strchr(str, '$');
 	next_sp = ft_strchr(str, ' ');
 	next_nl = ft_strchr(str, '\n');
-	next_sp = ((next_nl && !next_sp) || (next_nl && next_nl < next_sp))
-		? next_nl : next_sp;
-	if (next_dollar && next_sp)
-		p = (next_dollar < next_sp) ? next_dollar : next_sp;
-	else if (next_dollar)
-		p = next_dollar;
-	else if (next_sp)
-		p = next_sp;
-	else
-		p = NULL;
+	next_tilde = ft_strchr(str, '~');
+	p = NULL;
+	if (next_dollar || next_sp || next_nl || next_tilde)
+	{
+		p = (next_dollar) ? next_dollar : p;
+		p = (next_sp && (!p || next_sp < p)) ? next_sp : p;
+		p = (next_nl && (!p || next_nl < p)) ? next_nl : p;
+		p = (next_tilde && (!p || next_tilde < p)) ? next_tilde : p;
+	}
 	return (p);
 }
 
