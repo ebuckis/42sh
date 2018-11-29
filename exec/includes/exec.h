@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/29 13:45:17 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/29 13:53:42 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/29 17:41:15 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -116,5 +116,7 @@ int				ft_export(char **arg, char ***p_env);
 char			*get_value(char ***p_env, char *key, int start, int end);
 int				histo_p(t_opt_h *h, char **arg);
 int				histo_s(t_opt_h *h, char **arg);
+char			***ft_save_p_env(char ***p_env);
+char			**init_var_history(void);
 
 #endif

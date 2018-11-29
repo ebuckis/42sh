@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/05/31 09:21:41 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/21 13:31:08 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/29 17:43:38 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -25,7 +25,7 @@ char		***ft_getenv(int argc, char *argv[], char *env[])
 	if (!(myenv = (char***)malloc(sizeof(char**) * 2)) || argc < 0 || argv < 0)
 		return (NULL);
 	myenv[0] = NULL;
-	myenv[1] = NULL;
+	myenv[1] = init_var_history();
 	if (!env)
 		return (myenv);
 	i = -1;
@@ -38,6 +38,7 @@ char		***ft_getenv(int argc, char *argv[], char *env[])
 		myenv[0][i] = ft_strdup(env[i]);
 	myenv[0][i] = NULL;
 	i = -1;
+	ft_save_p_env(myenv);
 	return (myenv);
 }
 

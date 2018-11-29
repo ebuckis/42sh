@@ -6,7 +6,7 @@
 #    By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/04/06 14:53:11 by kcabus       #+#   ##    ##    #+#        #
-#    Updated: 2018/11/29 13:11:30 by yoginet     ###    #+. /#+    ###.fr      #
+#    Updated: 2018/11/29 17:32:48 by bpajot      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -53,6 +53,7 @@ N_SRCS =	and_or.c					\
 			ft_len_tab.c				\
 			ft_redir_in.c				\
 			ft_redir_out.c				\
+			ft_save_p_env.c				\
 			ft_tilde_dollar.c			\
 			getenv.c					\
 			infos_hist.c				\
