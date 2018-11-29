@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/07/20 15:32:40 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/28 12:47:22 by yoginet     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/29 13:11:13 by yoginet     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -104,7 +104,7 @@ int				history_out_str(char *str);
 int				history_invalid(char *str, int i);
 int				history_arg(char *str);
 
-int				histo_suite(t_opt_h *h);
+int				histo_suite(t_opt_h *h, char **arg);
 t_parse			*ft_dollar(t_parse *p, int i, int *j, char ***p_env);
 t_parse			*ft_tilde_dollar(t_parse *p, int i, char ***p_env);
 int				ft_equal(t_parse *p, char **arg, char ***env, int tab_pipe_i);
@@ -114,5 +114,7 @@ int				ft_doublon3(char *line, char **arg);
 char			**ft_unsetenv2(char **arg, char **env, int nb_double);
 int				ft_export(char **arg, char ***p_env);
 char			*get_value(char ***p_env, char *key, int start, int end);
+int				histo_p(t_opt_h *h, char **arg);
+int				histo_s(t_opt_h *h, char **arg);
 
 #endif

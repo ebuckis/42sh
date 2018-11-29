@@ -6,7 +6,7 @@
 /*   By: yoginet <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/08 10:41:17 by yoginet      #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/28 12:33:02 by yoginet     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/29 12:53:25 by yoginet     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -94,17 +94,7 @@ int				ft_history(char **arg, char ***env)
 		return (1);
 	if (hist_opt->print_line == 1)
 		return (0);
-	printf("h->c = %d\n", hist_opt->c);
-	printf("h->d = %d\n", hist_opt->d);
-	printf("h->a = %d\n", hist_opt->a);
-	printf("h->n = %d\n", hist_opt->n);
-	printf("h->r = %d\n", hist_opt->r);
-	printf("h->w = %d\n", hist_opt->w);
-	printf("h->p = %d\n", hist_opt->p);
-	printf("h->s = %d\n", hist_opt->s);
-	printf("h->offset = %d\n", hist_opt->c);
-	printf("h->filename = %s\n", hist_opt->filename);
-	histo_suite(hist_opt);
+	histo_suite(hist_opt, arg);
 	hist_opt = delete_struct_hist(hist_opt);
 	return (0);
 }
