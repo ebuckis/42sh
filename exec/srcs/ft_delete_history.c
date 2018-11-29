@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/27 13:57:57 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/28 13:54:39 by yoginet     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/29 16:08:03 by yoginet     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,8 +22,6 @@ static int	reset_index(t_hist **h)
 	int		i;
 
 	i = 0;
-	if (*h == NULL)
-		return (0);
 	while (*h)
 		*h = (*h)->next;
 	while (*h && (*h)->id != -1)
@@ -39,21 +37,27 @@ static int	reset_index(t_hist **h)
 **	Delete maillon
 */
 
-static int	delete_line_h(t_hist **h, int id)
+static int	delete_line_h(t_hist **h, int id, t_hist *del)
 {
-	t_hist	*del;
-
-	del = NULL;
 	while (*h)
 	{
 		if ((*h)->id == id)
 		{
 			del = *h;
 			*h = (*h)->prev;
-			(*h)->next = del->next;
-			*h = (*h)->next;
-			(*h)->prev = del->prev;
-			free(del);
+			if (id == 0)
+			{
+				ft_strdel(&del->str);
+				free(del);
+				(*h)->next = NULL;
+			}
+			else
+			{
+				(*h)->next = del->next;
+				*h = (*h)->next;
+				(*h)->prev = del->prev;
+				free(del);
+			}
 			reset_index(h);
 			return (0);
 		}
@@ -89,11 +93,13 @@ int			delete_line_history(int id)
 {
 	t_hist	*h;
 	t_hist	*cpy;
+	t_hist	*del;
 	int		max;
 	int		len_h;
 
 	h = ft_close_hist(GET_HIST, NULL);
 	cpy = h;
+	del = NULL;
 	max = info_histsize();
 	len_h = cpy->next->id;
 	if (id <= 0 || id > len_h || id < len_h - max)
@@ -101,6 +107,6 @@ int			delete_line_history(int id)
 		history_out(id);
 		return (1);
 	}
-	delete_line_h(&h, id - 1);
+	delete_line_h(&h, id - 1, del);
 	return (0);
 }
