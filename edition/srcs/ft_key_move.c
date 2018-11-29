@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/06/22 15:58:05 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/27 13:18:52 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/29 11:40:59 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -106,6 +106,8 @@ static void		ft_up_hist(t_navig *n)
 {
 	char	*str;
 
+	if (n->id_hist + 1 >= info_histfilesize())
+		return ;
 	str = NULL;
 	str = ft_give_hist(NEXT_HIST, n->id_hist);
 	if (str)
