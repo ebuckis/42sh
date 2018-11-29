@@ -6,7 +6,7 @@
 /*   By: yoginet <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/08 13:43:32 by yoginet      #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/28 12:46:58 by yoginet     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/29 13:41:45 by yoginet     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -68,6 +68,28 @@ static int		found_offset(t_opt_h **h, char **arg, int j, int i)
 **	Insert les options dans la structure
 */
 
+static int		insert_opt_suite(t_opt_h **h, char c)
+{
+	int		ret;
+
+	ret = 0;
+	if (c == 'a' || c == 'n' || c == 'r' || c == 'w' || c == 'p' || c == 's')
+		ret = 1;
+	if (c == 'a')
+		(*h)->a = 1;
+	else if (c == 'n')
+		(*h)->n = 1;
+	else if (c == 'r')
+		(*h)->r = 1;
+	else if (c == 'w')
+		(*h)->w = 1;
+	else if (c == 'p')
+		(*h)->p = 1;
+	else if (c == 's')
+		(*h)->s = 1;
+	return (ret);
+}
+
 static int		insert_option(t_opt_h **h, char **arg, int j, int i)
 {
 	while (arg[j][i])
@@ -80,18 +102,8 @@ static int		insert_option(t_opt_h **h, char **arg, int j, int i)
 			if ((i += found_offset(h, arg, j, i)) < 0)
 				return (1);
 		}
-		else if (arg[j][i] == 'a')
-			(*h)->a = 1;
-		else if (arg[j][i] == 'n')
-			(*h)->n = 1;
-		else if (arg[j][i] == 'r')
-			(*h)->r = 1;
-		else if (arg[j][i] == 'w')
-			(*h)->w = 1;
-		else if (arg[j][i] == 'p')
-			(*h)->p = 1;
-		else if (arg[j][i] == 's')
-			(*h)->s = 1;
+		else if (insert_opt_suite(h, arg[j][i]) == 1)
+			;
 		else
 		{
 			history_invalid(arg[j] + i, 1);

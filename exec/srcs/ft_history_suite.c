@@ -6,7 +6,7 @@
 /*   By: yoginet <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/09 14:10:29 by yoginet      #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/28 13:02:53 by yoginet     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/29 13:19:08 by yoginet     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,9 +22,8 @@
 
 static int	histo_a(t_opt_h *h)
 {
-	// manque booleen pour savoir qu'elles sont les lignes de la session en cour
-	printf("OPTION a !\n");
-	printf("filename -> %s\n", h->filename);
+	(void)h;
+	ft_list_to_file();
 	return (0);
 }
 
@@ -39,9 +38,9 @@ static int	histo_n(t_opt_h *h)
 {
 	t_hist	*his;
 
-	his = ft_close_hist(CLOSE_HIST, NULL);
-	printf("OPTION n !\n");
-	printf("filename -> %s\n", h->filename);
+	his = NULL;
+	(void)h;
+	ft_list_to_file();
 	return (0);
 }
 
@@ -53,13 +52,24 @@ static int	histo_n(t_opt_h *h)
 
 static int	histo_r(t_opt_h *h)
 {
-	t_hist	*his;
+	char	*line;
+	int		fd;
 
-	printf("OPTION r !\n");
-	printf("filename -> %s\n", h->filename);
-	// si filename != NULL
-	// il faut read filename et pas le fichier de .bashrc
-	his = ft_close_hist(CLOSE_HIST, NULL);
+	line = NULL;
+	fd = 0;
+	if (h->filename == NULL)
+		fd = open(HIST_FILE, O_RDONLY);
+	else
+		fd = open(h->filename, O_RDONLY);
+	if (fd == -1)
+		return (1);
+	while (get_next_line(fd, &line))
+	{
+		if (ft_strcmp(line, "") != 0)
+			ft_add_hist(line, 0);
+		ft_strdel(&line);
+	}
+	close(fd);
 	return (0);
 }
 
@@ -97,7 +107,7 @@ static int	histo_w(t_opt_h *h)
 **	Suite historique
 */
 
-int			histo_suite(t_opt_h *h)
+int			histo_suite(t_opt_h *h, char **arg)
 {
 	int		ret;
 
@@ -114,6 +124,10 @@ int			histo_suite(t_opt_h *h)
 		ret = histo_r(h);
 	if (h->w == 1)
 		ret = histo_w(h);
+	if (h->p == 1)
+		ret = histo_p(h, arg);
+	if (h->s == 1)
+		ret = histo_s(h, arg);
 	if (ret == -1)
 	{
 		history_invalid(h->filename, 2);
