@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/06/15 13:54:21 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/05 14:20:30 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/30 13:54:15 by volivry     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -40,7 +40,7 @@ static int	ft_suite2(int i, t_parse *p)
 		if (!(p->s = ft_strjoin_del(p->s, "\n")))
 			return (-1);
 	}
-	else if (i == 2)//&& ||
+	else if (i == 2)
 		;
 	return (i);
 }
