@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/08 13:36:13 by yoginet      #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/29 17:54:00 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/30 11:35:53 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -43,10 +43,9 @@ int			info_histsize(void)
 	char	***p_env;
 
 	p_env = ft_save_p_env(NULL);
-	value_txt = get_value(p_env, "HISTFILE", 1, 1);
-	// a checker et proteger
-	// cas retour NULL, valeur 0 ou valeur negative
-	h = ft_atoi(value_txt);
+	value_txt = get_value(p_env, "HISTSIZE", 1, 1);
+	h = (value_txt) ? ft_atoi(value_txt) : 500;
+	h = (h < 0) ? 0 : h;
 	ft_memdel((void**)&value_txt);
 	return (h);
 }
@@ -58,8 +57,14 @@ int			info_histsize(void)
 int			info_histfile(void)
 {
 	int		h;
+	char*	value_txt;
+	char	***p_env;
 
-	h = 500;
+	p_env = ft_save_p_env(NULL);
+	value_txt = get_value(p_env, "HISTFILE", 1, 1);
+	h = (value_txt) ? ft_atoi(value_txt) : 500;
+	h = (h < 0) ? 0 : h;
+	ft_memdel((void**)&value_txt);
 	return (h);
 }
 
@@ -70,7 +75,13 @@ int			info_histfile(void)
 int			info_histfilesize(void)
 {
 	int		h;
+	char*	value_txt;
+	char	***p_env;
 
-	h = 500;
+	p_env = ft_save_p_env(NULL);
+	value_txt = get_value(p_env, "HISTFILESIZE", 1, 1);
+	h = (value_txt) ? ft_atoi(value_txt) : 500;
+	h = (h < 0) ? 0 : h;
+	ft_memdel((void**)&value_txt);
 	return (h);
 }
