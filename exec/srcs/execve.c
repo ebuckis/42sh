@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/05/29 11:01:31 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/27 14:57:26 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/30 18:02:00 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -42,7 +42,7 @@ static int		ft_check_exec(t_parse *p, int tab_pipe_i, char ***p_env)
 
 	if (!p->arg[tab_pipe_i][0])
 		return (0);
-	tab_com = manage_redir(p, tab_pipe_i, p_env, 0);
+	tab_com = manage_redir(p, tab_pipe_i, p_env, 1);
 	if (check_builtin(tab_com))
 		ret = 0;
 	else
