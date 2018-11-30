@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   ft_parse_excl2.c                                 .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: volivry <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
+/*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/30 12:34:09 by volivry      #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/30 12:38:19 by volivry     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/30 14:29:27 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -40,7 +40,7 @@ static char	*ft_get_ending_char(char c)
 		tmp = "\'";
 	else
 		tmp = "\'\"";
-	s = " \t|&;\n";//FIXME: voir tous les separateur
+	s = " \t|&;\n";
 	s = ft_strjoin(s, tmp);
 	return (s);
 }
