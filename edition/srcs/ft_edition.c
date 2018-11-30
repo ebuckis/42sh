@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/07/19 16:17:54 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/30 14:19:28 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/30 16:36:05 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -84,6 +84,7 @@ char		*ft_lance_edit(t_navig *n)
 	if (n->err < 1)
 		return (NULL);
 	ft_strdel(&(n->s_save));
+	g_nav.statut = 0;
 	return (n->s);
 }
 
@@ -102,13 +103,12 @@ char		*ft_edition(char *prompt)
 
 	str = NULL;
 	if (!(g_nav.err = ft_init_term(&(g_nav.t))))
-		return (NULL);
+		return (ft_strdup("exit"));
 	if (!(g_nav.err = ft_init_nav(&g_nav, prompt)))
-		return (NULL);
+		return (ft_strdup("exit"));
 	signal(SIGWINCH, ft_signal_size);
 	ft_x_change(&g_nav, MOVE_RIGHT);
 	str = ft_lance_edit(&g_nav);
-	g_nav.statut = 0;
 	g_nav.t = ft_default_edit(g_nav.t);
 	return (str);
 }
