@@ -6,12 +6,13 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/22 13:02:47 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/28 13:07:37 by yoginet     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/30 11:13:00 by volivry     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "ft_edition.h"
+#include "../../autocomp/includes/autocomp.h"
 
 static void		ft_save_in_file(int fd, t_hist *h)
 {

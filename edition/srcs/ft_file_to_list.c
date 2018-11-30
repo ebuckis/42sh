@@ -6,12 +6,13 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/23 11:04:22 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/29 11:44:41 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/30 11:17:12 by volivry     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "ft_edition.h"
+#include "../../autocomp/includes/autocomp.h"
 
 char	*ft_get_hist_name(void)
 {
@@ -26,7 +27,7 @@ char	*ft_get_hist_name(void)
 	return (name);
 }
 
-void		ft_file_to_list(void)
+void	ft_file_to_list(void)
 {
 	char	*line;
 	char	*path;

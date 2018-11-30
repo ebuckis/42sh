@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/07/12 16:27:53 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/27 13:16:48 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/30 11:18:24 by volivry     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -23,10 +23,11 @@ static t_hist	*ft_loop_hist(t_hist *h, int id)
 	return (h);
 }
 
-char	*ft_give_hist(int i, int id)
+char			*ft_give_hist(int i, int id)
 {
-	t_hist	*h = NULL;
+	t_hist	*h;
 
+	h = NULL;
 	h = ft_close_hist(GET_HIST, NULL);
 	h = ft_loop_hist(h, id);
 	if (!h)

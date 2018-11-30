@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/25 13:39:56 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/24 14:50:07 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/30 11:22:00 by volivry     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -48,7 +48,7 @@ static int	ft_get_by_last_id(t_hist *h, char *s2)
 	if (!h->str || !s2)
 		return (0);
 	nb = ft_atoi(s2);
-	if (g_nav.max_id + nb  + 1 < 0)
+	if (g_nav.max_id + nb + 1 < 0)
 		return (0);
 	if (h->id == g_nav.max_id + nb + 1)
 		return (1);
