@@ -6,12 +6,29 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/05 11:12:33 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/30 13:57:18 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/30 14:02:05 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "ft_parser.h"
+
+static int	ft_suite_orand(t_parse *p, int id)
+{
+	int i;
+
+	ft_end_while(p, id);
+	ft_end_while(p, id);
+	i = p->i;
+	while (p->s[i])
+	{
+		if (!ft_is_white(p->s[i]))
+			break ;
+		i++;
+	}
+	ft_realloc_space(p);
+	return (i);
+}
 
 int			ft_is_or_and(t_parse *p)
 {
@@ -45,16 +62,7 @@ int			ft_or_and(t_parse *p)
 	}
 	if (p->i == 0)
 		return (-1);
-	ft_end_while(p, id);
-	ft_end_while(p, id);
-	i = p->i;
-	while (p->s[i])
-	{
-		if (!ft_is_white(p->s[i]))
-			break ;
-		i++;
-	}
-	ft_realloc_space(p);
+	i = ft_suite_orand(p, id);
 	if (p->s[i])
 		return (1);
 	if (!(ft_suite_line(p, 2, pr)))
