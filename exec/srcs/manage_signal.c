@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/07/25 17:29:56 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/30 11:15:55 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/30 18:16:42 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -74,6 +74,7 @@ static void		ft_signal_stop(int s)
 void			manage_signal(void)
 {
 	setlocale(LC_ALL, "");
+	ft_printf("%C Le bool%Cen\n", L'©', L'é');;
 	ft_printf("%C kcabus\n%C bpajot\n", L'©', L'©');
 	ft_printf("%C volivry\n%C yoginet\n", L'©', L'©');
 	signal(SIGINT, ft_signal_ctrl_c);
