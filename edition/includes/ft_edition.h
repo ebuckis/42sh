@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/06/18 14:40:55 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/29 13:54:04 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/30 11:16:36 by volivry     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -112,7 +112,6 @@ typedef struct		s_hist
 	struct s_hist	*prev;
 }					t_hist;
 
-# include "../../autocomp/includes/autocomp.h"
 t_navig				g_nav;
 
 char				*ft_edition(char *prompt);

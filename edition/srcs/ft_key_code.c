@@ -6,12 +6,13 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/07/13 13:31:30 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/22 13:40:17 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/30 11:12:33 by volivry     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "ft_edition.h"
+#include "../../autocomp/includes/autocomp.h"
 
 int		ft_key_code(t_navig *n, char *buf)
 {

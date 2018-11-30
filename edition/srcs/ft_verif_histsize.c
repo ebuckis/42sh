@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/29 13:34:49 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/29 14:31:38 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/30 11:21:07 by volivry     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -14,7 +14,7 @@
 #include "ft_edition.h"
 #include "../../exec/includes/exec.h"
 
-void	ft_verif_histsize()
+void	ft_verif_histsize(void)
 {
 	int		i;
 	t_hist	*h;

@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/29 13:45:17 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/29 17:41:15 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/30 11:24:07 by volivry     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,6 +16,7 @@
 
 # include "../../parser/includes/ft_parser.h"
 # include "../../libft/includes/libft.h"
+# include "../../autocomp/includes/autocomp.h"
 # include <unistd.h>
 # include <stdlib.h>
 # include <sys/stat.h>
@@ -86,18 +87,26 @@ int				ft_len_tab(char **tabl);
 int				info_histsize(void);
 int				info_histfile(void);
 int				info_histfilesize(void);
-// delete
+/*
+**delete
+*/
 int				delete_history(void);
 int				delete_line_history(int id);
-// history
+/*
+**history
+*/
 int				ft_print_history_len(int nb, int i, int histsize);
 int				ft_history(char **arg, char ***p_env);
-// history struct
+/*
+**history struct
+*/
 int				history_del_pos(int pos);
 int				search_options(t_opt_h **h, char **arg);
 t_opt_h			*check_hist(char **arg);
 t_opt_h			*delete_struct_hist(t_opt_h *h);
-// ft_err_hist
+/*
+**ft_err_hist
+*/
 int				history_usage(void);
 int				history_out(int id);
 int				history_out_str(char *str);

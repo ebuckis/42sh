@@ -6,14 +6,14 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/07/19 16:17:54 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/27 13:56:33 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/30 11:19:46 by volivry     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "ft_edition.h"
 
-static char *ft_not_found(t_navig *n)
+static char	*ft_not_found(t_navig *n)
 {
 	ft_strdel(&(n->s));
 	ft_strdel(&(n->s_save));

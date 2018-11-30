@@ -6,7 +6,11 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/08 13:36:13 by yoginet      #+#   ##    ##    #+#       */
+<<<<<<< HEAD
 /*   Updated: 2018/11/30 11:35:53 by bpajot      ###    #+. /#+    ###.fr     */
+=======
+/*   Updated: 2018/11/30 11:26:25 by volivry     ###    #+. /#+    ###.fr     */
+>>>>>>> fa2cfcaa6c7e22d9b554710bf9ef857f910fd052
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,7 +20,6 @@
 /*
 ** set les 3 variables locales pour l'historique au lancement de 42sh
 */
-
 
 char		**init_var_history(void)
 {
@@ -39,7 +42,7 @@ char		**init_var_history(void)
 int			info_histsize(void)
 {
 	int		h;
-	char*	value_txt;
+	char	*value_txt;
 	char	***p_env;
 
 	p_env = ft_save_p_env(NULL);
