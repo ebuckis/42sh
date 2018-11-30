@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/08/22 15:06:26 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/29 19:10:30 by volivry     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/30 14:10:38 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -120,10 +120,8 @@ int				main(int argc, char *argv[], char *env[])
 		else
 			string = ft_edition((ret) ? "\033[31m42sh $> \033[00m" :
 				"\033[36m42sh $> \033[00m");
-		if (argc == 2 && ft_strstr(argv[1], "debug"))
-			ret = main2(string, my_env, 1, ret);
-		else
-			ret = main2(string, my_env, 0, ret);
+		ret = main2(string, my_env, (argc == 2 && ft_strstr(argv[1], "debug")) ?
+			1 : 0, ret);
 	}
 	return (0);
 }
