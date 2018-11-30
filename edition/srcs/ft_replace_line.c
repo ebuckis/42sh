@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/25 13:39:56 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/30 11:22:00 by volivry     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/30 12:41:34 by volivry     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -73,15 +73,6 @@ static int	ft_get_by_occur(t_hist *h, char *s2)
 	return (0);
 }
 
-int			ft_message_err(t_navig *n)
-{
-	ft_putstr_fd("\n42sh : !", 2);
-	ft_putstr_fd(n->pattern, 2);
-	ft_putendl_fd(": event not found", 2);
-	ft_strdel(&n->pattern);
-	return (-1);
-}
-
 int			ft_replace_line(t_navig *n, int *pos, int id)
 {
 	char	*str;
@@ -98,7 +89,13 @@ int			ft_replace_line(t_navig *n, int *pos, int id)
 	if (str)
 		*pos = ft_replace_s(str, n, *pos);
 	else
-		return (ft_message_err(n));
+	{
+		ft_putstr_fd("\n42sh : !", 2);
+		ft_putstr_fd(n->pattern, 2);
+		ft_putendl_fd(": event not found", 2);
+		ft_strdel(&n->pattern);
+		return (-1);
+	}
 	ft_strdel(&n->pattern);
 	return (0);
 }
