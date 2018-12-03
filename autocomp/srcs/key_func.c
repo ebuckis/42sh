@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   key_func.c                                       .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: volivry <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
+/*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/06/01 17:49:20 by volivry      #+#   ##    ##    #+#       */
-/*   Updated: 2018/09/28 14:26:00 by volivry     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/03 15:08:13 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -68,7 +68,7 @@ void		erase_prev(t_navig *info)
 	reset_screen(info);
 	tputs(tgetstr("up", NULL), 1, ft_putchar_err);
 	tputs(tgetstr("cd", NULL), 1, ft_putchar_err);
-	ft_putstr(info->prompt);
+	ft_put_prompt(info->col, info->prompt);
 	if (info->s)
 		ft_putstr(info->s);
 }
@@ -103,7 +103,7 @@ void		restore_curs(t_navig *info, t_slct *slct)
 	if (slct->next->next != slct)
 		tputs(tgetstr("up", NULL), 1, ft_putchar_err);
 	tputs(tgetstr("cd", NULL), 1, ft_putchar_err);
-	ft_putstr(info->prompt);
+	ft_put_prompt(info->col, info->prompt);
 	if (info->s)
 		ft_putstr(info->s);
 	ft_recup_pos(&info->x, &info->y);

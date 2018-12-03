@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/07/25 19:00:09 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/09/03 15:29:21 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/03 15:21:08 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -40,7 +40,7 @@ static int		ft_del_all(t_navig *n, int nb, char *ret)
 		return (0);
 	tputs(ret, 1, ft_putcharint);
 	ft_recup_pos(&(n->x_start), &(n->y_first));
-	ft_putstr(n->prompt);
+	ft_put_prompt(n->col, n->prompt);
 	if (!ft_no_new_name(n, n->prompt))
 		return (0);
 	ft_putstr(n->s);

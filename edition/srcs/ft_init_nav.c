@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/06/22 15:48:03 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/27 13:31:18 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/03 15:15:23 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -44,7 +44,7 @@ int			ft_no_new_name(t_navig *n, char *p)
 ** pour bien commencer cette superbe edition
 */
 
-int			ft_init_nav(t_navig *n, char *p)
+int			ft_init_nav(t_navig *n, char *p, char *col)
 {
 	int		x_tmp;
 
@@ -52,7 +52,8 @@ int			ft_init_nav(t_navig *n, char *p)
 		return (0);
 	ft_recup_pos(&x_tmp, &(n->y_first));
 	ft_recup_pos(&x_tmp, &(n->y_first));
-	ft_putstr(p);
+	n->col = col;
+	ft_put_prompt(col, p);
 	n->to_small = 0;
 	n->prompt = p;
 	if (!ft_no_new_name(n, p))

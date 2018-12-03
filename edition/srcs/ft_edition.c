@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/07/19 16:17:54 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/03 11:06:34 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/03 15:09:41 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -96,14 +96,14 @@ char		*ft_lance_edit(t_navig *n)
 ** les actions suvant les touches recues
 */
 
-char		*ft_edition(char *prompt)
+char		*ft_edition(char *prompt, char *col)
 {
 	char		*str;
 
 	str = NULL;
 	if (!(g_nav.err = ft_init_term(&(g_nav.t))))
 		return (ft_strdup("exit"));
-	if (!(g_nav.err = ft_init_nav(&g_nav, prompt)))
+	if (!(g_nav.err = ft_init_nav(&g_nav, prompt, col)))
 		return (ft_strdup("exit"));
 	signal(SIGWINCH, ft_signal_size);
 	ft_x_change(&g_nav, MOVE_RIGHT);
