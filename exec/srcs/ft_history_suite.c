@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/09 14:10:29 by yoginet      #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/03 11:15:27 by yoginet     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/03 16:14:20 by yoginet     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -69,6 +69,7 @@ static int	histo_r(t_opt_h *h)
 			ft_add_hist(line, 0, 0);
 		ft_strdel(&line);
 	}
+	ft_strdel(&line);
 	close(fd);
 	return (0);
 }
