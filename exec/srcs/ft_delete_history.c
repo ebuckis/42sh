@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/27 13:57:57 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/29 16:08:03 by yoginet     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/03 10:57:47 by yoginet     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,11 +22,12 @@ static int	reset_index(t_hist **h)
 	int		i;
 
 	i = 0;
-	while (*h)
+	while ((*h)->next)
 		*h = (*h)->next;
-	while (*h && (*h)->id != -1)
+	while ((*h)->prev)
 	{
-		(*h)->id = i;
+		if ((*h)->id != -1)
+			(*h)->id = i;
 		i++;
 		*h = (*h)->prev;
 	}
