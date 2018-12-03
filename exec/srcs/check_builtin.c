@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/06/01 18:20:01 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/26 14:46:11 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/03 11:57:40 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -49,6 +49,7 @@ void	run_builtin_exit(t_parse *p, char **tab_com, char ***p_env,
 		int tab_pipe_i)
 {
 	run_builtin_free(p, tab_com, p_env, tab_pipe_i);
+	ft_close_hist(CLOSE_HIST, NULL);
 	exit(p->ret);
 }
 
