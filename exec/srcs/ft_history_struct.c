@@ -6,7 +6,7 @@
 /*   By: yoginet <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/08 13:43:32 by yoginet      #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/03 10:50:09 by yoginet     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/03 11:15:25 by yoginet     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -95,7 +95,10 @@ static int		insert_option(t_opt_h **h, char **arg, int j, int i)
 	while (arg[j][i])
 	{
 		if (arg[j][i] == 'c')
+		{
+			(*h)->c = 1;
 			return (delete_history());
+		}
 		else if (arg[j][i] == 'd')
 		{
 			(*h)->d = 1;
