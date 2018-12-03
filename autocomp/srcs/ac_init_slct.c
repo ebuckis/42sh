@@ -88,7 +88,7 @@ t_slct		*init_slct(char **line, t_navig *info)
 	table = NULL;
 	root = NULL;
 	pathes = fill_pathes();
-	if (info->s && ft_strcmp(info->s, ""))
+	if (info->s && ft_strcmp(info->s, "") && !str_iswhite(info->s))
 		table = ft_strsplit(info->s, ' ');
 	if (!(root = root_slct()) || !line || !table)
 		return (init_error(root, info, table, pathes));

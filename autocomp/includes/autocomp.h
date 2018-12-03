@@ -100,5 +100,6 @@ int						add_bs(char *str);
 void					free_init_slct(char **table, char **pathes,
 						char **line);
 int						ends_wo_space(char **table, char **pathes);
+int						str_iswhite(char *str);
 
 #endif

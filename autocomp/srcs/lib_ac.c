@@ -60,3 +60,17 @@ char	*str_append(char *s1, char *s2)
 		ft_strdel(&tmp);
 	return (s1);
 }
+
+int		str_iswhite(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (!ft_is_white(str[i]))
+			return (0);
+		i++;
+	}
+	return (1);
+}

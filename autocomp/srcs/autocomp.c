@@ -113,7 +113,7 @@ void		autocomp(t_navig *info)
 	line = NULL;
 	info->ac_x = info->x;
 	info->ac_y = info->y;
-	if (info->s && ft_strcmp(info->s, ""))
+	if (info->s && ft_strcmp(info->s, "") && !str_iswhite(info->s))
 		line = ft_strdup(info->s);
 	line = get_last_word(line, info);
 	g_slct = init_slct(&line, info);
