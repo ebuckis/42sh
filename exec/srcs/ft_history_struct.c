@@ -6,7 +6,7 @@
 /*   By: yoginet <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/08 13:43:32 by yoginet      #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/03 14:38:48 by yoginet     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/03 15:14:24 by yoginet     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -20,7 +20,7 @@
 static int		found_offset_suite(int i, int j, int len, char **tmp)
 {
 	i = 1;
-	while (j > 10)
+	while (j >= 10)
 	{
 		j /= 10;
 		i++;
