@@ -6,7 +6,11 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/27 13:57:57 by kcabus       #+#   ##    ##    #+#       */
+<<<<<<< HEAD
 /*   Updated: 2018/12/03 10:57:47 by yoginet     ###    #+. /#+    ###.fr     */
+=======
+/*   Updated: 2018/12/03 11:00:10 by kcabus      ###    #+. /#+    ###.fr     */
+>>>>>>> e012abbac271da8e98db794da115dd8e6b2ec867
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -81,7 +85,7 @@ int			delete_history(void)
 	if (h && h->next)
 	{
 		ft_free_hist(&(h->next));
-		ft_add_hist(NULL, 1);
+		ft_add_hist(NULL, 1, 0);
 	}
 	return (0);
 }

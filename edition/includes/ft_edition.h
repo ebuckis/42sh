@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/06/18 14:40:55 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/30 14:09:23 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/03 10:59:49 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -140,7 +140,7 @@ char				*ft_get_hist_name(void);
 int					ft_open_hist(void);
 void				ft_file_to_list(void);
 char				*ft_give_hist(int i, int id);
-int					ft_add_hist(char *s, int boul);
+int					ft_add_hist(char *s, int boul, int value);
 t_hist				*ft_close_hist(int i, t_hist *list);
 void				ft_list_to_file(void);
 

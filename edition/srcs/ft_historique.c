@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/07/25 19:03:29 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/27 13:56:16 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/03 10:59:26 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -50,13 +50,16 @@ static t_hist	*ft_new_hist(char *s, t_hist *m_prev, t_hist *m_next, int id)
 ** creation d'un nouveau maillon sur liste doublement chainee
 */
 
-int				ft_add_hist(char *s, int boul)
+int				ft_add_hist(char *s, int boul, int value)
 {
 	t_hist		*h;
 	static int	id = 0;
 
 	if (boul)
-		return ((id = 0));
+	{
+		id = value;
+		return (0);
+	}
 	g_nav.max_id = id;
 	h = ft_close_hist(GET_HIST, NULL);
 	if (!h || !s)
