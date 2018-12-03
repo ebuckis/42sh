@@ -6,7 +6,7 @@
 /*   By: yoginet <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/08 10:41:17 by yoginet      #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/03 15:12:49 by yoginet     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/03 16:21:14 by yoginet     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -95,7 +95,10 @@ int				ft_history(char **arg, char ***env)
 	if (hist_opt == NULL)
 		return (1);
 	if (hist_opt->print_line == 1)
+	{
+		hist_opt = delete_struct_hist(hist_opt);
 		return (0);
+	}
 	histo_suite(hist_opt, arg);
 	hist_opt = delete_struct_hist(hist_opt);
 	return (0);
