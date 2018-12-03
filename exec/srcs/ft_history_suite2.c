@@ -6,7 +6,7 @@
 /*   By: yoginet <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/29 12:49:21 by yoginet      #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/29 13:19:07 by yoginet     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/03 15:49:06 by yoginet     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -20,9 +20,11 @@
 int			histo_p(t_opt_h *h, char **arg)
 {
 	int		i;
+	t_hist	*hi;
 
 	i = 1;
 	(void)h;
+	hi = ft_close_hist(GET_HIST, NULL);
 	while (arg[i])
 	{
 		if (arg[i] == NULL)
@@ -33,6 +35,7 @@ int			histo_p(t_opt_h *h, char **arg)
 			ft_putendl(arg[i]);
 		i++;
 	}
+	delete_line_history(-100);
 	return (0);
 }
 

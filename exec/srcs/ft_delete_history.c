@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/27 13:57:57 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/03 15:15:16 by yoginet     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/03 15:49:08 by yoginet     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -104,6 +104,8 @@ int			delete_line_history(int id)
 	del = NULL;
 	max = info_histsize();
 	len_h = cpy->next->id;
+	if (id == -100)
+		return (delete_line_h(&h, h->next->id, del));
 	if (id <= 0 || id > len_h)
 	{
 		history_out(id);
