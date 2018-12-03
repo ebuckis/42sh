@@ -6,7 +6,7 @@
 /*   By: yoginet <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/06 10:44:16 by yoginet      #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/03 13:14:01 by yoginet     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/03 13:18:45 by yoginet     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -107,7 +107,6 @@ int				ft_cd(char **arg, char ***p_env)
 	check_target(&target, p_env);
 	if (target == NULL)
 		return (1);
-	printf("target ---> %s\n", target);
 	if (chdir(target) < 0)
 	{
 		ft_putstr_fd("cd : an error is occured\n", 2);
