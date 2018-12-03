@@ -6,11 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/27 13:57:57 by kcabus       #+#   ##    ##    #+#       */
-<<<<<<< HEAD
-/*   Updated: 2018/12/03 10:57:47 by yoginet     ###    #+. /#+    ###.fr     */
-=======
-/*   Updated: 2018/12/03 11:00:10 by kcabus      ###    #+. /#+    ###.fr     */
->>>>>>> e012abbac271da8e98db794da115dd8e6b2ec867
+/*   Updated: 2018/12/03 11:04:16 by yoginet     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -35,6 +31,7 @@ static int	reset_index(t_hist **h)
 		i++;
 		*h = (*h)->prev;
 	}
+	ft_add_hist(NULL, 1, i);
 	return (0);
 }
 
