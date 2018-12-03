@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   ft_history_suite.c                               .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: yoginet <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
+/*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/09 14:10:29 by yoginet      #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/29 13:19:08 by yoginet     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/03 11:00:16 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -66,7 +66,7 @@ static int	histo_r(t_opt_h *h)
 	while (get_next_line(fd, &line))
 	{
 		if (ft_strcmp(line, "") != 0)
-			ft_add_hist(line, 0);
+			ft_add_hist(line, 0, 0);
 		ft_strdel(&line);
 	}
 	close(fd);
