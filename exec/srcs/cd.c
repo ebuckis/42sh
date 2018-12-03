@@ -6,7 +6,7 @@
 /*   By: yoginet <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/06 10:44:16 by yoginet      #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/23 11:49:55 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/03 11:55:53 by yoginet     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -35,14 +35,25 @@ void			usage_cd(char *str)
 static int		actualise_env(char *new_pwd, char ***p_env)
 {
 	char		*pwd;
+	char		*tmp;
+	char		*tmp2;
 
 	pwd = NULL;
+	tmp = NULL;
+	tmp2 = NULL;
 	pwd = ft_getpwd(*p_env, 0);
+	if (pwd)
+	{
+		tmp = ft_strjoin(pwd, "/");
+		tmp2 = ft_strjoin(tmp, new_pwd);
+	}
 	if (new_pwd)
-		ft_setpwd(*p_env, 0, new_pwd);
+		ft_setpwd(*p_env, 0, tmp2);
 	if (pwd)
 		ft_setpwd(*p_env, 1, pwd);
 	ft_strdel(&pwd);
+	ft_strdel(&tmp);
+	ft_strdel(&tmp2);
 	return (0);
 }
 
