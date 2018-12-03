@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/29 13:45:17 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/30 11:24:07 by volivry     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/03 09:39:25 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -46,7 +46,8 @@ void			ft_fork_shell(t_parse *p, int *tab_pipe, char ***p_env,
 char			**manage_redir(t_parse *p, int begin, char ***p_env, int off);
 void			ft_redir(t_parse *p, int redir_lim[2], char **env,
 		int nb_redirec);
-int				check_builtin(char **tab_pipe_i);
+int				check_builtin(char **tab_com);
+int				check_builtin2(char **tab_com);
 void			run_builtin_free(t_parse *p, char **tab_com, char ***p_env,
 		int tab_pipe_i);
 void			run_builtin_exit(t_parse *p, char **tab_com, char ***p_env,

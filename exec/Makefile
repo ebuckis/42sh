@@ -6,7 +6,7 @@
 #    By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/04/06 14:53:11 by kcabus       #+#   ##    ##    #+#        #
-#    Updated: 2018/11/29 17:32:48 by bpajot      ###    #+. /#+    ###.fr      #
+#    Updated: 2018/12/03 09:39:39 by bpajot      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -34,6 +34,7 @@ N_SRCS =	and_or.c					\
 			cd_suite.c					\
 			check_bin.c					\
 			check_builtin.c				\
+			check_builtin2.c			\
 			delete_heredoc.c			\
 			echo.c						\
 			env.c						\
