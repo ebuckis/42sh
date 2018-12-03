@@ -6,7 +6,7 @@
 /*   By: yoginet <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/06 10:44:16 by yoginet      #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/03 11:55:53 by yoginet     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/03 13:14:01 by yoginet     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -36,24 +36,22 @@ static int		actualise_env(char *new_pwd, char ***p_env)
 {
 	char		*pwd;
 	char		*tmp;
-	char		*tmp2;
 
 	pwd = NULL;
-	tmp = NULL;
-	tmp2 = NULL;
+	tmp = ft_strnew(255);
+	getcwd(tmp, 255);
 	pwd = ft_getpwd(*p_env, 0);
-	if (pwd)
-	{
-		tmp = ft_strjoin(pwd, "/");
-		tmp2 = ft_strjoin(tmp, new_pwd);
-	}
 	if (new_pwd)
-		ft_setpwd(*p_env, 0, tmp2);
+	{
+		if (new_pwd[0] == '/')
+			ft_setpwd(*p_env, 0, new_pwd);
+		else
+			ft_setpwd(*p_env, 0, tmp);
+	}
 	if (pwd)
 		ft_setpwd(*p_env, 1, pwd);
 	ft_strdel(&pwd);
 	ft_strdel(&tmp);
-	ft_strdel(&tmp2);
 	return (0);
 }
 
@@ -98,15 +96,18 @@ static int		check_target(char **target, char ***p_env)
 int				ft_cd(char **arg, char ***p_env)
 {
 	char		*target;
+	int			p;
 
 	target = NULL;
+	p = 0;
 	if (arg[1] == NULL)
 		target = ft_home(*p_env);
 	else
-		target = ret_target(arg, 0, 0, 0);
+		target = ret_target(arg, 0, p, 0);
 	check_target(&target, p_env);
 	if (target == NULL)
 		return (1);
+	printf("target ---> %s\n", target);
 	if (chdir(target) < 0)
 	{
 		ft_putstr_fd("cd : an error is occured\n", 2);

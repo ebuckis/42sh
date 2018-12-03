@@ -6,7 +6,7 @@
 /*   By: yoginet <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/06 10:44:28 by yoginet      #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/06 10:44:31 by yoginet     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/03 13:14:04 by yoginet     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -87,7 +87,7 @@ static char		*ret_link_symbol(char *rep)
 	if (ft_strlen(buf) == 0)
 		target = ft_strdup("/");
 	else
-		target = ft_strjoin("/", buf);
+		target = ft_strdup(buf);
 	ft_strdel(&buf);
 	return (target);
 }
