@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/06/18 14:40:55 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/03 10:59:49 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/03 15:17:42 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -36,7 +36,7 @@
 # define KEY_CTRL_W			(buf[0] == 23 && !buf[1])
 # define KEY_CTRL_T			(buf[0] == 20 && !buf[1])
 # define HIST_FILE			".42sh_history"
-# define MAX_HIST			1000000
+# define RESET 				"\033[00m"
 
 /*
 ** CTRL + U couper jusqu'au debut
@@ -102,6 +102,7 @@ typedef struct		s_navig
 	int				ac_y;
 	int				max_id;
 	char			*pattern;
+	char			*col;
 }					t_navig;
 
 typedef struct		s_hist
@@ -114,11 +115,11 @@ typedef struct		s_hist
 
 t_navig				g_nav;
 
-char				*ft_edition(char *prompt);
+char				*ft_edition(char *prompt, char *col);
 int					ft_putcharint(int c);
 int					ft_move_to_xy(int x, int y);
 int					ft_get_size(int *x, int *y);
-int					ft_init_nav(t_navig *n, char *p);
+int					ft_init_nav(t_navig *n, char *p, char *col);
 int					ft_init_term(struct termios *t);
 int					ft_key_code(t_navig *n, char *buf);
 int					ft_key_move(t_navig *n, char *buf);
@@ -135,6 +136,7 @@ int					ft_move_up(t_navig *n);
 int					ft_push_enter(t_navig *n);
 int					ft_copy_paste(t_navig *n, char *buf, int fr);
 int					ft_maj_struct_nav(t_navig *n, char *str);
+void				ft_put_prompt(char *deb, char *prompt);
 
 char				*ft_get_hist_name(void);
 int					ft_open_hist(void);
