@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/05/29 10:59:08 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/03 09:48:48 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/03 16:38:29 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -107,8 +107,8 @@ static void		ft_fork_shell2(t_parse *p, int *tab_pipe, char ***p_env,
 	tab_pid = (int*)malloc(sizeof(int) * (nb_pipe + 2));
 	tab_pid[nb_pipe + 1] = 0;
 	tab_pipe_fd = ft_make_tab_pipe_fd(nb_pipe);
-	i = -1;
-	while (++i <= nb_pipe)
+	i = nb_pipe + 1;
+	while (--i >= 0)
 	{
 		p->k = i;
 		tab_pid[i] = ft_fork_pipe(p, tab_pipe[i], p_env, tab_pipe_fd);
