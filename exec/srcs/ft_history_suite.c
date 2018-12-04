@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/09 14:10:29 by yoginet      #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/03 16:14:20 by yoginet     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/04 10:46:46 by yoginet     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -20,10 +20,31 @@
 **	dans le fichier d’historique.
 */
 
-static int	histo_a(t_opt_h *h)
+static int	histo_a(t_opt_h *h, int fd)
 {
-	(void)h;
-	ft_list_to_file();
+	t_hist	*his;
+
+	his = NULL;
+	if (h->filename == NULL)
+		ft_list_to_file();
+	else
+	{
+		his = ft_close_hist(GET_HIST, NULL);
+		if ((fd = open(h->filename, O_RDONLY)) < 0)
+			return (1);
+		while (his->next)
+			his = his->next;
+		while (his->prev)
+		{
+			if (his->current == 1)
+			{
+				ft_putstr_fd(his->str, fd);
+				ft_putstr_fd("\n", fd);
+			}
+			his = his->prev;
+		}
+		close(fd);
+	}
 	return (0);
 }
 
@@ -36,9 +57,6 @@ static int	histo_a(t_opt_h *h)
 
 static int	histo_n(t_opt_h *h)
 {
-	t_hist	*his;
-
-	his = NULL;
 	(void)h;
 	ft_list_to_file();
 	return (0);
@@ -50,15 +68,19 @@ static int	histo_n(t_opt_h *h)
 **	d'historique.
 */
 
-static int	histo_r(t_opt_h *h)
+static int	histo_r(t_opt_h *h, int fd)
 {
 	char	*line;
-	int		fd;
+	char	*path;
 
 	line = NULL;
-	fd = 0;
+	path = NULL;
 	if (h->filename == NULL)
-		fd = open(HIST_FILE, O_RDONLY);
+	{
+		path = ft_get_hist_name();
+		fd = open(path, O_RDONLY);
+		ft_strdel(&path);
+	}
 	else
 		fd = open(h->filename, O_RDONLY);
 	if (fd == -1)
@@ -118,11 +140,11 @@ int			histo_suite(t_opt_h *h, char **arg)
 	if (h->d == 1)
 		ret = delete_line_history(h->offset);
 	if (h->a == 1)
-		ret = histo_a(h);
+		ret = histo_a(hi, 0);
 	if (h->n == 1)
 		ret = histo_n(h);
 	if (h->r == 1)
-		ret = histo_r(h);
+		ret = histo_r(h, 0);
 	if (h->w == 1)
 		ret = histo_w(h);
 	if (h->p == 1)
