@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/09 14:10:29 by yoginet      #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/04 10:51:36 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/04 10:55:37 by yoginet     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -30,7 +30,7 @@ static int	histo_a(t_opt_h *h, int fd)
 	else
 	{
 		his = ft_close_hist(GET_HIST, NULL);
-		if ((fd = open(h->filename, O_RDONLY)) < 0)
+		if ((fd = open(h->filename, O_WRONLY | O_CREAT, S_IRUSR | S_IWUSR)) < 0)
 			return (1);
 		while (his->next)
 			his = his->next;
