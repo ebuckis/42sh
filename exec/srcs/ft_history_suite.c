@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/09 14:10:29 by yoginet      #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/04 10:46:46 by yoginet     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/04 10:50:03 by yoginet     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -140,7 +140,7 @@ int			histo_suite(t_opt_h *h, char **arg)
 	if (h->d == 1)
 		ret = delete_line_history(h->offset);
 	if (h->a == 1)
-		ret = histo_a(hi, 0);
+		ret = histo_a(h, 0);
 	if (h->n == 1)
 		ret = histo_n(h);
 	if (h->r == 1)
