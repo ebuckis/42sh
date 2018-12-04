@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/09 14:10:29 by yoginet      #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/04 10:50:03 by yoginet     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/04 10:51:36 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -88,7 +88,7 @@ static int	histo_r(t_opt_h *h, int fd)
 	while (get_next_line(fd, &line))
 	{
 		if (ft_strcmp(line, "") != 0)
-			ft_add_hist(line, 0, 0);
+			ft_add_hist(line, 0, 1);
 		ft_strdel(&line);
 	}
 	ft_strdel(&line);

@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/07/13 13:55:34 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/03 11:00:04 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/04 10:51:08 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -25,7 +25,7 @@ int		ft_push_enter(t_navig *n)
 	if (n->s && (tmp = ft_whitespace(n->s)))
 	{
 		free(tmp);
-		if (!(ft_add_hist(n->s, 0, 0)))
+		if (!(ft_add_hist(n->s, 0, 1)))
 			return (0);
 	}
 	else if (n->s)
