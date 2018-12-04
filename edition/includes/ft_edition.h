@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/06/18 14:40:55 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/03 15:17:42 by kcabus      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/04 10:43:34 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -111,6 +111,7 @@ typedef struct		s_hist
 	int				id;
 	struct s_hist	*next;
 	struct s_hist	*prev;
+	int				current;
 }					t_hist;
 
 t_navig				g_nav;

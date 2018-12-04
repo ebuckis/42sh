@@ -6,7 +6,7 @@
 /*   By: kcabus <kcabus@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/07/25 19:03:29 by kcabus       #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/03 14:47:18 by yoginet     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/04 10:49:11 by kcabus      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -64,16 +64,11 @@ int				ft_add_hist(char *s, int boul, int value)
 	h = ft_close_hist(GET_HIST, NULL);
 	if (!h || !s)
 		return (0);
-	if (!h->next)
+	if (!h->next || (h->next->str && ft_strcmp(s, h->next->str) != 0))
 	{
 		if (!(h->next = ft_new_hist(s, h, h->next, id)))
 			return (0);
-		id++;
-	}
-	else if (ft_strcmp(s, h->next->str) != 0)
-	{
-		if (!(h->next = ft_new_hist(s, h, h->next, id)))
-			return (0);
+		h->next->current = value;
 		id++;
 	}
 	return (1);
